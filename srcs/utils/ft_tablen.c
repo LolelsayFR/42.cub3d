@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mapping.c                                          :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 10:36:53 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 13:14:42 by artgirar         ###   ########.fr       */
+/*   Created: 2025/05/19 13:26:58 by artgirar          #+#    #+#             */
+/*   Updated: 2025/05/19 13:27:37 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-t_c3_data	*mapping(char **argv)
+int	ft_tablen(char **tab)
 {
-	t_c3_data	*data;
+	int	i;
 
-	if (ext_is_correct(argv[1]) == -1)
-		return (NULL);
-	data = data_init();
-	if (data == NULL)
-		return (NULL);
-	if (convert_map(&data, argv[1]) == -1)
-		return (NULL);
-	if (separ_value(&data) == -1)
-		return (NULL);
-	print_tab(data->map);
-	return (data);
+	i = 0;
+	while (tab[i] != NULL)
+		i++;
+	return (i);
 }
