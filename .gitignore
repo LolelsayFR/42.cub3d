@@ -3,4 +3,5 @@
 **/*.o
 .vscode
 *.out
+*.swp
 cub3D
