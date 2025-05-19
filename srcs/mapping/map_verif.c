@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 17:15:25 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:26:24 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int	is_not_walled(t_c3_data *data)
 {
-	int	i;
+	int	x;
 	int	y;
 
-	(void)i;
-	(void)y;
-	(void)data;
-	return (0);
+	//find_start(&x, &y);
+	return ((void)x, (void)y, (void)data, 0);
 }
 
 int	charset_is_correct(char **map)
