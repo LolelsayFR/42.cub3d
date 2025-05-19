@@ -6,11 +6,27 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:23:01 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 12:40:43 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:20:41 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static int	max_len(t_list *lst)
+{
+	int	len;
+	int	save;
+
+	save = 0;
+	while (lst != NULL)
+	{
+		len = ft_strlen(lst->content);
+		if (len > save)
+			save = len;
+		lst = lst->next;
+	}
+	return (save);
+}
 
 char	**lst_to_map(t_list *lst)
 {
@@ -18,7 +34,7 @@ char	**lst_to_map(t_list *lst)
 	char	**tab;
 
 	i = 0;
-	tab = malloc((ft_lstsize(lst) + 1) * sizeof(char *));
+	tab = ft_calloc(max_len(lst) + 1, sizeof(char *));
 	while (lst != NULL)
 	{
 		tab[i++] = ft_strdup(lst->content);
