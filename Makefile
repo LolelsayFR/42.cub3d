@@ -12,7 +12,7 @@ LIBFT_PATH	:=	./submodules/42.libft
 LIBFT		:=	$(LIBFT_PATH)/libft.a
 
 MLX_PATH	:=	./submodules/minilibx-linux
-MLX_FLAGS	:=	-lXext -lX11 -lm
+MLX_FLAGS	:=	-lXext -lX11 -lXpm -lm
 MLX			:=	$(MLX_PATH)/libmlx.a
 
 .PHONY: all clean fclean re
@@ -24,7 +24,7 @@ hello:
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@echo "\e[48;2;0;155;0;1m Compile $(NAME) \e[0m\n"
-	cc $(CFLAGS) $(OBJS) $(MLX_FLAGS) $(LIBFT) $(MLX) -o $(NAME)
+	cc $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 	@echo "\e[48;2;0;0;155;1m Done \e[0m\n"
 
 $(LIBFT):
