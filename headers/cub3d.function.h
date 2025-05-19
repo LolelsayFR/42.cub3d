@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 15:33:18 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:50:23 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 /* ************************************************************************** */
 /*  Minishell main functions                                                  */
 /* ************************************************************************** */
+
+//Executing
+void		game_start(t_c3_data *data);
 
 int			ft_tablen(char **tab);
 int			init_rgb(t_c3_data **data, char *line, int i);
