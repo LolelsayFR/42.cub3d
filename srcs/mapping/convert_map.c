@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:08:23 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 11:22:37 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:36:22 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	convert_map(t_c3_data **data, char *map_file)
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	map = ft_lstnew(NULL);
+	map = NULL;
 	while (1)
 	{
 		temp = get_next_line(fd);
@@ -32,5 +32,6 @@ int	convert_map(t_c3_data **data, char *map_file)
 		free(temp);
 	}
 	(*data)->map = lst_to_tab(map);
+	ft_lstclear(&map, free);
 	return (0);
 }
