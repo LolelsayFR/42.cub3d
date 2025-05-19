@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 15:24:02 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:42:28 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_c3_data
 	t_player	*player;
 	t_textures	*textures;
 	void		*mlx;
+	void		*win;
 }	t_c3_data;
 
 /* ************************************************************************** */
