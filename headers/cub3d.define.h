@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 10:30:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:42:11 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_textures
 	mlx_image_t	*west;
 	mlx_image_t	*east;
 	t_rgb		floor;
-	t_rgb		celling;
+	t_rgb		ceiling;
 }	t_textures;
 
 typedef struct s_player

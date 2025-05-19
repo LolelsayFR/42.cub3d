@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 10:34:26 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:47:24 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	(void)argv;
-	ft_alist_add_back(data = ft_calloc(1, sizeof(t_c3_data)));
-	//data = mapping(argv);
+	data = mapping(argv);
+	if (data == NULL)
+		return (1);
 	game_start(data);
 	ft_alist_free();
 	return (0);
