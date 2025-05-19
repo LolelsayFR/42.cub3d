@@ -6,15 +6,15 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 16:42:28 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:30:19 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINE_H
 # define CUB3D_DEFINE_H
 
-# define WIDTH			960
-# define HEIGHT			540
+# define WIDTH			1920
+# define HEIGHT			1000
 
 /* ************************************************************************** */
 /*  All includes                                                              */
@@ -51,20 +51,33 @@ typedef struct s_textures
 	t_rgb	ceiling;
 }	t_textures;
 
+typedef struct s_control
+{
+	bool	up;
+	bool	down;
+	bool	left;
+	bool	right;
+	bool	sprint;
+}	t_control;
+
 typedef struct s_player
 {
-	int	x;
-	int	y;
+	int			pos[2];
+	int			to_move[2];
+	t_control	control;
 }	t_player;
 
 typedef struct s_c3_data
 {
 	char		**map;
+	int			spawn[2];
 	t_player	*player;
 	t_textures	*textures;
 	void		*mlx;
 	void		*win;
+	bool		is_running;
 }	t_c3_data;
+
 
 /* ************************************************************************** */
 /*  End of file                                                               */

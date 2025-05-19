@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:47:29 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 17:41:13 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:45:50 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	destroy_all_image(t_c3_data *data)
 void	free_data(t_c3_data *data)
 {
 	destroy_all_image(data);
+	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	ft_free_strtab(data->map);
 	free(data->player);
