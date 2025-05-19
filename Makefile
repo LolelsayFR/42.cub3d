@@ -1,7 +1,8 @@
 NAME		:= 	cub3D
 
-SRC			:= 	$(wildcard srcs/**/*.c)\
-				$(wildcard srcs/*.c)
+SRC			:= 	$(wildcard srcs/*.c)\
+				$(wildcard srcs/**/*.c)\
+				$(wildcard srcs/**/**/*.c)\
 
 
 OBJDIR		:=	.objs
@@ -21,6 +22,7 @@ all: hello $(NAME)
 
 hello:
 	@echo "\e[48;2;100;0;100;1m Welcome to $(NAME) Makefile !\e[0m\n"
+	@echo "\e[48;2;100;0;0;1m Welcome to THE BIG WILDCARD !\e[0m\n"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@echo "\e[48;2;0;155;0;1m Compile $(NAME) \e[0m\n"
