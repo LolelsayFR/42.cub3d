@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 16:52:45 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:00:24 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ int	init_rgb(t_c3_data **data, char *line, int i)
 
 	temp = ft_split(line + 2, ',');
 	if (ft_tablen(temp) != 3)
-		return (-2);
+		return (ft_free_strtab(temp), -2);
 	if (i == 4)
 		(*data)->textures->floor = itorgb(
 				ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
 	if (i == 5)
 		(*data)->textures->ceiling = itorgb(
 				ft_atoi(temp[0]), ft_atoi(temp[1]), ft_atoi(temp[2]));
+	ft_free_strtab(temp);
 	return (0);
 }
 
