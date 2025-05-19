@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 18:20:27 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:23:32 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_c3_data	*data_init(void)
 {
 	t_c3_data	*data;
 
-	data = malloc(sizeof(t_c3_data));
+	data = ft_calloc(1, sizeof(t_c3_data));
 	data->textures = malloc(sizeof(t_textures));
 	data->player = malloc(sizeof(t_player));
 	data->mlx = mlx_init();
