@@ -16,9 +16,6 @@ all:	hello $(NAME)
 
 OBJ		= 	${SRC:.c=.o}
 
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
-	cc $(CFLAGS) -c $< -o $@ $(SRC)
-
 hello:
 	@echo "\e[48;2;100;0;100;1m Welcome to "$(NAME)" Makefile !\e[0m\n"
 
