@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 10:42:11 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:06:51 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdbool.h>
-# include "../submodules/MLX42/include/MLX42/MLX42.h"
+# include "../submodules/minilibx-linux/mlx.h"
+# include "../submodules/minilibx-linux/mlx_int.h"
 # include "../submodules/42.libft/libft.h"
 
 /* ************************************************************************** */
@@ -42,12 +43,12 @@
 
 typedef struct s_textures
 {
-	mlx_image_t	*north;
-	mlx_image_t	*south;
-	mlx_image_t	*west;
-	mlx_image_t	*east;
-	t_rgb		floor;
-	t_rgb		ceiling;
+	t_img	*north;
+	t_img	*south;
+	t_img	*west;
+	t_img	*east;
+	t_rgb	floor;
+	t_rgb	ceiling;
 }	t_textures;
 
 typedef struct s_player
@@ -61,7 +62,6 @@ typedef struct s_c3_data
 	char		**map;
 	t_player	*player;
 	t_textures	*textures;
-	mlx_t		*mlx;
 }	t_c3_data;
 
 /* ************************************************************************** */
