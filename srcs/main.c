@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 10:47:24 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:27:34 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	main(int argc, char **argv)
 	data = mapping(argv);
 	if (data == NULL)
 		return (1);
-	game_start(data);
+	//game_start(data);
 	ft_alist_free();
+	free_data(data);
 	return (0);
 }
