@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 17:30:22 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:20:45 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /* ************************************************************************** */
 
 //Main Function
-void		game_close(t_c3_data *data, int exit_status);
+void		game_close(t_c3_data *data);
 
 //Executing
 void		game_start(t_c3_data *data);
