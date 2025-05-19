@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:47:29 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 19:22:32 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 19:41:57 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	free_data(t_c3_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	ft_free_strtab(data->map);
+	free(data->player->control);
 	free(data->player);
 	free(data->textures);
 	free(data->mlx);
