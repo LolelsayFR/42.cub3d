@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 15:34:26 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:47:48 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ int	init_texture(t_c3_data **data, t_img **img, char *line)
 	return (0);
 }
 
-void	free_data(t_c3_data *data)
-{
-	ft_free_strtab(data->map);
-	free(data->player);
-	free(data->textures);
-	free(data);
-}
-
 t_c3_data	*data_init(void)
 {
 	t_c3_data	*data;
@@ -54,5 +46,6 @@ t_c3_data	*data_init(void)
 	data = malloc(sizeof(t_c3_data));
 	data->textures = malloc(sizeof(t_textures));
 	data->player = malloc(sizeof(t_player));
+	data->mlx = mlx_init();
 	return (data);
 }
