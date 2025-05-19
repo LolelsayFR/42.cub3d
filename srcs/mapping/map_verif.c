@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 17:26:24 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 19:33:55 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,23 @@ int	is_not_walled(t_c3_data *data)
 	int	x;
 	int	y;
 
-	//find_start(&x, &y);
-	return ((void)x, (void)y, (void)data, 0);
+	y = 0;
+	while (data->map[y] != NULL)
+	{
+		x = 0;
+		while (data->map[y][x] != '\0')
+		{
+			if (ft_strchr("0NSWE", data->map[y][x]) != NULL)
+				if (finds_next_value(data, x, y) == -1)
+					return (-1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }
 
-int	charset_is_correct(char **map)
+int	charset_is_correct(t_c3_data *data)
 {
 	int	x;
 	int	y;
@@ -29,14 +41,14 @@ int	charset_is_correct(char **map)
 
 	numb_player = 0;
 	y = 0;
-	while (map[y] != NULL)
+	while (data->map[y] != NULL)
 	{
 		x = 0;
-		while (map[y][x] != '\n')
+		while (data->map[y][x] != '\n')
 		{
-			if (ft_strchr("10NSEW ", map[y][x]) == NULL)
+			if (ft_strchr("10NSEW ", data->map[y][x]) == NULL)
 				return (-1);
-			if (ft_strchr("NSEW", map[y][x]) != NULL)
+			if (ft_strchr("NSEW", data->map[y][x]) != NULL)
 				numb_player++;
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 17:07:49 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 19:16:50 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ static int	do_texture_3(t_c3_data **data, char *line, int *i)
 	{
 		if (ft_strncmp(line, "F ", 2) == 0)
 			return ((*i)++, init_rgb(data, line, *i));
+		return (-2);
 	}
 	else if (*i == 5)
 	{
 		if (ft_strncmp(line, "C ", 2) == 0)
 			return ((*i)++, init_rgb(data, line, *i));
+		return (-2);
 	}
-	(*i)++;
 	return (-1);
 }
 
@@ -35,12 +36,14 @@ static int	do_texture_2(t_c3_data **data, char *line, int *i)
 		if (ft_strncmp(line, "WE ", 3) == 0)
 			return ((*i)++, init_texture(data,
 				&(*data)->textures->west, line));
+		return (-2);
 	}
 	else if (*i == 3)
 	{
 		if (ft_strncmp(line, "EA ", 3) == 0)
 			return ((*i)++, init_texture(data,
 				&(*data)->textures->east, line));
+		return (-2);
 	}
 	return (do_texture_3(data, line, i));
 }
@@ -54,12 +57,14 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 		if (ft_strncmp(line, "NO ", 3) == 0)
 			return (i++, init_texture(data,
 				&(*data)->textures->north, line));
+		return (-2);
 	}
 	else if (i == 1)
 	{
 		if (ft_strncmp(line, "SO ", 3) == 0)
 			return (i++, init_texture(data,
 				&(*data)->textures->south, line));
+		return (-2);
 	}
 	*ret = do_texture_2(data, line, &i);
 	return (*ret);
