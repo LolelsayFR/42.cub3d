@@ -34,6 +34,7 @@ $(LIBFT):
 	@echo "\e[48;2;0;0;155;1m Done for $(LIBFT) \e[0m\n"
 
 $(MLX):
+	git submodule update --init --recursive
 	@echo "\e[48;2;0;155;0;1m Make $(MLX) \e[0m\n"
 	@$(MAKE) --no-print-directory -C $(MLX_PATH)
 	@echo "\e[48;2;0;0;155;1m Done for $(MLX) \e[0m\n"
