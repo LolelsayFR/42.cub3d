@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_to_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:23:01 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 17:20:41 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 00:03:01 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**lst_to_tab(t_list *lst)
 	char	**tab;
 
 	i = 0;
-	tab = malloc((ft_lstsize(lst) + 1) * sizeof(char *));
+	tab = ft_calloc(max_len(lst) + 1, sizeof(char *));
 	while (lst != NULL)
 	{
 		tab[i++] = ft_strdup(lst->content);

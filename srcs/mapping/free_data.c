@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:47:29 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 19:43:11 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 00:05:13 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	destroy_all_image(t_c3_data *data)
 
 void	free_data(t_c3_data *data)
 {
+	ft_printf(RED"DATA WAS FREE"RES);
 	destroy_all_image(data);
 	if (data->win != NULL)
 		mlx_destroy_window(data->mlx, data->win);

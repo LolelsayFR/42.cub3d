@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 12:32:08 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 00:10:45 by emaillet         ###   ########.fr       */
+/*   Created: 2025/05/19 22:34:37 by emaillet          #+#    #+#             */
+/*   Updated: 2025/05/19 23:06:38 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.function.h"
+#include "cub3d.define.h"
 
-void	print_tab(char **tab)
+void	map_size(t_c3_data *data)
 {
-	int	i;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (tab[i] != NULL)
+	x = 0;
+	y = 0;
+	while (data->map[y] != NULL)
 	{
-		ft_printf("%s",tab[i]);
-		i++;
+		x = fmaxl(x, ft_strlen(data->map[y]));
+		y++;
 	}
+	data->map_size[0] = y;
+	data->map_size[1] = x - 1;
+	ft_printf(YEL"Map size : x = %d, y = %d"RES, data->map_size[1],
+		data->map_size[0]);
 }

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 19:51:11 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 00:28:06 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@ void		game_close(t_c3_data *data);
 
 //Executing
 void		game_start(t_c3_data *data);
+void		put_map(t_c3_data *data);
 
+//Utils
+void		map_size(t_c3_data *data);
 int			ft_tablen(char **tab);
+void		print_tab(char **tab);
+char		**lst_to_tab(t_list *lst);
+
 int			init_rgb(t_c3_data **data, char *line, int i);
 int			ext_is_correct(char *map);
 int			charset_is_correct(t_c3_data *data);
@@ -38,8 +44,6 @@ int			finds_next_value(t_c3_data *data, int x, int y, int max);
 void		find_max(char **map, int *x, int *y);
 void		free_data(t_c3_data *data);
 void		free_data_no_img(t_c3_data *data);
-void		print_tab(char **tab);
-char		**lst_to_tab(t_list *lst);
 t_c3_data	*data_init(void);
 t_c3_data	*mapping(char **argv);
 
