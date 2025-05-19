@@ -6,7 +6,11 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/05/19 17:10:48 by emaillet         ###   ########.fr       */
+=======
+/*   Updated: 2025/05/19 17:03:50 by emaillet         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 

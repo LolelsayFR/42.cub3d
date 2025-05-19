@@ -6,7 +6,11 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2025/05/19 17:10:52 by emaillet         ###   ########.fr       */
+=======
+/*   Updated: 2025/05/19 17:05:30 by emaillet         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,9 @@
 /* ************************************************************************** */
 /*  Minishell main functions                                                  */
 /* ************************************************************************** */
+
+//Main Function
+void		game_close(t_c3_data *data, int exit_status);
 
 //Executing
 void		game_start(t_c3_data *data);
