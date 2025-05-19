@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 18:31:45 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:44:21 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_c3_data	*data_init(void)
 		game_close(data);
 	}
 	data->textures = malloc(sizeof(t_textures));
-	data->player = malloc(sizeof(t_player));
+	data->player = ft_calloc(1, sizeof(t_player));
+	data->player->control = ft_calloc(1, sizeof(t_control));
 	return (data);
 }

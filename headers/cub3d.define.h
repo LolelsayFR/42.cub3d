@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 18:18:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:40:17 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_player
 {
 	int			pos[2];
 	int			to_move[2];
-	t_control	control;
+	t_control	*control;
 }	t_player;
 
 typedef struct s_c3_data
