@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 15:29:35 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:34:26 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	init_texture(t_c3_data **data, t_img **img, char *line)
 	int	x;
 	int	y;
 
-	(*img) = mlx_xpm_file_to_image((*data)->mlx, line, &x, &y);
+	(*img) = mlx_xpm_file_to_image((*data)->mlx, line + 3, &x, &y);
 	if ((*img) == NULL)
 		return (-2);
 	return (0);
