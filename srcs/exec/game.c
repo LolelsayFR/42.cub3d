@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 16:50:43 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:10:15 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	game_clock(t_c3_data *data)
 void	game_start(t_c3_data *data)
 {
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3D");
-	mlx_hook(data->win, 17, 0, (void *)game_close, &data);
+	//mlx_hook(data->win, 17, 0, (void *)game_close, &data);
 	// mlx_hook(data->win, 2, KeyPressMask, handle_input, &data);
 	// mlx_key_hook(data->win, handle_input_keyrelease, &data);
-	mlx_loop_hook(data->mlx, game_clock, &data);
+	//mlx_loop_hook(data->mlx, (void *)game_clock, &data);
 	mlx_loop(data->mlx);
 }

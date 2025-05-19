@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 16:55:01 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:09:35 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	if (data.mlx == NULL)
 		game_close(&data, 2);
 	data.is_running = true;
-	game_start(&data);
+	//game_start(&data);
 	return (0);
 }
 void	game_close(t_c3_data *data, int exit_status)
