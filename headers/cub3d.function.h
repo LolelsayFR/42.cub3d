@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 15:32:56 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:33:18 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ext_is_correct(char *map);
 int			charset_is_correct(char **map);
 int			convert_map(t_c3_data **data, char *map_file);
 int			separ_value(t_c3_data **data);
-int			init_texture(t_c3_data **data, char *line);
+int			init_texture(t_c3_data **data, t_img **img, char *line);
 void		free_data(t_c3_data *data);
 void		print_tab(char **tab);
 char		**lst_to_tab(t_list *lst);

@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 13:40:27 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:30:04 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ static int	do_texture_2(t_c3_data **data, char *line, int i)
 	if (i == 2)
 	{
 		if (ft_strncmp(line, "WE ", 3) == 0)
-			return (init_texture(data, line));
+			return (init_texture(data,
+				&(*data)->textures->west, line));
 	}
 	else if (i == 3)
 	{
 		if (ft_strncmp(line, "EA ", 3) == 0)
-			return (init_texture(data, line));
+			return (init_texture(data,
+				&(*data)->textures->east, line));
 	}
 	return (do_texture_3(data, line, i));
 }
@@ -49,12 +51,14 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 	if (i == 0)
 	{
 		if (ft_strncmp(line, "NO ", 3) == 0)
-			return (init_texture(data, line));
+			return (init_texture(data,
+				&(*data)->textures->north, line));
 	}
 	else if (i == 1)
 	{
 		if (ft_strncmp(line, "SO ", 3) == 0)
-			return (init_texture(data, line));
+			return (init_texture(data,
+				&(*data)->textures->south, line));
 	}
 	*ret = do_texture_2(data, line, i++);
 	return (*ret);

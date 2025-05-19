@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 13:33:35 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:29:35 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@ int	init_rgb(t_c3_data **data, char *line, int i)
 	return (0);
 }
 
-int	init_texture(t_c3_data **data, char *line)
+int	init_texture(t_c3_data **data, t_img **img, char *line)
 {
-	mlx_texture_t	*texture;
+	int	x;
+	int	y;
 
-	texture = mlx_load_png(line + 3);
-	if (texture == NULL)
-		return (-2);
-	(*data)->textures->east = mlx_texture_to_image(
-			(*data)->mlx, texture);
-	if ((*data)->textures->east == NULL)
+	(*img) = mlx_xpm_file_to_image((*data)->mlx, line, &x, &y);
+	if ((*img) == NULL)
 		return (-2);
 	return (0);
 }
