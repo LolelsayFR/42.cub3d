@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 18:27:38 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 19:08:10 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	main(int argc, char **argv)
 
 void	game_close(t_c3_data *data)
 {
-	int	exit_status;
+	int	status;
 
-	exit_status = data->exit_status;
-	data->is_running = false;
-	if (exit_status == 2)
+	if (data->exit_status == 2)
 		ft_printfd(2, LANG_E, LANG_E_MALLOC);
+	data->is_running = false;
+	status = data->exit_status;
 	ft_alist_free();
 	free_data(data);
-	exit(exit_status);
+	exit(status);
 }
