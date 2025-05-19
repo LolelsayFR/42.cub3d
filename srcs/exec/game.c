@@ -6,20 +6,19 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 18:50:22 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 00:25:05 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-
-void	game_clock(t_c3_data *data)
+static void	game_clock(t_c3_data *data)
 {
 	if (data->is_running == false)
 		game_close(data);
 }
 
-int	handle_input(int keysym, t_c3_data *data)
+static int	handle_input(int keysym, t_c3_data *data)
 {
 	if (keysym == XK_Escape)
 		return (game_close(data), 0);
@@ -37,7 +36,7 @@ int	handle_input(int keysym, t_c3_data *data)
 	return (0);
 }
 
-int	handle_input_keyrelease(int keysym, t_c3_data *data)
+static int	handle_input_keyrelease(int keysym, t_c3_data *data)
 {
 	if (keysym == XK_d || keysym == XK_D || keysym == XK_Right)
 		data->player->control->right = false;
@@ -55,6 +54,7 @@ int	handle_input_keyrelease(int keysym, t_c3_data *data)
 
 void	game_start(t_c3_data *data)
 {
+	map_size(data);
 	data->is_running = true;
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3D");
 	if (data->win == NULL)
@@ -66,5 +66,6 @@ void	game_start(t_c3_data *data)
 	mlx_hook(data->win, 2, KeyPressMask, handle_input, data);
 	mlx_key_hook(data->win, handle_input_keyrelease, data);
 	mlx_loop_hook(data->mlx, (void *)game_clock, data);
+	put_map(data);
 	mlx_loop(data->mlx);
 }

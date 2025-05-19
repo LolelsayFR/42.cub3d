@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 18:40:17 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 00:25:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 /*  All includes                                                              */
 /* ************************************************************************** */
 
+# include <math.h>
 # include <errno.h>
 # include <string.h>
 # include <stdint.h>
@@ -31,6 +32,8 @@
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include "../submodules/minilibx-linux/mlx.h"
@@ -43,6 +46,7 @@
 
 typedef struct s_textures
 {
+	t_img	*map_base;
 	t_img	*north;
 	t_img	*south;
 	t_img	*west;
@@ -70,12 +74,13 @@ typedef struct s_player
 typedef struct s_c3_data
 {
 	char		**map;
+	bool		is_running;
+	int			map_size[2];
 	int			spawn[2];
 	t_player	*player;
 	t_textures	*textures;
 	void		*mlx;
 	void		*win;
-	bool		is_running;
 	int			exit_status;
 }	t_c3_data;
 
