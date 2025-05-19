@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 16:44:23 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:07:49 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 {
 	static int	i = 0;
 
-	if (i <= 5)
-		printf("%d : %s", i, line);
 	if (i == 0)
 	{
 		if (ft_strncmp(line, "NO ", 3) == 0)

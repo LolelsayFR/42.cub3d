@@ -6,11 +6,20 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 12:49:21 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:26:24 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+int	is_not_walled(t_c3_data *data)
+{
+	int	x;
+	int	y;
+
+	//find_start(&x, &y);
+	return ((void)x, (void)y, (void)data, 0);
+}
 
 int	charset_is_correct(char **map)
 {

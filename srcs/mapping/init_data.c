@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 17:00:24 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:30:47 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ t_c3_data	*data_init(void)
 	data->textures = malloc(sizeof(t_textures));
 	data->player = malloc(sizeof(t_player));
 	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3D");
 	return (data);
 }

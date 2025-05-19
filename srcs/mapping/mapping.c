@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:36:53 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 13:14:42 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:14:53 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_c3_data	*mapping(char **argv)
 		return (NULL);
 	if (separ_value(&data) == -1)
 		return (NULL);
+	//if (is_not_walled(data) == -1)
+	//	return (NULL);
 	print_tab(data->map);
 	return (data);
 }
