@@ -6,12 +6,19 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 10:17:11 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:30:20 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINE_H
 # define CUB3D_DEFINE_H
+
+# define WIDTH			960
+# define HEIGHT			540
+
+/* ************************************************************************** */
+/*  All includes                                                              */
+/* ************************************************************************** */
 
 # include <errno.h>
 # include <string.h>
@@ -26,7 +33,12 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include "../submodules/MLX42/include/MLX42/MLX42.h"
 # include "../submodules/42.libft/libft.h"
+
+/* ************************************************************************** */
+/*  Typedef of struct                                                         */
+/* ************************************************************************** */
 
 typedef struct s_textures
 {
@@ -49,6 +61,11 @@ typedef struct s_c3_data
 	char		**map;
 	t_player	*player;
 	t_textures	*textures;
+	mlx_t		*mlx;
 }	t_c3_data;
+
+/* ************************************************************************** */
+/*  End of file                                                               */
+/* ************************************************************************** */
 
 #endif

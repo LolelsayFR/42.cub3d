@@ -6,10 +6,9 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 09:37:16 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:25:22 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_LANG_H
 # define CUB3D_LANG_H
