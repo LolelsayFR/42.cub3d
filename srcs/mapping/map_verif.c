@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 19:33:55 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 19:51:26 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_not_walled(t_c3_data *data)
 		while (data->map[y][x] != '\0')
 		{
 			if (ft_strchr("0NSWE", data->map[y][x]) != NULL)
-				if (finds_next_value(data, x, y) == -1)
+				if (finds_next_value(data, x, y, ft_strlen(data->map[y])) == -1)
 					return (-1);
 			x++;
 		}
