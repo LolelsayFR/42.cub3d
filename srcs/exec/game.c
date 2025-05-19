@@ -6,11 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/05/19 18:17:18 by artgirar         ###   ########.fr       */
-=======
-/*   Updated: 2025/05/19 18:21:21 by emaillet         ###   ########.fr       */
->>>>>>> 814d689 (Calloc data + remove &sign (Not a stack alocation))
+/*   Updated: 2025/05/19 18:23:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
