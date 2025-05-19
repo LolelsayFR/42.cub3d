@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 10:58:17 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:49:21 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	charset_is_correct(char **map)
 
 int	ext_is_correct(char *map)
 {
-	int     i;
+	int	i;
 
 	i = 0;
 	if (!map)

@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:36:53 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 12:33:30 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:48:50 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ t_c3_data	*mapping(char **argv)
 	separ_value(&data);
 	print_tab(data->map);
 	return (data);
-
 }
