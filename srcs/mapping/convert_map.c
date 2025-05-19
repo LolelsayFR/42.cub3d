@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   convert_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 11:03:25 by artgirar         ###   ########.fr       */
+/*   Created: 2025/05/19 11:08:23 by artgirar          #+#    #+#             */
+/*   Updated: 2025/05/19 11:22:37 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-void	free_data(t_c3_data *data)
+int	convert_map(t_c3_data **data, char *map_file)
 {
-	free(data->player);
-	free(data->textures);
-	free(data);
-}
+	int		fd;
+	char	*temp;
+	t_list	*map;
 
-t_c3_data	*data_init(void)
-{
-	t_c3_data	*data;
-
-	data = malloc(sizeof(t_c3_data));
-	data->textures = malloc(sizeof(t_textures));
-	data->player = malloc(sizeof(t_player));
-	return (data);
+	fd = open(map_file, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	map = ft_lstnew(NULL);
+	while (1)
+	{
+		temp = get_next_line(fd);
+		printf("%s", temp);
+		if (temp == NULL)
+			break ;
+		ft_lstadd_back(&map, ft_lstnew(ft_strdup(temp)));
+		free(temp);
+	}
+	(*data)->map = lst_to_tab(map);
+	return (0);
 }
