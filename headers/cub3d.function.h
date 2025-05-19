@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/19 10:25:30 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:33:56 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 /* ************************************************************************** */
 /*  Minishell main functions                                                  */
 /* ************************************************************************** */
+
+int			ext_is_correct(char *map);
+int			charset_is_correct(char **map);
+int			convert_map(t_c3_data **data, char *map_file);
+int			separ_value(t_c3_data **data);
+void		free_data(t_c3_data *data);
+void		print_tab(char **tab);
+char		**lst_to_tab(t_list *lst);
+t_c3_data	*data_init(void);
+t_c3_data	*mapping(char **argv);
 
 /* ************************************************************************** */
 /*  End of file                                                               */
