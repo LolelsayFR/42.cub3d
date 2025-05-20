@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 12:15:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:09:30 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			separ_value(t_c3_data **data);
 int			init_texture(t_c3_data **data, t_img **img, char *line);
 int			is_not_walled(t_c3_data *data);
 int			finds_next_value(t_c3_data *data, int x, int y, int max);
+int			finds_other_space(char *line);
 void		find_max(char **map, int *x, int *y);
 void		free_data(t_c3_data *data);
 void		free_data_no_img(t_c3_data *data);

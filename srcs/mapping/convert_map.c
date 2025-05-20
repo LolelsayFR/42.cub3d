@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:08:23 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 12:27:54 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:32:27 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	convert_map(t_c3_data **data, char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
-		return (-1);
+		return (ft_printfd(2, ERROR NOT_EXIST), -1);
 	map = NULL;
 	while (1)
 	{
