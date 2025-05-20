@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 17:25:57 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:49:47 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	create_minimap_img(t_c3_data *data)
 		while (data->map[y][x] != '\0')
 		{
 			if (data->map[y][x] == '1')
-				map_put_tiles(x, y, data, BLACK_PIXEL);
+				map_put_tiles(x, y, data, WHITE_PIXEL);
 			else if (data->map[y][x] == '0')
 				map_put_tiles(x, y, data, GREY_PIXEL);
 			else if (ft_strchr("NSOW", data->map[y][x]) != NULL)
@@ -52,7 +52,4 @@ void	create_minimap_img(t_c3_data *data)
 		}
 		y++;
 	}
-	data->winmap = mlx_new_window(data->mlx,
-			(data->map_size[1] * MINIMAP_TILE),
-			(data->map_size[0] * MINIMAP_TILE), "Cub3D Map");
 }

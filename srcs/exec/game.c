@@ -6,23 +6,32 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 17:31:47 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:39:51 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-static void	game_clock(t_c3_data *data)
+static void	render(t_c3_data *data)
 {
-	usleep(1000000 / FPS);
 	if (data->is_running == false)
 		game_close(data);
-	mlx_put_image_to_window(data->mlx, data->winmap,
+	//raycasting(data);
+	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_base, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->winmap,
+	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_player,
 		data->player->pos[1] - MINIPLAYER / 2,
 		data->player->pos[0] - MINIPLAYER / 2);
+}
+
+static void	game_clock(t_c3_data *data)
+{
+	usleep(1000000 / FPS);
+	render(data);
+	player_move(data);
+	data->player->control->angle %= 360;
+	ft_printf("ANGLE WIEW = %i\n", data->player->control->angle);
 }
 
 static void	game_init(t_c3_data *data)
