@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 13:53:59 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:17:53 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	**verif_inmap(char **emplacement_map)
 				break ;
 			x++;
 		}
-		if (x == (int)ft_strlen(map[y]) - 1)
+		if (x == (int)ft_strlen(map[y]) - 1
+			&& finds_other_space(map[y + 1]) != 0)
 			return (ft_free_strtab(map), NULL);
 		y++;
 	}
@@ -94,8 +95,10 @@ int	separ_value(t_c3_data **data)
 	}
 	if (info[i] == NULL)
 		return (ft_printfd(2, ERROR WRONG_ID), -1);
-	while (ft_strncmp(info[i], "\n", 1) == 0)
+	while (info[i] != NULL && finds_other_space(info[i]) == 0)
 		i++;
+	if (info[i] == NULL)
+		return (-1);
 	(*data)->map = verif_inmap(&info[i]);
 	ft_free_strtab(info);
 	if ((*data)->map == NULL)
