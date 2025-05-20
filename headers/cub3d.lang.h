@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 13:26:48 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:32:11 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define UNWALLED_MAP	"Map is not Finished by Wall\n"
 # define EXTENTION	"Wrong Extention of Map File\n"
 # define WRONG_ID	"Missing/Repetition of Texture ID\n"
+# define NOT_EXIST	"Map File Does not Exist\n"
 
 /* ************************************************************************** */
 /*  End of file                                                               */
