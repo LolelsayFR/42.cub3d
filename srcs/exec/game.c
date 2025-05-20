@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 20:33:00 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:58:23 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	render(t_c3_data *data)
 		data->textures->map_player,
 		data->player->pos[1] - MINIPLAYER / 2,
 		data->player->pos[0] - MINIPLAYER / 2);
+	mlx_string_put(data->mlx, data->win, 10, 10, BLACK_PIXEL,
+		ft_itoa((int)data->player->angle));
 }
 
 static void	game_clock(t_c3_data *data)
@@ -30,7 +32,6 @@ static void	game_clock(t_c3_data *data)
 	usleep(1000000 / FPS);
 	render(data);
 	player_move(data);
-	data->player->control->angle %= 360;
 }
 
 static void	game_init(t_c3_data *data)
