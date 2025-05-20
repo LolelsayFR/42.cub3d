@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 15:45:09 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:25:57 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,48 +23,18 @@ static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
 		ii = 0;
 		while (ii++ < MINIMAP_TILE)
 			img_pix_put(data->textures->map_base,
-				x * MINIMAP_TILE - i + MINIMAP_TILE + 10,
-				y * MINIMAP_TILE - ii + MINIMAP_TILE + 10, color);
+				x * MINIMAP_TILE - i + MINIMAP_TILE,
+				y * MINIMAP_TILE - ii + MINIMAP_TILE, color);
 	}
 }
-
-// static void	map_put_player(int x, int y, t_c3_data *data, long long color)
-// {
-// 	int	i;
-// 	int	ii;
-
-// 	i = 0;
-// 	while (i++ < MINIMAP_TILE)
-// 	{
-// 		ii = 0;
-// 		while (ii++ < MINIMAP_TILE)
-// 			img_pix_put(data->textures->map_base,
-// 				x * MINIMAP_TILE - i + MINIMAP_TILE + 10,
-// 				y * MINIMAP_TILE - ii + MINIMAP_TILE + 10, color);
-// 	}
-// }
-
-// void	create_miniplayer_img(t_c3_data *data)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	data->textures->map_base = img_new(data->map_size[1] * MINIMAP_TILE + 20,
-// 			data->map_size[0] * MINIMAP_TILE + 20, data);
-// 			if (ft_strchr("NSOW", data->map[y][x]) != NULL)
-// 				map_put_tiles(x, y, data, GREEN_PIXEL);
-// 	}
-// 	data->winmap = mlx_new_window(data->mlx, (data->map_size[1] * MINIMAP_TILE),
-// 			(data->map_size[0] * MINIMAP_TILE), "Cub3D Map");
-// }
 
 void	create_minimap_img(t_c3_data *data)
 {
 	int	x;
 	int	y;
 
-	data->textures->map_base = img_new(data->map_size[1] * MINIMAP_TILE + 20,
-			data->map_size[0] * MINIMAP_TILE + 20, data);
+	data->textures->map_base = img_new(data->map_size[1] * MINIMAP_TILE,
+			data->map_size[0] * MINIMAP_TILE, data);
 	img_put_background(data->textures->map_base, DARKRED_PIXEL);
 	y = 0;
 	while (data->map[y] != NULL)
@@ -83,6 +53,6 @@ void	create_minimap_img(t_c3_data *data)
 		y++;
 	}
 	data->winmap = mlx_new_window(data->mlx,
-			(data->map_size[1] * MINIMAP_TILE + 20),
-			(data->map_size[0] * MINIMAP_TILE + 20), "Cub3D Map");
+			(data->map_size[1] * MINIMAP_TILE),
+			(data->map_size[0] * MINIMAP_TILE), "Cub3D Map");
 }
