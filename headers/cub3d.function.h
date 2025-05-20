@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 15:03:39 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:35:58 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		game_close(t_c3_data *data);
 
 //Executing
 void		game_start(t_c3_data *data);
-void		put_map(t_c3_data *data);
+void	    create_minimap_img(t_c3_data *data);
 
 //Utils
 t_img	    *img_new(int size_x, int size_y, t_c3_data *data);
