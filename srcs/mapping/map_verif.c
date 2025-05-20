@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/19 19:51:26 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:51:50 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	charset_is_correct(t_c3_data *data)
 	while (data->map[y] != NULL)
 	{
 		x = 0;
-		while (data->map[y][x] != '\n')
+		while (data->map[y][x] != '\n' && data->map[y][x] != '\0')
 		{
 			if (ft_strchr("10NSEW ", data->map[y][x]) == NULL)
 				return (-1);
@@ -52,7 +52,7 @@ int	charset_is_correct(t_c3_data *data)
 				numb_player++;
 			x++;
 		}
-		y = 0;
+		y++;
 	}
 	if (numb_player == 0 || numb_player > 1)
 		return (-1);
