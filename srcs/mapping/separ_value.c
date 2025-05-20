@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 14:53:10 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:34:23 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ char	**verif_inmap(char **whole_map, int emplacement)
 static int	do_texture_3(t_c3_data **data, char *line, int *i)
 {
 	if (ft_strncmp(line, "F ", 2) == 0)
-		return ((*i)++, init_rgb(data, line, *i));
+		return ((*i)++, init_rgb(data, line, 0));
 	if (ft_strncmp(line, "C ", 2) == 0)
-		return ((*i)++, init_rgb(data, line, *i));
+		return ((*i)++, init_rgb(data, line, 1));
 	return (-2);
 }
 
@@ -71,7 +71,7 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 		return (i++, init_texture(data,
 				&(*data)->textures->south, line));
 	*ret = do_texture_2(data, line, &i);
-	if (i == 6)
+	if (i == 6 && *ret != -2)
 		*ret = -1;
 	return (*ret);
 }
