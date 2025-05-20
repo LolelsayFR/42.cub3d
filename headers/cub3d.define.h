@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 19:15:50 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:39:37 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,16 @@ typedef struct s_control
 	bool	left;
 	bool	right;
 	bool	sprint;
-	int		angle;
+	double	angle;
 }	t_control;
 
 typedef struct s_player
 {
-	int			pos[2];
-	int			to_move[2];
+	double		pos[2];
+	double		to_move[2];
 	t_control	*control;
 	int			fov;
+	double		angle;
 }	t_player;
 
 typedef struct s_c3_data
