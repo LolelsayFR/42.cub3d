@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 19:39:51 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:33:00 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	game_clock(t_c3_data *data)
 	render(data);
 	player_move(data);
 	data->player->control->angle %= 360;
-	ft_printf("ANGLE WIEW = %i\n", data->player->control->angle);
 }
 
 static void	game_init(t_c3_data *data)
