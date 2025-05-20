@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:32:08 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 00:10:45 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:31:43 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_tab(char **tab)
 	i = 0;
 	while (tab[i] != NULL)
 	{
-		ft_printf("%s",tab[i]);
+		ft_printf("%s", tab[i]);
 		i++;
 	}
 }
