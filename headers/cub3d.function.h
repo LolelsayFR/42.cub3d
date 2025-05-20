@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 12:15:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:28:35 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void		game_start(t_c3_data *data);
 void		put_map(t_c3_data *data);
 
 //Utils
+t_img	    *img_new(int size_x, int size_y, t_c3_data *data);
 void		img_pix_put(t_img *img, int x, int y, int color);
 void		img_put_background(t_img *img, int color);
 void		map_size(t_c3_data *data);
