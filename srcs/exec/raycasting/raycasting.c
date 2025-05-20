@@ -1,25 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 12:32:08 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 14:31:43 by artgirar         ###   ########.fr       */
+/*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
+/*   Updated: 2025/05/20 20:32:24 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.function.h"
-
-void	print_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i] != NULL)
-	{
-		ft_printf("%s", tab[i]);
-		i++;
-	}
-}

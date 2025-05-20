@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 12:15:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:33:08 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,33 @@
 /* ************************************************************************** */
 
 //Main Function
+void		game_start(t_c3_data *data);
+t_c3_data	*data_init(void);
+t_c3_data	*mapping(char **argv);
+
+//Free and exit
 void		game_close(t_c3_data *data);
+void		free_data(t_c3_data *data);
+void		free_data_no_img(t_c3_data *data);
 
 //Executing
-void		game_start(t_c3_data *data);
-void		put_map(t_c3_data *data);
+int			handle_input_keyrelease(int keysym, t_c3_data *data);
+int			handle_input(int keysym, t_c3_data *data);
 
-//Utils
+//Raycasting
+void		raycasting(t_c3_data *data);
+
+//Img
+void		create_minimap_img(t_c3_data *data);
+t_img		*img_new(int size_x, int size_y, t_c3_data *data);
 void		img_pix_put(t_img *img, int x, int y, int color);
 void		img_put_background(t_img *img, int color);
-void		map_size(t_c3_data *data);
-int			ft_tablen(char **tab);
-void		print_tab(char **tab);
-char		**lst_to_tab(t_list *lst);
 
-int			init_rgb(t_c3_data **data, char *line, int i);
+//Player
+bool		player_init(t_c3_data *data);
+void		player_move(t_c3_data *data);
+
+//Parsing
 int			ext_is_correct(char *map);
 int			charset_is_correct(t_c3_data *data);
 int			convert_map(t_c3_data **data, char *map_file);
@@ -43,11 +55,16 @@ int			separ_value(t_c3_data **data);
 int			init_texture(t_c3_data **data, t_img **img, char *line);
 int			is_not_walled(t_c3_data *data);
 int			finds_next_value(t_c3_data *data, int x, int y, int max);
+int			finds_other_space(char *line);
 void		find_max(char **map, int *x, int *y);
-void		free_data(t_c3_data *data);
-void		free_data_no_img(t_c3_data *data);
-t_c3_data	*data_init(void);
-t_c3_data	*mapping(char **argv);
+void		map_size(t_c3_data *data);
+
+//Utils
+int			ft_tablen(char **tab);
+void		print_tab(char **tab);
+char		**lst_to_tab(t_list *lst);
+char		**lst_to_map(t_list *lst);
+int			init_rgb(t_c3_data **data, char *line, int i);
 
 /* ************************************************************************** */
 /*  End of file                                                               */
