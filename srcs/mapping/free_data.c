@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:47:29 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 15:23:49 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:14:17 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	destroy_all_image(t_c3_data *data)
 void	free_data(t_c3_data *data)
 {
 	destroy_all_image(data);
-	if (data->winmap != NULL)
-		mlx_destroy_window(data->mlx, data->winmap);
 	if (data->win != NULL)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
