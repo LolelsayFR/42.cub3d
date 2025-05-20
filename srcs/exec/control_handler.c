@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 17:28:23 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:22:40 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int	handle_input(int keysym, t_c3_data *data)
 	else if (keysym == XK_s || keysym == XK_S)
 		data->player->control->down = true;
 	else if (keysym == XK_Left)
-		data->player->control->angle++;
-	else if (keysym == XK_Right)
 		data->player->control->angle--;
+	else if (keysym == XK_Right)
+		data->player->control->angle++;
+	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
+		data->player->control->sprint = true;
 	ft_printf(GRN"Key press : %i "RES, keysym);
 	return (0);
 }
