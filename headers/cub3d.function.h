@@ -28,6 +28,8 @@ void		game_start(t_c3_data *data);
 void		put_map(t_c3_data *data);
 
 //Utils
+void		img_pix_put(t_img *img, int x, int y, int color);
+void		img_put_background(t_img *img, int color);
 void		map_size(t_c3_data *data);
 int			ft_tablen(char **tab);
 void		print_tab(char **tab);
