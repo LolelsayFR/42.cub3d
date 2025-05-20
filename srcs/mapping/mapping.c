@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:36:53 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 00:05:46 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:33:20 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ t_c3_data	*mapping(char **argv)
 		return (NULL);
 	data = data_init();
 	if (data == NULL)
-		return (NULL);
+		return (free_data(data), NULL);
 	if (convert_map(&data, argv[1]) == -1)
-		return (NULL);
+		return (free_data(data), NULL);
+	if (charset_is_correct(data) == -1)
+		return (free_data(data), NULL);
 	if (separ_value(&data) == -1)
-		return (NULL);
+		return (free_data(data), NULL);
 	if (is_not_walled(data) == -1)
-		return (NULL);
+		return (free_data(data), NULL);
 	print_tab(data->map);
 	return (data);
 }
