@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 00:25:53 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:51:21 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
+# define MINIMAP_TILE	20
+
+# define RED_PIXEL		0xFF0000
+# define GREEN_PIXEL	0x00FF00
+# define WHITE_PIXEL	0xFFFFFF
+# define GREY_PIXEL		0x424242
+# define BLACK_PIXEL	0x000000
+# define YELLOW_PIXEL	0xF0F000
+# define BLUE_PIXEL		0x000FF0
 
 /* ************************************************************************** */
 /*  All includes                                                              */

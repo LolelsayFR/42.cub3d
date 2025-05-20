@@ -6,67 +6,40 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 00:28:14 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 12:50:41 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-void	put_whitesqare(int x, int y, int size, t_c3_data *data)
+static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
 {
 	int	i;
 	int	ii;
 
 	i = 0;
-	while (i++ < size)
+	while (i++ < MINIMAP_TILE)
 	{
 		ii = 0;
-		while (ii++ < size)
-			mlx_pixel_put(data->mlx, data->win,
-				x * size - i + size,
-				y * size - ii + size, 0xFFFFFFFF);
+		while (ii++ < MINIMAP_TILE)
+			img_pix_put(data->textures->map_base,
+				x * MINIMAP_TILE - i + MINIMAP_TILE,
+				y * MINIMAP_TILE - ii + MINIMAP_TILE, color);
 	}
 }
 
-void	put_greysqare(int x, int y, int size, t_c3_data *data)
-{
-	int	i;
-	int	ii;
-
-	i = 0;
-	while (i++ < size)
-	{
-		ii = 0;
-		while (ii++ < size)
-			mlx_pixel_put(data->mlx, data->win,
-				x * size - i + size,
-				y * size - ii + size, 0x42424242);
-	}
-}
-
-void	put_greensqare(int x, int y, int size, t_c3_data *data)
-{
-	int	i;
-	int	ii;
-
-	i = 0;
-	while (i++ < size)
-	{
-		ii = 0;
-		while (ii++ < size)
-			mlx_pixel_put(data->mlx, data->win,
-				x * size - i + size,
-				y * size - ii + size, 0x00F000);
-	}
-}
-
-//Pour le moment je fait un putpixel de la map, a therme je ferais 
-//	une image pre charger afin de rendre cela plus performant
 void	put_map(t_c3_data *data)
 {
 	int	x;
 	int	y;
 
+	data->textures->map_base = mlx_new_image(data->mlx,
+			data->map_size[1] * MINIMAP_TILE, data->map_size[0] * MINIMAP_TILE);
+	data->textures->map_base->data = mlx_get_data_addr(data->textures->map_base,
+			&data->textures->map_base->bpp,
+			&data->textures->map_base->size_line,
+			&data->textures->map_base->format);
+	img_put_background(data->textures->map_base, WHITE_PIXEL);
 	y = 0;
 	while (data->map[y] != NULL)
 	{
@@ -74,13 +47,15 @@ void	put_map(t_c3_data *data)
 		while (data->map[y][x] != '\0')
 		{
 			if (data->map[y][x] == '1')
-				put_whitesqare(x, y, 25, data);
+				map_put_tiles(x, y, data, GREY_PIXEL);
 			else if (data->map[y][x] == '0')
-				put_greysqare(x, y, 25, data);
+				map_put_tiles(x, y, data, BLACK_PIXEL);
 			else if (ft_strchr("NSOW", data->map[y][x]) != NULL)
-				put_greensqare(x, y, 25, data);
+				map_put_tiles(x, y, data, GREEN_PIXEL);
 			x++;
 		}
 		y++;
 	}
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->textures->map_base, 100, 100);
 }
