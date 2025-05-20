@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 12:26:36 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:22:16 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	init_texture(t_c3_data **data, t_img **img, char *line)
 	static int	x;
 	static int	y;
 
+	if ((*img) != NULL)
+		return (-2);
 	line[ft_strlen(line) - 1] = '\0';
 	(*img) = mlx_xpm_file_to_image((*data)->mlx, line + 3, &x, &y);
 	if ((*img) == NULL)
