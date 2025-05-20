@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 00:25:05 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:43:12 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ static void	game_clock(t_c3_data *data)
 {
 	if (data->is_running == false)
 		game_close(data);
+	mlx_put_image_to_window(data->mlx, data->winmap,
+		data->textures->map_base, 0, 0);
+	// mlx_put_image_to_window(data->mlx, data->winmap,
+	// 	data->textures->map_player, 0, 0);
 }
 
 static int	handle_input(int keysym, t_c3_data *data)
@@ -57,6 +61,7 @@ void	game_start(t_c3_data *data)
 	map_size(data);
 	data->is_running = true;
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3D");
+	create_minimap_img(data);
 	if (data->win == NULL)
 	{
 		data->exit_status = 2;
@@ -66,6 +71,5 @@ void	game_start(t_c3_data *data)
 	mlx_hook(data->win, 2, KeyPressMask, handle_input, data);
 	mlx_key_hook(data->win, handle_input_keyrelease, data);
 	mlx_loop_hook(data->mlx, (void *)game_clock, data);
-	put_map(data);
 	mlx_loop(data->mlx);
 }
