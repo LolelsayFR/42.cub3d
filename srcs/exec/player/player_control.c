@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 21:49:54 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 00:48:52 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	player_angle_move(t_c3_data *data)
 	double	opo;
 	double	adj;
 	double	hypo;
+	//double	angle_rad;
 
 	if (data->player->angle > 360)
 		data->player->angle -= 360;
@@ -27,6 +28,14 @@ static void	player_angle_move(t_c3_data *data)
 	adj = hypo * cos(data->player->angle);
 	data->player->pos[0] += opo;
 	data->player->pos[1] += adj;
+	// angle_rad = data->player->angle * (N_PI / 180.0);
+	// hypo = hypot(data->player->to_move[0], data->player->to_move[1]);
+
+	// opo = hypo * sin(angle_rad);
+	// adj = hypo * cos(angle_rad);
+
+	// data->player->pos[0] += adj;
+	// data->player->pos[1] += opo;
 }
 
 void	player_move(t_c3_data *data)

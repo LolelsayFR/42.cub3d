@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 21:50:10 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 00:59:52 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # define FPS			60
 # define WALKSPEED		1
 # define RUNSPEED		4
-# define VIEWSPEED		0.1
+# define VIEWSPEED		0.07
+# define N_PI			3.1415926535897931
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
