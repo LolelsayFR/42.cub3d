@@ -1,0 +1,15 @@
+NO sprites/wall1.xpm
+SO sprites/wall2.xpm
+WE sprites/wall3.xpm
+EA sprites/wall4.xpm
+
+F 220,100,0
+C 225,30,0
+
+1000W00000000000001
+1000101000011000001
+1000111111111111111
+100001 1
+10010111
+100001
+111111

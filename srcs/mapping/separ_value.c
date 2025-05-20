@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 13:00:07 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 13:27:04 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ int	separ_value(t_c3_data **data)
 	{
 		if (ft_strncmp(info[i], "\n", 1) != 0)
 			if (do_texture(data, info[i], &ret) == -2)
-				return (-1);
+				return (ft_printfd(2, ERROR WRONG_ID), -1);
 		i++;
 		if (ret == -1)
 			break ;
 	}
 	if (info[i] == NULL)
-		return (-1);
+		return (ft_printfd(2, ERROR WRONG_ID), -1);
 	while (ft_strncmp(info[i], "\n", 1) == 0)
 		i++;
 	(*data)->map = ft_strtabdup(&info[i]);
