@@ -44,6 +44,7 @@ int			separ_value(t_c3_data **data);
 int			init_texture(t_c3_data **data, t_img **img, char *line);
 int			is_not_walled(t_c3_data *data);
 int			finds_next_value(t_c3_data *data, int x, int y, int max);
+int			finds_other_space(char *line);
 void		find_max(char **map, int *x, int *y);
 void		free_data(t_c3_data *data);
 void		free_data_no_img(t_c3_data *data);
