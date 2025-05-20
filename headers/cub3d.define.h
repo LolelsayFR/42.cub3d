@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 15:39:53 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:57:03 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define WIDTH			1920
 # define HEIGHT			1000
 # define MINIMAP_TILE	20
-# define MINIPLAYER		5
+# define MINIPLAYER		4
+# define FPS			60
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -74,6 +75,7 @@ typedef struct s_control
 	bool	left;
 	bool	right;
 	bool	sprint;
+	int		angle;
 }	t_control;
 
 typedef struct s_player
