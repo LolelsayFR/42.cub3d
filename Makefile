@@ -13,7 +13,7 @@ LIBFT_PATH	:=	./submodules/42.libft
 LIBFT		:=	$(LIBFT_PATH)/libft.a
 
 MLX_PATH	:=	./submodules/minilibx-linux
-MLX_FLAGS	:=	-lXext -lX11 -lXpm -lm
+MLX_FLAGS	:=	-lXext -lX11 -lm
 MLX			:=	$(MLX_PATH)/libmlx.a
 
 .PHONY: all clean fclean re
