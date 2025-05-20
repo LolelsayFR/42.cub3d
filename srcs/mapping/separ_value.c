@@ -6,20 +6,21 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 14:17:53 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:30:35 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-char	**verif_inmap(char **emplacement_map)
+char	**verif_inmap(char **whole_map, int emplacement)
 {
 	int		x;
 	int		y;
 	char	**map;
 
 	y = 0;
-	map = ft_strtabdup(emplacement_map);
+	map = ft_strtabdup(&whole_map[emplacement]);
+	ft_free_strtab(whole_map);
 	while (map[y] != NULL)
 	{
 		x = 0;
@@ -50,10 +51,10 @@ static int	do_texture_2(t_c3_data **data, char *line, int *i)
 {
 	if (ft_strncmp(line, "WE ", 3) == 0)
 		return ((*i)++, init_texture(data,
-			&(*data)->textures->west, line));
+				&(*data)->textures->west, line));
 	if (ft_strncmp(line, "EA ", 3) == 0)
 		return ((*i)++, init_texture(data,
-			&(*data)->textures->east, line));
+				&(*data)->textures->east, line));
 	return (do_texture_3(data, line, i));
 }
 
@@ -65,10 +66,10 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 		*ret = -1;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		return (i++, init_texture(data,
-			&(*data)->textures->north, line));
+				&(*data)->textures->north, line));
 	if (ft_strncmp(line, "SO ", 3) == 0)
 		return (i++, init_texture(data,
-			&(*data)->textures->south, line));
+				&(*data)->textures->south, line));
 	*ret = do_texture_2(data, line, &i);
 	if (i == 6)
 		*ret = -1;
@@ -81,15 +82,14 @@ int	separ_value(t_c3_data **data)
 	int		ret;
 	char	**info;
 
-	i = 0;
+	i = -1;
 	ret = 0;
 	info = (*data)->map;
-	while (info[i] != NULL)
+	while (info[++i] != NULL)
 	{
 		if (ft_strncmp(info[i], "\n", 1) != 0)
 			if (do_texture(data, info[i], &ret) == -2)
 				return (ft_printfd(2, ERROR WRONG_ID), -1);
-		i++;
 		if (ret == -1)
 			break ;
 	}
@@ -99,8 +99,7 @@ int	separ_value(t_c3_data **data)
 		i++;
 	if (info[i] == NULL)
 		return (-1);
-	(*data)->map = verif_inmap(&info[i]);
-	ft_free_strtab(info);
+	(*data)->map = verif_inmap(info, i);
 	if ((*data)->map == NULL)
 		return (ft_printfd(2, ERROR DOUBLE_MAP), -1);
 	return (0);
