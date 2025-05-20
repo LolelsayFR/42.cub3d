@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 16:57:03 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:15:50 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define MINIMAP_TILE	20
+# define MINIMAP_TILE	30
 # define MINIPLAYER		4
 # define FPS			60
+# define WALKSPEED		1
+# define RUNSPEED		4
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -96,7 +98,6 @@ typedef struct s_c3_data
 	t_textures	*textures;
 	void		*mlx;
 	void		*win;
-	void		*winmap;
 	int			exit_status;
 }	t_c3_data;
 

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 17:31:12 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:33:08 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void		free_data_no_img(t_c3_data *data);
 int			handle_input_keyrelease(int keysym, t_c3_data *data);
 int			handle_input(int keysym, t_c3_data *data);
 
+//Raycasting
+void		raycasting(t_c3_data *data);
+
 //Img
 void		create_minimap_img(t_c3_data *data);
 t_img		*img_new(int size_x, int size_y, t_c3_data *data);
@@ -42,6 +45,7 @@ void		img_put_background(t_img *img, int color);
 
 //Player
 bool		player_init(t_c3_data *data);
+void		player_move(t_c3_data *data);
 
 //Parsing
 int			ext_is_correct(char *map);
