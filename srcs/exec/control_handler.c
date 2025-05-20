@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 20:32:47 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:47:31 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	handle_input(int keysym, t_c3_data *data)
 	else if (keysym == XK_s || keysym == XK_S)
 		data->player->control->down = true;
 	else if (keysym == XK_Left)
-		data->player->control->angle--;
+		data->player->control->turn_left = true;
 	else if (keysym == XK_Right)
-		data->player->control->angle++;
+		data->player->control->turn_right = true;
 	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
 		data->player->control->sprint = true;
 	return (0);
@@ -45,5 +45,9 @@ int	handle_input_keyrelease(int keysym, t_c3_data *data)
 		data->player->control->down = false;
 	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
 		data->player->control->sprint = false;
+	else if (keysym == XK_Left)
+		data->player->control->turn_left = false;
+	else if (keysym == XK_Right)
+		data->player->control->turn_right = false;
 	return (0);
 }

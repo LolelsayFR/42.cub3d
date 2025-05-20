@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 21:39:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 21:50:10 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define FPS			60
 # define WALKSPEED		1
 # define RUNSPEED		4
+# define VIEWSPEED		0.1
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -77,16 +78,17 @@ typedef struct s_control
 	bool	left;
 	bool	right;
 	bool	sprint;
-	double	angle;
+	bool	turn_left;
+	bool	turn_right;
 }	t_control;
 
 typedef struct s_player
 {
 	double		pos[2];
 	double		to_move[2];
-	t_control	*control;
-	int			fov;
 	double		angle;
+	int			fov;
+	t_control	*control;
 }	t_player;
 
 typedef struct s_c3_data
