@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 14:38:27 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:54:41 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ void	put_map(t_c3_data *data)
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_base, 10, 10);
 }
-
