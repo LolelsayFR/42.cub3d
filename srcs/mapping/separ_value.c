@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 14:30:35 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:53:10 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ int	separ_value(t_c3_data **data)
 	int		ret;
 	char	**info;
 
-	i = -1;
+	i = 0;
 	ret = 0;
 	info = (*data)->map;
-	while (info[++i] != NULL)
+	while (info[i] != NULL)
 	{
-		if (ft_strncmp(info[i], "\n", 1) != 0)
+		if (finds_other_space(info[i]) != 0)
 			if (do_texture(data, info[i], &ret) == -2)
 				return (ft_printfd(2, ERROR WRONG_ID), -1);
-		if (ret == -1)
+		if (i++ > 0 && ret == -1)
 			break ;
 	}
 	if (info[i] == NULL)
@@ -98,7 +98,7 @@ int	separ_value(t_c3_data **data)
 	while (info[i] != NULL && finds_other_space(info[i]) == 0)
 		i++;
 	if (info[i] == NULL)
-		return (-1);
+		return (ft_printfd(2, ERROR NO_MAP), -1);
 	(*data)->map = verif_inmap(info, i);
 	if ((*data)->map == NULL)
 		return (ft_printfd(2, ERROR DOUBLE_MAP), -1);
