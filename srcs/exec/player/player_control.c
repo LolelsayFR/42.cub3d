@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 02:14:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 02:16:14 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void	player_setpress(t_c3_data *data, int speed)
 		data->player->to_move[1] = 0;
 }
 
-
 void	player_move(t_c3_data *data)
 {
 	int		speed;
@@ -82,4 +81,3 @@ void	player_move(t_c3_data *data)
 	adj = hypo * cos(angle_rad);
 	player_posmove(data, adj, opo);
 }
-
