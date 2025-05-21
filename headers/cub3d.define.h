@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 00:59:52 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 01:59:13 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FPS			60
 # define WALKSPEED		1
 # define RUNSPEED		4
-# define VIEWSPEED		0.07
+# define VIEWSPEED		5
 # define N_PI			3.1415926535897931
 
 # define RED_PIXEL		0xFF0000
@@ -97,7 +97,6 @@ typedef struct s_c3_data
 	char		**map;
 	bool		is_running;
 	int			map_size[2];
-	int			spawn[2];
 	t_player	*player;
 	t_textures	*textures;
 	void		*mlx;
