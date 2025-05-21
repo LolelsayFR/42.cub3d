@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 18:26:04 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:59:06 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void			map_size(t_c3_data *data);
 //Utils
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
+int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);
 unsigned long	create_rgb(t_rgb rgb);
 t_pos			pos_to_map_pos(double x, double y);
 t_trigo			trigo(t_c3_data *data, double x, double y);
