@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:08:12 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:51:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ static void	player_posmove(t_c3_data *data, double adj, double opo)
 {
 	if (data->player->control->up)
 	{
-		data->player->pos[0] += adj;
-		data->player->pos[1] += opo;
+		data->player->pos.y += adj;
+		data->player->pos.x += opo;
 	}
 	else if (data->player->control->down)
 	{
-		data->player->pos[0] -= adj;
-		data->player->pos[1] -= opo;
+		data->player->pos.y -= adj;
+		data->player->pos.x -= opo;
 	}
 	if (data->player->control->left)
 	{
-		data->player->pos[1] += adj;
-		data->player->pos[0] += opo;
+		data->player->pos.x += adj;
+		data->player->pos.y += opo;
 	}
 	else if (data->player->control->right)
 	{
-		data->player->pos[1] -= adj;
-		data->player->pos[0] -= opo;
+		data->player->pos.x -= adj;
+		data->player->pos.y -= opo;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:10:03 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:54:37 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int			handle_input_keyrelease(int keysym, t_c3_data *data);
 int			handle_input(int keysym, t_c3_data *data);
 
 //Raycasting
-void		raycasting(t_c3_data *data);
+void		raycasting(t_c3_data *data, t_pos pos, double angle);
 
 //Img
 void		create_minimap_img(t_c3_data *data);
@@ -60,6 +60,7 @@ void		find_max(char **map, int *x, int *y);
 void		map_size(t_c3_data *data);
 
 //Utils
+t_pos		pos_to_map_pos(double x, double y);
 t_trigo		trigo(t_c3_data *data, double x, double y);
 int			ft_tablen(char **tab);
 void		print_tab(char **tab);

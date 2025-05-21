@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:44:50 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:02:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:07:45 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	player_setspawn(t_c3_data *data)
 		data->player->angle = 90;
 	else if (data->map[y][x] == 'W')
 		data->player->angle = -90;
-	data->player->pos[0] = ((y + 1) * TILE_SIZE) - (TILE_SIZE / 2);
-	data->player->pos[1] = ((x + 1) * TILE_SIZE) - (TILE_SIZE / 2);
+	data->player->pos.y = ((y + 1) * TILE_SIZE) - (TILE_SIZE / 2);
+	data->player->pos.x = ((x + 1) * TILE_SIZE) - (TILE_SIZE / 2);
 }
 
 bool	player_init(t_c3_data *data)

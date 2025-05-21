@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:07:23 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:05:20 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define TILE_SIZE		20
-# define PLAYER_SIZE	4
+# define TILE_SIZE		10
+# define PLAYER_SIZE	2
 # define FPS			60
-# define WALKSPEED		0.5
-# define RUNSPEED		1
+# define WALKSPEED		0.2
+# define RUNSPEED		0.5
 # define VIEWSPEED		5
 # define N_PI			3.1415926535897931
 
@@ -61,6 +61,12 @@
 /*  Typedef of struct                                                         */
 /* ************************************************************************** */
 
+typedef struct s_pos
+{
+	double	x;
+	double	y;
+}	t_pos;
+
 typedef struct s_textures
 {
 	t_img	*map_base;
@@ -87,7 +93,7 @@ typedef struct s_control
 
 typedef struct s_player
 {
-	double		pos[2];
+	t_pos		pos;
 	double		to_move;
 	double		angle;
 	int			fov;

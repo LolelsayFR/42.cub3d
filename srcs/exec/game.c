@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:00:28 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:55:14 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 static void	render(t_c3_data *data)
 {
-	if (data->is_running == false)
-		game_close(data);
-	//raycasting(data);
+	t_pos	pos;
+
+	pos = pos_to_map_pos(data->player->pos.x, data->player->pos.y);
+	//REMOVE IN END OF USE !!!!
+	printf(YEL"x = %f\ny = %f\n"GRN"Angle = %f\n"RED"char = %c\n"RES,
+		pos.x, pos.y, data->player->angle, data->map[(int)pos.y][(int)pos.x]);
+	raycasting(data, pos, data->player->angle);
 	draw_map(data, 10, 10);
 }
 
 static void	game_clock(t_c3_data *data)
 {
+	if (data->is_running == false)
+		game_close(data);
 	usleep(1000000 / FPS);
 	render(data);
 	player_move(data);

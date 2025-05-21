@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 21:47:31 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:51:05 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	handle_input(int keysym, t_c3_data *data)
 		data->player->control->right = true;
 	else if (keysym == XK_a || keysym == XK_A)
 		data->player->control->left = true;
-	else if (keysym == XK_w || keysym == XK_W)
+	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
 		data->player->control->up = true;
-	else if (keysym == XK_s || keysym == XK_S)
+	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)
 		data->player->control->down = true;
 	else if (keysym == XK_Left)
 		data->player->control->turn_left = true;
@@ -39,9 +39,9 @@ int	handle_input_keyrelease(int keysym, t_c3_data *data)
 		data->player->control->right = false;
 	else if (keysym == XK_a || keysym == XK_A)
 		data->player->control->left = false;
-	else if (keysym == XK_w || keysym == XK_W)
+	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
 		data->player->control->up = false;
-	else if (keysym == XK_s || keysym == XK_S)
+	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)
 		data->player->control->down = false;
 	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
 		data->player->control->sprint = false;

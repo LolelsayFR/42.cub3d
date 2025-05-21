@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:02:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:25:40 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	draw_map(t_c3_data *data, int x, int y)
 {
 	t_trigo	math;
 
-	math = trigo(data, PLAYER_SIZE / 3, PLAYER_SIZE / 3);
+	math = trigo(data, PLAYER_SIZE / 2, PLAYER_SIZE / 2);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_base, x, y);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_pangle,
-		(data->player->pos[1] - PLAYER_SIZE / 2) + x + math.opo,
-		(data->player->pos[0] - PLAYER_SIZE / 2) + y + math.adj);
+		(data->player->pos.x - PLAYER_SIZE / 2) + x + math.opo,
+		(data->player->pos.y - PLAYER_SIZE / 2) + y + math.adj);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_player,
-		(data->player->pos[1] - PLAYER_SIZE / 2) + x,
-		(data->player->pos[0] - PLAYER_SIZE / 2) + y);
+		(data->player->pos.x - PLAYER_SIZE / 2) + x,
+		(data->player->pos.y - PLAYER_SIZE / 2) + y);
 }
 
 static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
