@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 15:05:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:59:30 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_control
 	bool	left;
 	bool	right;
 	bool	sprint;
+	bool	use;
 	bool	turn_left;
 	bool	turn_right;
 }	t_control;

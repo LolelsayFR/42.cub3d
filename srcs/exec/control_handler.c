@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 15:51:05 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:59:40 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	handle_input(int keysym, t_c3_data *data)
 		data->player->control->turn_right = true;
 	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
 		data->player->control->sprint = true;
+	else if (keysym == XK_space)
+		data->player->control->use = true;
 	return (0);
 }
 
@@ -49,5 +51,7 @@ int	handle_input_keyrelease(int keysym, t_c3_data *data)
 		data->player->control->turn_left = false;
 	else if (keysym == XK_Right)
 		data->player->control->turn_right = false;
+	else if (keysym == XK_space)
+		data->player->control->use = false;
 	return (0);
 }
