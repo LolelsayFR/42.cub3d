@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:10:10 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	create_minimap_img(t_c3_data *data)
 
 	data->textures->map_base = img_new(data->map_size[1] * TILE_SIZE,
 			data->map_size[0] * TILE_SIZE, data);
-	img_put_background(data->textures->map_base, DARKRED_PIXEL);
+	img_put_bg(data->textures->map_base, DARKRED_PIXEL);
 	y = 0;
 	while (data->map[y] != NULL)
 	{

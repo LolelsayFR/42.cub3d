@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:22:54 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:33:31 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	game_init(t_c3_data *data)
 	player_init(data);
 	data->textures->ceiling_texture = img_new(WIDTH, HEIGHT / 2, data);
 	data->textures->floor_texture = img_new(WIDTH, HEIGHT / 2, data);
-	img_put_background(data->textures->ceiling_texture, create_rgb(data->textures->ceiling));
-	img_put_background(data->textures->floor_texture, create_rgb(data->textures->floor));
+	img_put_bg(data->textures->ceiling_texture, create_rgb(data->textures->ceiling));
+	img_put_bg(data->textures->floor_texture, create_rgb(data->textures->floor));
 	mlx_hook(data->win, 17, 0, (void *)game_close, data);
 	mlx_hook(data->win, 2, KeyPressMask, handle_input, data);
 	mlx_key_hook(data->win, handle_input_keyrelease, data);

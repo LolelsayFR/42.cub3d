@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:44:50 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 15:07:45 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ bool	player_init(t_c3_data *data)
 {
 	data->textures->map_player = img_new(PLAYER_SIZE, PLAYER_SIZE, data);
 	data->textures->map_pangle = img_new(PLAYER_SIZE, PLAYER_SIZE, data);
-	img_put_background(data->textures->map_pangle, RED_PIXEL);
-	img_put_background(data->textures->map_player, BLUE_PIXEL);
+	img_put_bg(data->textures->map_pangle, RED_PIXEL);
+	img_put_bg(data->textures->map_player, BLUE_PIXEL);
 	player_setspawn(data);
 	return (true);
 }

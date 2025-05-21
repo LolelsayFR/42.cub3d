@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:22:34 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			raycasting(t_c3_data *data, t_pos pos, double angle);
 void			create_minimap_img(t_c3_data *data);
 t_img			*img_new(int size_x, int size_y, t_c3_data *data);
 void			img_pix_put(t_img *img, int x, int y, int color);
-void			img_put_background(t_img *img, int color);
+void			img_put_bg(t_img *img, int color);
 void			draw_map(t_c3_data *data, int x, int y);
 //Player
 bool			player_init(t_c3_data *data);
