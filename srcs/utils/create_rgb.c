@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   create_rgb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:08:10 by emaillet         ###   ########.fr       */
+/*   Created: 2025/05/21 16:11:24 by emaillet          #+#    #+#             */
+/*   Updated: 2025/05/21 16:17:09 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.function.h"
+#include "cub3d.define.h"
 
-void	raycasting(t_c3_data *data, t_pos pos, double angle)
+unsigned long	create_rgb(t_rgb rgb)
 {
-	(void)pos;
-	(void)angle;
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->textures->floor_texture, 0, HEIGHT / 2);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->textures->ceiling_texture, 0, 0);
-	return ;
+	return (((rgb.r & 0xff) << 16) + ((rgb.g & 0xff) << 8) + (rgb.b & 0xff));
 }
