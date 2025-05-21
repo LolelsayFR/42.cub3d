@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 19:15:50 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 02:17:43 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define MINIMAP_TILE	30
+# define MINIMAP_TILE	16
 # define MINIPLAYER		4
 # define FPS			60
 # define WALKSPEED		1
-# define RUNSPEED		4
+# define RUNSPEED		3
+# define VIEWSPEED		5
+# define N_PI			3.1415926535897931
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -77,15 +79,17 @@ typedef struct s_control
 	bool	left;
 	bool	right;
 	bool	sprint;
-	int		angle;
+	bool	turn_left;
+	bool	turn_right;
 }	t_control;
 
 typedef struct s_player
 {
-	int			pos[2];
-	int			to_move[2];
-	t_control	*control;
+	double		pos[2];
+	double		to_move[2];
+	double		angle;
 	int			fov;
+	t_control	*control;
 }	t_player;
 
 typedef struct s_c3_data
@@ -93,7 +97,6 @@ typedef struct s_c3_data
 	char		**map;
 	bool		is_running;
 	int			map_size[2];
-	int			spawn[2];
 	t_player	*player;
 	t_textures	*textures;
 	void		*mlx;

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:44:50 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 17:33:19 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 01:57:29 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ static void	player_setspawn(t_c3_data *data)
 			break ;
 		y++;
 	}
-	data->spawn[0] = y + 1;
-	data->spawn[1] = x + 1;
-	data->player->pos[0] = (data->spawn[0] * MINIMAP_TILE) - (MINIMAP_TILE / 2);
-	data->player->pos[1] = (data->spawn[1] * MINIMAP_TILE) - (MINIMAP_TILE / 2);
-	ft_printf(YEL"Spawn : x = %d y = %d"RES, data->spawn[1], data->spawn[0]);
+	if (data->map[y][x] == 'N')
+		data->player->angle = 180;
+	else if (data->map[y][x] == 'E')
+		data->player->angle = 90;
+	else if (data->map[y][x] == 'W')
+		data->player->angle = -90;
+	data->player->pos[0] = ((y + 1) * MINIMAP_TILE) - (MINIMAP_TILE / 2);
+	data->player->pos[1] = ((x + 1) * MINIMAP_TILE) - (MINIMAP_TILE / 2);
 }
 
 bool	player_init(t_c3_data *data)
