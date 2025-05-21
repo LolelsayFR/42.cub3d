@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 02:17:43 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:54:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIDTH			1920
 # define HEIGHT			1000
 # define MINIMAP_TILE	16
-# define MINIPLAYER		4
+# define MINIPLAYER		6
 # define FPS			60
 # define WALKSPEED		1
 # define RUNSPEED		3
@@ -31,6 +31,7 @@
 # define BLACK_PIXEL	0x000000
 # define YELLOW_PIXEL	0xF0F000
 # define BLUE_PIXEL		0x000FF0
+# define CYAN_PIXEL		0X00FFF0
 
 /* ************************************************************************** */
 /*  All includes                                                              */
@@ -64,6 +65,7 @@ typedef struct s_textures
 {
 	t_img	*map_base;
 	t_img	*map_player;
+	t_img	*map_pangle;
 	t_img	*north;
 	t_img	*south;
 	t_img	*west;
@@ -91,6 +93,14 @@ typedef struct s_player
 	int			fov;
 	t_control	*control;
 }	t_player;
+
+typedef struct s_trigo
+{
+	double	opo;
+	double	adj;
+	double	hypo;
+	double	angle_rad;
+}	t_trigo;
 
 typedef struct s_c3_data
 {

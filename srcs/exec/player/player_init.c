@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:44:50 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 01:57:29 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:57:59 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ static void	player_setspawn(t_c3_data *data)
 
 bool	player_init(t_c3_data *data)
 {
+	data->textures->map_player = img_new(MINIPLAYER, MINIPLAYER, data);
+	data->textures->map_pangle = img_new(MINIPLAYER, MINIPLAYER, data);
+	img_put_background(data->textures->map_pangle, RED_PIXEL);
+	img_put_background(data->textures->map_player, BLUE_PIXEL);
 	player_setspawn(data);
 	return (true);
 }

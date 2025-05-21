@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 21:58:23 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:00:28 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,7 @@ static void	render(t_c3_data *data)
 	if (data->is_running == false)
 		game_close(data);
 	//raycasting(data);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->textures->map_base, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->textures->map_player,
-		data->player->pos[1] - MINIPLAYER / 2,
-		data->player->pos[0] - MINIPLAYER / 2);
-	mlx_string_put(data->mlx, data->win, 10, 10, BLACK_PIXEL,
-		ft_itoa((int)data->player->angle));
+	draw_map(data, 10, 10);
 }
 
 static void	game_clock(t_c3_data *data)
@@ -40,8 +33,6 @@ static void	game_init(t_c3_data *data)
 	map_size(data);
 	create_minimap_img(data);
 	player_init(data);
-	data->textures->map_player = img_new(MINIPLAYER, MINIPLAYER, data);
-	img_put_background(data->textures->map_player, RED_PIXEL);
 	mlx_hook(data->win, 17, 0, (void *)game_close, data);
 	mlx_hook(data->win, 2, KeyPressMask, handle_input, data);
 	mlx_key_hook(data->win, handle_input_keyrelease, data);
