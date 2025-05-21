@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 17:33:43 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:29:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	game_clock(t_c3_data *data)
 		game_close(data);
 	usleep(1000000 / FPS);
 	render(data);
+	handle_mouse(data);
 	player_move(data);
 }
 
@@ -47,6 +48,7 @@ static void	game_init(t_c3_data *data)
 	mlx_hook(data->win, 2, KeyPressMask, handle_input, data);
 	mlx_key_hook(data->win, handle_input_keyrelease, data);
 	mlx_loop_hook(data->mlx, (void *)game_clock, data);
+	mlx_do_key_autorepeatoff(data->mlx);
 }
 
 void	game_start(t_c3_data *data)
