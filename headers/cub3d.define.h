@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 13:54:36 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:34:41 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define MINIMAP_TILE	16
-# define MINIPLAYER		6
+# define TILE_SIZE		10
+# define PLAYER_SIZE	2
 # define FPS			60
-# define WALKSPEED		1
-# define RUNSPEED		3
+# define WALKSPEED		0.2
+# define RUNSPEED		0.5
 # define VIEWSPEED		5
 # define N_PI			3.1415926535897931
 
@@ -61,6 +61,12 @@
 /*  Typedef of struct                                                         */
 /* ************************************************************************** */
 
+typedef struct s_pos
+{
+	double	x;
+	double	y;
+}	t_pos;
+
 typedef struct s_textures
 {
 	t_img	*map_base;
@@ -70,6 +76,8 @@ typedef struct s_textures
 	t_img	*south;
 	t_img	*west;
 	t_img	*east;
+	t_img	*floor_t;
+	t_img	*ceiling_t;
 	t_rgb	floor;
 	t_rgb	ceiling;
 }	t_textures;
@@ -81,14 +89,15 @@ typedef struct s_control
 	bool	left;
 	bool	right;
 	bool	sprint;
+	bool	use;
 	bool	turn_left;
 	bool	turn_right;
 }	t_control;
 
 typedef struct s_player
 {
-	double		pos[2];
-	double		to_move[2];
+	t_pos		pos;
+	double		to_move;
 	double		angle;
 	int			fov;
 	t_control	*control;

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 13:58:36 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	draw_map(t_c3_data *data, int x, int y)
 {
 	t_trigo	math;
 
-	math = trigo(data, MINIPLAYER / 3, MINIPLAYER / 3);
+	math = trigo(data, PLAYER_SIZE / 2, PLAYER_SIZE / 2);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_base, x, y);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_pangle,
-		(data->player->pos[1] - MINIPLAYER / 2) + x + math.opo,
-		(data->player->pos[0] - MINIPLAYER / 2) + y + math.adj);
+		(data->player->pos.x - PLAYER_SIZE / 2) + x + math.opo,
+		(data->player->pos.y - PLAYER_SIZE / 2) + y + math.adj);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->map_player,
-		(data->player->pos[1] - MINIPLAYER / 2) + x,
-		(data->player->pos[0] - MINIPLAYER / 2) + y);
+		(data->player->pos.x - PLAYER_SIZE / 2) + x,
+		(data->player->pos.y - PLAYER_SIZE / 2) + y);
 }
 
 static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
@@ -35,13 +35,13 @@ static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
 	int	ii;
 
 	i = 0;
-	while (i++ < MINIMAP_TILE)
+	while (i++ < TILE_SIZE)
 	{
 		ii = 0;
-		while (ii++ < MINIMAP_TILE)
+		while (ii++ < TILE_SIZE)
 			img_pix_put(data->textures->map_base,
-				x * MINIMAP_TILE - i + MINIMAP_TILE,
-				y * MINIMAP_TILE - ii + MINIMAP_TILE, color);
+				x * TILE_SIZE - i + TILE_SIZE,
+				y * TILE_SIZE - ii + TILE_SIZE, color);
 	}
 }
 
@@ -50,9 +50,9 @@ void	create_minimap_img(t_c3_data *data)
 	int	x;
 	int	y;
 
-	data->textures->map_base = img_new(data->map_size[1] * MINIMAP_TILE,
-			data->map_size[0] * MINIMAP_TILE, data);
-	img_put_background(data->textures->map_base, DARKRED_PIXEL);
+	data->textures->map_base = img_new(data->map_size[1] * TILE_SIZE,
+			data->map_size[0] * TILE_SIZE, data);
+	img_put_bg(data->textures->map_base, DARKRED_PIXEL);
 	y = 0;
 	while (data->map[y] != NULL)
 	{

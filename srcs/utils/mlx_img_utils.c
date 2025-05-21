@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:55:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 14:31:30 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-void	img_put_background(t_img *img, int color)
+void	img_put_bg(t_img *img, int color)
 {
 	int	x;
 	int	y;

@@ -3,8 +3,8 @@ SO sprites/wall2.xpm
 WE sprites/wall3.xpm
 EA sprites/wall4.xpm
 
-F 220,100,0
-C 225,30,0
+F 0,100,100
+C 0,30,0
 
     11111111
   11W0000001
