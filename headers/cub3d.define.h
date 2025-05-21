@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 13:54:36 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:07:23 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define MINIMAP_TILE	16
-# define MINIPLAYER		6
+# define TILE_SIZE		20
+# define PLAYER_SIZE	4
 # define FPS			60
-# define WALKSPEED		1
-# define RUNSPEED		3
+# define WALKSPEED		0.5
+# define RUNSPEED		1
 # define VIEWSPEED		5
 # define N_PI			3.1415926535897931
 
@@ -88,7 +88,7 @@ typedef struct s_control
 typedef struct s_player
 {
 	double		pos[2];
-	double		to_move[2];
+	double		to_move;
 	double		angle;
 	int			fov;
 	t_control	*control;

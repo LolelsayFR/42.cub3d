@@ -6,14 +6,14 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:02:32 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 13:08:55 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:11:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
 
-t_trigo	trigo(t_c3_data *data, int x, int y)
+t_trigo	trigo(t_c3_data *data, double x, double y)
 {
 	t_trigo	math;
 
