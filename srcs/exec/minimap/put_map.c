@@ -6,11 +6,28 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 18:49:47 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:58:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+void	draw_map(t_c3_data *data, int x, int y)
+{
+	t_trigo	math;
+
+	math = trigo(data, MINIPLAYER / 3, MINIPLAYER / 3);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->textures->map_base, x, y);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->textures->map_pangle,
+		(data->player->pos[1] - MINIPLAYER / 2) + x + math.opo,
+		(data->player->pos[0] - MINIPLAYER / 2) + y + math.adj);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->textures->map_player,
+		(data->player->pos[1] - MINIPLAYER / 2) + x,
+		(data->player->pos[0] - MINIPLAYER / 2) + y);
+}
 
 static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
 {

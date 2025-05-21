@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 02:16:14 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:43:38 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,13 @@ static void	player_setpress(t_c3_data *data, int speed)
 void	player_move(t_c3_data *data)
 {
 	int		speed;
-	double	opo;
-	double	adj;
-	double	hypo;
-	double	angle_rad;
+	t_trigo	math;
 
 	if (data->player->control->sprint)
 		speed = RUNSPEED;
 	else
 		speed = WALKSPEED;
 	player_setpress(data, speed);
-	if (data->player->angle >= 360)
-		data->player->angle -= 360;
-	else if (data->player->angle < 0)
-		data->player->angle += 360;
-	angle_rad = data->player->angle * (N_PI / 180.0);
-	hypo = hypot(data->player->to_move[0], data->player->to_move[1]);
-	opo = hypo * sin(angle_rad);
-	adj = hypo * cos(angle_rad);
-	player_posmove(data, adj, opo);
+	math = trigo(data, data->player->to_move[0], data->player->to_move[1]);
+	player_posmove(data, math.adj, math.opo);
 }

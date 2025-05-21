@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 16:38:32 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 13:54:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	game_close(t_c3_data *data)
 	ft_alist_free();
 	mlx_destroy_image(data->mlx, data->textures->map_base);
 	mlx_destroy_image(data->mlx, data->textures->map_player);
+	mlx_destroy_image(data->mlx, data->textures->map_pangle);
 	free_data(data);
 	exit(status);
 }
