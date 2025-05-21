@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:26:04 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void			game_close(t_c3_data *data);
 void			free_data(t_c3_data *data);
 void			free_data_no_img(t_c3_data *data);
 
-//Executing
+//Executing handler
 int				handle_input_keyrelease(int keysym, t_c3_data *data);
 int				handle_input(int keysym, t_c3_data *data);
+int				handle_mouse(t_c3_data *data);
 
 //Raycasting
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
@@ -60,6 +61,8 @@ void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
 
 //Utils
+int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
+int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 unsigned long	create_rgb(t_rgb rgb);
 t_pos			pos_to_map_pos(double x, double y);
 t_trigo			trigo(t_c3_data *data, double x, double y);

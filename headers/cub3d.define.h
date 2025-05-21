@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:34:41 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:15:45 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define TILE_SIZE		10
-# define PLAYER_SIZE	2
-# define FPS			60
+# define TILE_SIZE		24
+# define PLAYER_SIZE	4
+# define FPS			240
 # define WALKSPEED		0.2
 # define RUNSPEED		0.5
-# define VIEWSPEED		5
+# define VIEWSPEED		2
+# define MOUSESPEED		0.2
 # define N_PI			3.1415926535897931
 
 # define RED_PIXEL		0xFF0000
@@ -53,6 +54,7 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <X11/extensions/Xfixes.h>
 # include "../submodules/minilibx-linux/mlx.h"
 # include "../submodules/minilibx-linux/mlx_int.h"
 # include "../submodules/42.libft/libft.h"
@@ -115,11 +117,12 @@ typedef struct s_c3_data
 {
 	char		**map;
 	bool		is_running;
-	int			map_size[2];
+	bool		mouse;
 	t_player	*player;
 	t_textures	*textures;
 	void		*mlx;
 	void		*win;
+	int			map_size[2];
 	int			exit_status;
 }	t_c3_data;
 

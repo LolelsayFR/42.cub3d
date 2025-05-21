@@ -6,34 +6,40 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 14:51:53 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 17:33:55 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
+static bool	player_canmove(t_c3_data *data, double x, double y)
+{
+	t_pos	pos;
+
+	pos = pos_to_map_pos(x, y);
+	if (ft_strchr("1D \n\0", data->map[(int)pos.y][(int)pos.x]) != NULL)
+		return (false);
+	return (true);
+}
+
+static void	player_domove(t_c3_data *data, double x, double y)
+{
+	if (player_canmove(data, data->player->pos.x, data->player->pos.y + y))
+		data->player->pos.y += y;
+	if (player_canmove(data, data->player->pos.x + x, data->player->pos.y))
+		data->player->pos.x += x;
+}
+
 static void	player_posmove(t_c3_data *data, double adj, double opo)
 {
 	if (data->player->control->up)
-	{
-		data->player->pos.y += adj;
-		data->player->pos.x += opo;
-	}
-	else if (data->player->control->down)
-	{
-		data->player->pos.y -= adj;
-		data->player->pos.x -= opo;
-	}
+		player_domove(data, opo, adj);
+	if (data->player->control->down)
+		player_domove(data, -opo, -adj);
 	if (data->player->control->left)
-	{
-		data->player->pos.x += adj;
-		data->player->pos.y += opo;
-	}
-	else if (data->player->control->right)
-	{
-		data->player->pos.x -= adj;
-		data->player->pos.y -= opo;
-	}
+		player_domove(data, adj, -opo);
+	if (data->player->control->right)
+		player_domove(data, -adj, opo);
 }
 
 static void	player_setpress(t_c3_data *data, double speed)
