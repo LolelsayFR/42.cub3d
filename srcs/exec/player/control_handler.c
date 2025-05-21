@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 18:29:44 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:59:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int	handle_mouse(t_c3_data *data)
 	mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
 	mlx_get_screen_size(data->mlx, &sizex, &sizey);
 	data->player->angle -= (x - sizex / 2) * MOUSESPEED;
-	mlx_mouse_move(data->mlx, data->win, sizex / 2, sizey / 2);
+	mouse_move(data->mlx, data->win, sizex / 2, sizey / 2);
 	return (0);
 }
