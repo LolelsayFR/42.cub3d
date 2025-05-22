@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 14:52:42 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:20:50 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ typedef struct s_control
 	bool	right;
 	bool	sprint;
 	bool	use;
-	int		map;
 	bool	turn_left;
 	bool	turn_right;
+	int		map;
 }	t_control;
 
 typedef struct s_player
@@ -124,6 +124,7 @@ typedef struct s_c3_data
 	t_textures	*textures;
 	t_xvar		*mlx;
 	t_win_list	*win;
+	int			v_view;
 	int			map_size[2];
 	int			exit_status;
 }	t_c3_data;

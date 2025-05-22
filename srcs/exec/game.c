@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 15:39:09 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:38:31 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ static void	render(t_c3_data *data)
 	//REMOVE IN END OF USE !!!!
 	printf(YEL"x = %f\ny = %f\n"GRN"Angle = %f\n"RED"char = %c\n"RES,
 		pos.x, pos.y, data->player->angle, data->map[(int)pos.y][(int)pos.x]);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->textures->floor_t, 0, HEIGHT / 2 + data->v_view);
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->textures->ceiling_t, 0, -(HEIGHT / 2) + data->v_view);
 	raycasting(data, pos, data->player->angle);
 	draw_map(data, 10, 10);
 }
@@ -40,8 +44,8 @@ static void	game_init(t_c3_data *data)
 	map_size(data);
 	create_minimap_img(data);
 	player_init(data);
-	data->textures->ceiling_t = img_new(WIDTH, HEIGHT / 2, data);
-	data->textures->floor_t = img_new(WIDTH, HEIGHT / 2, data);
+	data->textures->ceiling_t = img_new(WIDTH, HEIGHT, data);
+	data->textures->floor_t = img_new(WIDTH, HEIGHT, data);
 	img_put_bg(data->textures->ceiling_t, create_rgb(data->textures->ceiling));
 	img_put_bg(data->textures->floor_t, create_rgb(data->textures->floor));
 	mlx_hook(data->win, 17, 0, (void *)game_close, data);
