@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 12:51:12 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:52:42 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
+# define MINIMAP_SIZE		200
 # define TILE_SIZE		30
-# define PLAYER_SIZE	6
+# define PLAYER_SIZE	4
 # define FPS			240
 # define WALKSPEED		0.1
 # define RUNSPEED		0.3
@@ -92,6 +93,7 @@ typedef struct s_control
 	bool	right;
 	bool	sprint;
 	bool	use;
+	int		map;
 	bool	turn_left;
 	bool	turn_right;
 }	t_control;
@@ -120,8 +122,8 @@ typedef struct s_c3_data
 	bool		mouse;
 	t_player	*player;
 	t_textures	*textures;
-	void		*mlx;
-	void		*win;
+	t_xvar		*mlx;
+	t_win_list	*win;
 	int			map_size[2];
 	int			exit_status;
 }	t_c3_data;
