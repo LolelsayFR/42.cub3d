@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 13:12:20 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:37:41 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ void			free_data(t_c3_data *data);
 void			free_data_no_img(t_c3_data *data);
 
 //Executing handler
-int				handle_input_keyrelease(int keysym, t_c3_data *data);
-int				handle_input(int keysym, t_c3_data *data);
+int				handle_input_keyrelease(int key, t_c3_data *data);
+int				handle_input(int key, t_c3_data *data);
 int				handle_mouse(t_c3_data *data);
+int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
