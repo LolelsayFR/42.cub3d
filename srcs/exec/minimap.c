@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 15:56:02 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:54:27 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	draw_map(t_c3_data *data, int x, int y)
 	math = trigo(&data->player->angle, PLAYER_SIZE / 2, PLAYER_SIZE / 2);
 	if (data->player->control->map % 3 == 0)
 	{
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->textures->map_bg, x - 5, y - 5);
 		put_my_map(data, data->textures->map_base, x, y);
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->textures->map_pangle,
