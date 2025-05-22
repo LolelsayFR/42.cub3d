@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 16:20:50 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:56:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define MINIMAP_SIZE		200
-# define TILE_SIZE		30
+# define MINIMAP_SIZE	200
+# define MINIMAP_BG		210
+# define TILE_SIZE		24
 # define PLAYER_SIZE	4
 # define FPS			240
-# define WALKSPEED		0.1
+# define WALKSPEED		0.15
 # define RUNSPEED		0.3
 # define VIEWSPEED		2
 # define MOUSESPEED		0.2
@@ -73,6 +74,7 @@ typedef struct s_pos
 typedef struct s_textures
 {
 	t_img	*map_base;
+	t_img	*map_bg;
 	t_img	*map_player;
 	t_img	*map_pangle;
 	t_img	*north;
