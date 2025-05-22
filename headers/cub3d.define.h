@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 19:25:42 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:51:12 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define WIDTH			1920
 # define HEIGHT			1000
-# define TILE_SIZE		10
-# define PLAYER_SIZE	2
+# define TILE_SIZE		30
+# define PLAYER_SIZE	6
 # define FPS			240
 # define WALKSPEED		0.1
 # define RUNSPEED		0.3
