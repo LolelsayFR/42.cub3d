@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:45:17 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 13:23:06 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:48:45 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	is_not_walled(t_c3_data *data)
 		x = 0;
 		while (data->map[y][x] != '\0')
 		{
-			if (ft_strchr("0NSWE", data->map[y][x]) != NULL)
+			if (ft_strchr("D0NSWE", data->map[y][x]) != NULL)
 				if (finds_next_value(data, x, y, ft_strlen(data->map[y])) == -1)
 					return (ft_printfd(2, ERROR UNWALLED_MAP), -1);
 			x++;
@@ -46,7 +46,7 @@ int	charset_is_correct(t_c3_data *data)
 		x = 0;
 		while (data->map[y][x] != '\n' && data->map[y][x] != '\0')
 		{
-			if (ft_strchr("10NSEW ", data->map[y][x]) == NULL)
+			if (ft_strchr("D10NSEW ", data->map[y][x]) == NULL)
 				return (ft_printfd(2, ERROR CHARSET), -1);
 			if (ft_strchr("NSEW", data->map[y][x]) != NULL)
 				numb_player++;
