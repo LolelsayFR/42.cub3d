@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 14:03:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:31:08 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,22 @@
 static void	put_my_map(t_c3_data *data, t_img *img, int x, int y)
 {
 	GC			gc;
-	t_xvar		*xvar;
-	t_win_list	*win;
 
-	xvar = data->mlx;
-	win = data->win;
-	gc = win->gc;
+	gc = data->win->gc;
 	if (img->gc)
 	{
 		gc = img->gc;
-		XSetClipOrigin(xvar->display, gc, x, y);
+		XSetClipOrigin(data->mlx->display, gc, x, y);
 	}
 	if (img->type == MLX_TYPE_SHM)
-		XShmPutImage(xvar->display, img->pix, win->gc, img->image, 0, 0, 0, 0,
-			img->width, img->height, False);
-	if (img->type == MLX_TYPE_XIMAGE)
-		XPutImage(xvar->display, img->pix, win->gc, img->image, 0, 0, 0, 0,
-			img->width, img->height);
-	XCopyArea(xvar->display, img->pix, win->window, gc,
-		0, 0, img->width, img->height, x, y);
-	if (xvar->do_flush)
-		XFlush(xvar->display);
+		XShmPutImage(data->mlx->display, img->pix, data->win->gc, img->image,
+			0, 0, 0, 0, img->width, img->height, False);
+	XCopyArea(data->mlx->display, img->pix, data->win->window, gc,
+		data->player->pos.x - MINIMAP_SIZE / 2,
+		data->player->pos.y - MINIMAP_SIZE / 2, MINIMAP_SIZE,
+		MINIMAP_SIZE, x, y);
+	if (data->mlx->do_flush)
+		XFlush(data->mlx->display);
 }
 
 void	draw_map(t_c3_data *data, int x, int y)
@@ -43,13 +38,29 @@ void	draw_map(t_c3_data *data, int x, int y)
 	t_trigo	math;
 
 	math = trigo(&data->player->angle, PLAYER_SIZE / 2, PLAYER_SIZE / 2);
-	put_my_map(data, data->textures->map_base, x, y);
-	put_my_map(data, data->textures->map_pangle,
-		(data->player->pos.x - PLAYER_SIZE / 2) + x + math.opo,
-		(data->player->pos.y - PLAYER_SIZE / 2) + y + math.adj);
-	put_my_map(data, data->textures->map_player,
-		(data->player->pos.x - PLAYER_SIZE / 2) + x,
-		(data->player->pos.y - PLAYER_SIZE / 2) + y);
+	if (data->player->control->map % 3 == 0)
+	{
+		put_my_map(data, data->textures->map_base, x, y);
+		mlx_put_image_to_window(data->mlx, data->win, data->textures->map_pangle,
+			((MINIMAP_SIZE / 2) - PLAYER_SIZE / 2) + x + math.opo,
+			((MINIMAP_SIZE / 2) - PLAYER_SIZE / 2) + y + math.adj);
+		mlx_put_image_to_window(data->mlx, data->win, data->textures->map_player,
+			((MINIMAP_SIZE / 2) - PLAYER_SIZE / 2) + x,
+			((MINIMAP_SIZE / 2) - PLAYER_SIZE / 2) + y);
+	}
+	else if (data->player->control->map % 3 == 1)
+	{
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->textures->map_base, x, y);
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->textures->map_pangle,
+			(data->player->pos.x - PLAYER_SIZE / 2) + x + math.opo,
+			(data->player->pos.y - PLAYER_SIZE / 2) + y + math.adj);
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->textures->map_player,
+			(data->player->pos.x - PLAYER_SIZE / 2) + x,
+			(data->player->pos.y - PLAYER_SIZE / 2) + y);
+	}
 }
 
 static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
@@ -75,7 +86,6 @@ void	create_minimap_img(t_c3_data *data)
 
 	data->textures->map_base = img_new(data->map_size[1] * TILE_SIZE,
 			data->map_size[0] * TILE_SIZE, data);
-	img_put_bg(data->textures->map_base, DARKRED_PIXEL);
 	y = 0;
 	while (data->map[y] != NULL)
 	{
@@ -86,8 +96,12 @@ void	create_minimap_img(t_c3_data *data)
 				map_put_tiles(x, y, data, WHITE_PIXEL);
 			else if (data->map[y][x] == '0')
 				map_put_tiles(x, y, data, GREY_PIXEL);
-			else if (ft_strchr("NSOW", data->map[y][x]) != NULL)
+			else if (ft_strchr("NSEW", data->map[y][x]) != NULL)
 				map_put_tiles(x, y, data, GREEN_PIXEL);
+			else if (ft_strchr("D", data->map[y][x]) != NULL)
+				map_put_tiles(x, y, data, RED_PIXEL);
+			else if (ft_strchr("d", data->map[y][x]) != NULL)
+				map_put_tiles(x, y, data, DARKRED_PIXEL);
 			x++;
 		}
 		y++;
