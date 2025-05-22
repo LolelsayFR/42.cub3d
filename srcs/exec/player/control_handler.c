@@ -6,56 +6,58 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 18:59:36 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:44:43 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-int	handle_input(int keysym, t_c3_data *data)
+int	handle_input(int key, t_c3_data *data)
 {
-	if (keysym == XK_Escape)
+	if (key == XK_Escape)
 		return (game_close(data), 0);
-	else if (keysym == XK_d || keysym == XK_D)
+	else if (key == XK_d || key == XK_D)
 		data->player->control->right = true;
-	else if (keysym == XK_a || keysym == XK_A)
+	else if (key == XK_a || key == XK_A)
 		data->player->control->left = true;
-	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
+	else if (key == XK_w || key == XK_W || key == XK_Up)
 		data->player->control->up = true;
-	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)
+	else if (key == XK_s || key == XK_S || key == XK_Down)
 		data->player->control->down = true;
-	else if (keysym == XK_Left)
+	else if (key == XK_Left)
 		data->player->control->turn_left = true;
-	else if (keysym == XK_Right)
+	else if (key == XK_Right)
 		data->player->control->turn_right = true;
-	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
+	else if (key == XK_Shift_L || key == XK_Shift_R)
 		data->player->control->sprint = true;
-	else if (keysym == XK_space)
-		data->player->control->use = true;
-	else if ((keysym == XK_m || keysym == XK_M) && data->mouse)
+	else if (key == XK_m || key == XK_M)
+		data->player->control->map++;
+	else if (key == XK_space && data->mouse)
 		mouse_show(data->mlx, data->win, data);
-	else if ((keysym == XK_m || keysym == XK_M) && !data->mouse)
+	else if (key == XK_space && !data->mouse)
 		mouse_hide(data->mlx, data->win, data);
+	else if (key == XK_e || key == XK_E || key == XK_F || key == XK_f)
+		data->player->control->use = true;
 	return (0);
 }
 
-int	handle_input_keyrelease(int keysym, t_c3_data *data)
+int	handle_input_keyrelease(int key, t_c3_data *data)
 {
-	if (keysym == XK_d || keysym == XK_D)
+	if (key == XK_d || key == XK_D)
 		data->player->control->right = false;
-	else if (keysym == XK_a || keysym == XK_A)
+	else if (key == XK_a || key == XK_A)
 		data->player->control->left = false;
-	else if (keysym == XK_w || keysym == XK_W || keysym == XK_Up)
+	else if (key == XK_w || key == XK_W || key == XK_Up)
 		data->player->control->up = false;
-	else if (keysym == XK_s || keysym == XK_S || keysym == XK_Down)
+	else if (key == XK_s || key == XK_S || key == XK_Down)
 		data->player->control->down = false;
-	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
+	else if (key == XK_Shift_L || key == XK_Shift_R)
 		data->player->control->sprint = false;
-	else if (keysym == XK_Left)
+	else if (key == XK_Left)
 		data->player->control->turn_left = false;
-	else if (keysym == XK_Right)
+	else if (key == XK_Right)
 		data->player->control->turn_right = false;
-	else if (keysym == XK_space)
+	else if (key == XK_e || key == XK_E || key == XK_F || key == XK_f)
 		data->player->control->use = false;
 	return (0);
 }
@@ -77,5 +79,13 @@ int	handle_mouse(t_c3_data *data)
 	mlx_get_screen_size(data->mlx, &sizex, &sizey);
 	data->player->angle -= (x - sizex / 2) * MOUSESPEED;
 	mouse_move(data->mlx, data->win, sizex / 2, sizey / 2);
+	return (0);
+}
+
+int	handle_mouse_click(int button, int x, int y, t_c3_data *data)
+{
+	if (0)
+		ft_printf("Mouse button press : %d, x  = %d  = y %d",
+			button, x, y, data);
 	return (0);
 }
