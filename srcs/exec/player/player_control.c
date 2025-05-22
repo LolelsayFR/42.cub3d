@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 19:18:39 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:12:02 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	player_move(t_c3_data *data)
 	else
 		speed = WALKSPEED;
 	player_setpress(data, speed);
-	math = trigo(data, data->player->to_move, 0);
+	math = trigo(&data->player->angle, data->player->to_move, 0);
 	player_posmove(data, math.adj, math.opo);
 }

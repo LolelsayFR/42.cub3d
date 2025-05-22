@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 09:49:38 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:44:10 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,28 @@
 void	vertical_line(t_pos p_pos, double p_ang)
 {
 	double	ys;     
-	double	yn;
-	double	tan_a;
-	double	c_ang;
+	double	xs;
+	double	hypo;
 
-	ys = TILE_SIZE;
-	yn = p_pos.y - ((p_pos.y / ys) * ys);
-	tan_a = tan(p_ang);
-	c_ang = p_ang;
-	if (c_ang > 90 && c_ang <= 270)
-	{
-	}
-	else
-		write(1, "down\n", 5);
+	(void)p_pos;
+	ys = 1;
+	xs = ys / p_ang;
+	hypo = hypot(xs, ys);
+	printf("%f\n", hypo);
 }
 
 void	horizontal_line(t_c3_data *data, t_pos p_pos, double p_ang)
 {
-	int	map_x;
-	int	map_y;
+	double	ys;
+	double	xs;
+	double	hypo;
 
-	map_x = (int)p_pos.x;
-	map_y = (int)p_pos.y;
-	//if (c_ang > 90 && c_ang <= 270) | -> this is north direction
+	xs = 1;
+        ys = xs / p_ang;
+        hypo = hypot(ys, xs);
+        printf("%f\n", hypo);
 	(void)data;
-	(void)p_ang;
+	(void)p_pos;
 }
 
 void	raycasting(t_c3_data *data, t_pos pos, double angle)
@@ -49,5 +46,6 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->textures->ceiling_t, 0, 0);
 	horizontal_line(data, pos, angle);
+	vertical_line(pos, angle);
 	return ;
 }
