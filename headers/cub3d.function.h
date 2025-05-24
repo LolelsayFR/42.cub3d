@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 15:37:41 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/24 21:35:57 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_img			*img_new(int size_x, int size_y, t_c3_data *data);
 void			img_pix_put(t_img *img, int x, int y, int color);
 void			img_put_bg(t_img *img, int color);
 void			draw_map(t_c3_data *data, int x, int y);
+
 //Player
 bool			player_init(t_c3_data *data);
 void			player_move(t_c3_data *data);
@@ -62,6 +63,7 @@ void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
 
 //Utils
+t_trigo	        raytrigo(double angle, double x, double y);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);

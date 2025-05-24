@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 16:56:36 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/24 21:42:43 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 # define VIEWSPEED		2
 # define MOUSESPEED		0.2
 # define N_PI			3.1415926535897931
+# define RAY_DIVIDER	1
+# define FOV			90
+
+# define C_N_WALL		0x00FF00
+# define C_S_WALL		0xFF0000
+# define C_E_WALL		0x000FF0
+# define C_W_WALL		0xF0F000
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -117,6 +124,16 @@ typedef struct s_trigo
 	double	angle_rad;
 }	t_trigo;
 
+typedef struct s_ray
+{
+	double	angle;
+	t_trigo	math;
+	t_pos	pos;
+	t_pos	old_pos;
+	double	dist;
+	char	dir;
+}	t_ray;
+
 typedef struct s_c3_data
 {
 	char		**map;
@@ -129,6 +146,7 @@ typedef struct s_c3_data
 	int			v_view;
 	int			map_size[2];
 	int			exit_status;
+	t_ray		ray[WIDTH];
 }	t_c3_data;
 
 /* ************************************************************************** */
