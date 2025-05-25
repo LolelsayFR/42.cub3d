@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:27:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:32:19 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
-
 
 //Img
 void			create_minimap_img(t_c3_data *data);
