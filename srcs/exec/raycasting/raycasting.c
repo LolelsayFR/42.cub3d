@@ -6,11 +6,19 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/24 21:43:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 13:50:04 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static void	update_frame(t_c3_data *data)
+{
+	const unsigned long	ceiling = create_rgb(data->textures->ceiling);
+	const unsigned long	floor = create_rgb(data->textures->floor);
+
+	img_put_dual_bg(data->frame, ceiling, floor, data);
+}
 
 static t_ray	ray_colider(t_c3_data *data, t_trigo m, t_ray ray, t_pos pos)
 {
@@ -49,5 +57,6 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 	ray.old_pos = ray.pos;
 	ray.pos.x += math.opo;
 	ray.pos.y += math.adj;
-	ray_colider(data, math, ray, pos);
+	ray = ray_colider(data, math, ray, pos);
+	update_frame(data);
 }

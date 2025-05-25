@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/24 21:42:43 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 13:54:38 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,12 @@ typedef struct s_pos
 typedef struct s_textures
 {
 	t_img	*map_base;
-	t_img	*map_bg;
 	t_img	*map_player;
 	t_img	*map_pangle;
 	t_img	*north;
 	t_img	*south;
 	t_img	*west;
 	t_img	*east;
-	t_img	*floor_t;
-	t_img	*ceiling_t;
 	t_rgb	floor;
 	t_rgb	ceiling;
 }	t_textures;
@@ -147,6 +144,7 @@ typedef struct s_c3_data
 	int			map_size[2];
 	int			exit_status;
 	t_ray		ray[WIDTH];
+	t_img		*frame;
 }	t_c3_data;
 
 /* ************************************************************************** */

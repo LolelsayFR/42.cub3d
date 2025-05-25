@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/24 21:35:57 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 13:40:13 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
 
 //Utils
-t_trigo	        raytrigo(double angle, double x, double y);
+void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);
+t_trigo			raytrigo(double angle, double x, double y);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);
