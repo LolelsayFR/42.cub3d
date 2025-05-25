@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:55:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 13:52:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:15:23 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *data)
 		x = 0;
 		while (x < img->width)
 		{
-			if (y > (HEIGHT / 2) + data->v_view)
+			if (y > (HEIGHT / 2) + MOUSESPEED_Y * data->v_view)
 				img_pix_put(img, x, y, floor);
 			else
 				img_pix_put(img, x, y, sky);

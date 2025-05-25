@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 13:40:13 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:27:40 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 //Raycasting
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
 
+
 //Img
 void			create_minimap_img(t_c3_data *data);
 t_img			*img_new(int size_x, int size_y, t_c3_data *data);
@@ -64,7 +65,7 @@ void			map_size(t_c3_data *data);
 
 //Utils
 void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);
-t_trigo			raytrigo(double angle, double x, double y);
+t_trigo			raytrigo(t_ray *ray, double dist, t_pos pos);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);
