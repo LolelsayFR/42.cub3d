@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:53:53 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:25:52 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ static void	img_put_ray(t_c3_data *data, t_ray *ray)
 	int	x;
 	int	y;
 	int	y_end;
-	int	wall_height;
 
 	x = 0;
 	while (x < WIDTH)
 	{
 		if (ray[x].dist > 0)
 		{
-			wall_height = (int)(TILE_SIZE / ray[x].dist * DIST_FACTOR);
-			y = HEIGHT / 2 - wall_height / 2 + MOUSESPEED_Y * data->v_view;
-			y_end = HEIGHT / 2 + wall_height / 2 + MOUSESPEED_Y * data->v_view;
+			ray->wall_sy = (int)(TILE_SIZE / ray[x].dist * DIST_FACTOR);
+			y = HEIGHT / 2 - ray->wall_sy / 2 + MOUSESPEED_Y * data->v_view;
+			y_end = HEIGHT / 2 + ray->wall_sy / 2 + MOUSESPEED_Y * data->v_view;
 			if (y < 0)
 				y = 0;
 			if (y_end >= HEIGHT)

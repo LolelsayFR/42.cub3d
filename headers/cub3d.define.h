@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:29:02 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:21:51 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_ray
 	double			dist;
 	unsigned long	color;
 	t_img			*texture;
+	int				wall_sy;	
 }	t_ray;
 
 typedef struct s_c3_data

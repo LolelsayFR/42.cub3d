@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:39:15 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 17:18:13 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 17:27:09 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	texture_apply(t_img *img, int x, int y, t_ray ray)
 	int				imgy;
 
 	imgx = ray.texture->width * x / WIDTH;
-	imgy = ray.texture->height * y / HEIGHT;
+	imgy = (ray.texture->height * y / HEIGHT);
 	if (ray.texture == NULL)
 		return ;
 	pixel = ray.texture->data
