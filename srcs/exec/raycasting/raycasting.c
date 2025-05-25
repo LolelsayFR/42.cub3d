@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:32:04 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:53:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static void	img_put_ray(t_c3_data *data, t_ray *ray)
 {
 	int	x;
 	int	y;
-	int	ystart;
-	int	yend;
+	int	y_end;
 	int	wall_height;
 
 	x = 0;
@@ -26,15 +25,17 @@ static void	img_put_ray(t_c3_data *data, t_ray *ray)
 		if (ray[x].dist > 0)
 		{
 			wall_height = (int)(TILE_SIZE / ray[x].dist * DIST_FACTOR);
-			ystart = HEIGHT / 2 - wall_height / 2 + MOUSESPEED_Y * data->v_view;
-			yend = HEIGHT / 2 + wall_height / 2 + MOUSESPEED_Y * data->v_view;
-			if (ystart < 0)
-				ystart = 0;
-			if (yend >= HEIGHT)
-				yend = HEIGHT - 1;
-			y = ystart;
-			while (y <= yend)
-				img_pix_put(data->frame, WIDTH - x, y++, ray[x].color);
+			y = HEIGHT / 2 - wall_height / 2 + MOUSESPEED_Y * data->v_view;
+			y_end = HEIGHT / 2 + wall_height / 2 + MOUSESPEED_Y * data->v_view;
+			if (y < 0)
+				y = 0;
+			if (y_end >= HEIGHT)
+				y_end = HEIGHT - 1;
+			while (y <= y_end)
+				if (data->player->control->map % 4 == 3)
+					img_pix_put(data->frame, WIDTH - x, y++, ray[x].color);
+			else
+				texture_apply(data->frame, WIDTH - x, y++, ray[x]);
 		}
 		x++;
 	}
