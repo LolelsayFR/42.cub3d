@@ -3,6 +3,8 @@ SO sprites/wall2.xpm
 WE sprites/wall3.xpm
 EA sprites/wall4.xpm
 
+DO sprites/floor.xpm
+
 F 220,100,0
 C 225,30,0
 
