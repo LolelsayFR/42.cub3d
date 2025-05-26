@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:45:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:21:09 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void			draw_map(t_c3_data *data, int x, int y);
 //Player
 bool			player_init(t_c3_data *data);
 void			player_move(t_c3_data *data);
+
+void			door_using(t_c3_data *data);
 
 //Parsing
 int				ext_is_correct(char *map);
