@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 16:57:00 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 13:59:20 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ static void	render(t_c3_data *data)
 	//REMOVE IN END OF USE !!!!
 	printf(YEL"x = %f\ny = %f\n"GRN"Angle = %f\n"RED"char = %c\n"RES,
 		pos.x, pos.y, data->player->angle, data->map[(int)pos.y][(int)pos.x]);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->textures->floor_t, 0, HEIGHT / 2 + data->v_view);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->textures->ceiling_t, 0, -(HEIGHT / 2) + data->v_view);
 	raycasting(data, pos, data->player->angle);
+	mlx_put_image_to_window(data->mlx, data->win, data->frame, 0, 0);
 	draw_map(data, 10, 10);
 }
 
@@ -44,12 +41,7 @@ static void	game_init(t_c3_data *data)
 	map_size(data);
 	create_minimap_img(data);
 	player_init(data);
-	data->textures->ceiling_t = img_new(WIDTH, HEIGHT, data);
-	data->textures->floor_t = img_new(WIDTH, HEIGHT, data);
-	data->textures->map_bg = img_new(MINIMAP_BG, MINIMAP_BG, data);
-	img_put_bg(data->textures->map_bg, BLACK_PIXEL);
-	img_put_bg(data->textures->ceiling_t, create_rgb(data->textures->ceiling));
-	img_put_bg(data->textures->floor_t, create_rgb(data->textures->floor));
+	data->frame = img_new(WIDTH, HEIGHT, data);
 	mlx_hook(data->win, 17, 0, (void *)game_close, data);
 	mlx_hook(data->win, 2, KeyPressMask, handle_input, data);
 	mlx_key_hook(data->win, handle_input_keyrelease, data);

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 16:37:39 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:16:10 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	handle_mouse(t_c3_data *data)
 		return (0);
 	mlx_mouse_get_pos(data->mlx, data->win, &x, &y);
 	mlx_get_screen_size(data->mlx, &sizex, &sizey);
-	my = (y - sizey / 2) * MOUSESPEED;
-	data->player->angle -= (x - sizex / 2) * MOUSESPEED;
+	my = (y - sizey / 2) * MOUSESPEED_X;
+	data->player->angle -= (x - sizex / 2) * MOUSESPEED_X;
 	if (data->v_view - my > -(WIDTH / 2) && data->v_view - my < (WIDTH / 2))
 		data->v_view -= my;
 	mouse_move(data->mlx, data->win, sizex / 2, sizey / 2);
