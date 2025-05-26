@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:16:10 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:07:02 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	handle_input(int key, t_c3_data *data)
 	else if (key == XK_space && !data->mouse)
 		mouse_hide(data->mlx, data->win, data);
 	else if (key == XK_e || key == XK_E || key == XK_F || key == XK_f)
-		data->player->control->use = true;
+		door_using(data);
 	return (0);
 }
 
@@ -57,8 +57,6 @@ int	handle_input_keyrelease(int key, t_c3_data *data)
 		data->player->control->turn_left = false;
 	else if (key == XK_Right)
 		data->player->control->turn_right = false;
-	else if (key == XK_e || key == XK_E || key == XK_F || key == XK_f)
-		data->player->control->use = false;
 	return (0);
 }
 
