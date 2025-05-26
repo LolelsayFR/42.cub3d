@@ -6,30 +6,29 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 08:48:35 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:53:13 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINE_H
 # define CUB3D_DEFINE_H
 
-# define WIDTH			1920
-# define HEIGHT			1000
+# define WIDTH			1280
+# define HEIGHT			720
 # define MINIMAP_SIZE	200
-# define MINIMAP_BG		210
-# define TILE_SIZE		24
+# define TILE_SIZE		20
 # define PLAYER_SIZE	4
 # define FPS			60
 # define WALKSPEED		1
-# define RUNSPEED		4
+# define RUNSPEED		6
 # define VIEWSPEED		2
 # define MOUSESPEED_X	0.05
 # define MOUSESPEED_Y	6
 # define N_PI			3.1415926535897931
-# define RAY_DIVIDER	1
-# define FOV			75
+# define RAY_DIVIDER	4
+# define FOV			90
 # define DIST_FACTOR	30
-# define RAY_PRECISION	0.01
+# define RAY_PRECISION	0.005
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
@@ -133,7 +132,8 @@ typedef struct s_ray
 	double			dist;
 	unsigned long	color;
 	t_img			*texture;
-	int				wall_sy;	
+	int				wally;
+	int				y_pixel;	
 }	t_ray;
 
 typedef struct s_c3_data

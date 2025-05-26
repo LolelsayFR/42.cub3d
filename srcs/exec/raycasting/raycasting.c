@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 17:25:52 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:33:20 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ static void	img_put_ray(t_c3_data *data, t_ray *ray)
 	{
 		if (ray[x].dist > 0)
 		{
-			ray->wall_sy = (int)(TILE_SIZE / ray[x].dist * DIST_FACTOR);
-			y = HEIGHT / 2 - ray->wall_sy / 2 + MOUSESPEED_Y * data->v_view;
-			y_end = HEIGHT / 2 + ray->wall_sy / 2 + MOUSESPEED_Y * data->v_view;
+			ray[x].wally = (int)(TILE_SIZE / ray[x].dist * DIST_FACTOR);
+			y = HEIGHT / 2 - ray[x].wally / 2 + MOUSESPEED_Y * data->v_view;
+			ray[x].y_pixel = y;
+			y_end = HEIGHT / 2 + ray[x].wally / 2 + MOUSESPEED_Y * data->v_view;
 			if (y < 0)
 				y = 0;
 			if (y_end >= HEIGHT)
@@ -54,22 +55,22 @@ static void	ray_assign(t_ray *ray, t_c3_data *data)
 	if ((int)ray->old_pos.y > (int)ray->pos.y)
 	{
 		ray->texture = data->textures->north;
-		ray->color = C_N_WALL;
+		ray->color = darker_rgb(C_N_WALL, ray->dist);
+	}
+	else if ((int)ray->old_pos.x > (int)ray->pos.x)
+	{
+		ray->texture = data->textures->west;
+		ray->color = darker_rgb(C_W_WALL, ray->dist);
 	}
 	else if ((int)ray->old_pos.y < (int)ray->pos.y)
 	{
 		ray->texture = data->textures->south;
-		ray->color = C_S_WALL;
-	}
-	else if ((int)ray->old_pos.x > (int)ray->pos.x)
-	{
-		ray->texture = data->textures->east;
-		ray->color = C_E_WALL;
+		ray->color = darker_rgb(C_S_WALL, ray->dist);
 	}
 	else if ((int)ray->old_pos.x < (int)ray->pos.x)
 	{
-		ray->texture = data->textures->west;
-		ray->color = C_W_WALL;
+		ray->texture = data->textures->east;
+		ray->color = darker_rgb(C_E_WALL, ray->dist);
 	}
 }
 
@@ -77,16 +78,16 @@ static t_ray	ray_colider(t_c3_data *data, t_trigo m, t_ray ray, t_pos pos)
 {
 	while ((int)ray.pos.y >= 0 && (int)ray.pos.y < data->map_size[0]
 		&& (int)ray.pos.x >= 0 && (int)ray.pos.x < data->map_size[1]
-		&& data->map[(int)ray.pos.y][(int)ray.pos.x] != '\0'
-		&& data->map[(int)ray.pos.y][(int)ray.pos.x] != '\n'
-		&& data->map[(int)ray.pos.y][(int)ray.pos.x] != '1'
-		&& data->map[(int)ray.pos.y][(int)ray.pos.x] != 'D')
+		&& ft_strchr("\n 1D\0",
+			data->map[(int)ray.pos.y][(int)ray.pos.x]) == NULL)
 	{
 		ray.old_pos = ray.pos;
-		ray.dist += RAY_PRECISION;
+		ray.dist += RAY_PRECISION + (ray.dist / 100);
 		m = raytrigo(&ray, ray.dist, pos);
-		ray.pos.x = pos.x + m.opo;
-		ray.pos.y = pos.y + m.adj;
+		if (ft_strchr("\n 1D\0", data->map[(int)ray.old_pos.y][(int)ray.pos.x])
+			|| ft_strchr("\n 1D\0",
+				data->map[(int)ray.pos.y][(int)ray.old_pos.x]))
+			break ;
 	}
 	ray_assign(&ray, data);
 	return (ray);

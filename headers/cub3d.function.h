@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 09:21:09 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:51:27 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
 
 //Utils
+unsigned long	darker_rgb(unsigned long rgb, double divider);
 void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);
 t_trigo			raytrigo(t_ray *ray, double dist, t_pos pos);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
