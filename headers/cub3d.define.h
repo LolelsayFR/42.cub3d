@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 16:15:13 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:58:37 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@
 # define N_PI			3.1415926535897931
 # define RAY_DIVIDER	4
 # define FOV			90
-# define DIST_FACTOR	30
+# define DIST_FACTOR	42
 # define RAY_PRECISION	0.005
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
 # define C_E_WALL		0x000FF0
 # define C_W_WALL		0xF0F000
+# define C_DOORS		0x424242
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -137,6 +138,11 @@ typedef struct s_ray
 	int				y_pixel;	
 }	t_ray;
 
+typedef struct s_anim
+{
+	double	test;
+}	t_anim;
+
 typedef struct s_c3_data
 {
 	char		**map;
@@ -151,6 +157,7 @@ typedef struct s_c3_data
 	int			exit_status;
 	t_ray		ray[WIDTH];
 	t_img		*frame;
+	t_anim		anim;
 }	t_c3_data;
 
 /* ************************************************************************** */
