@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 15:34:23 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/26 15:24:20 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ static int	do_texture_2(t_c3_data **data, char *line, int *i)
 	if (ft_strncmp(line, "EA ", 3) == 0)
 		return ((*i)++, init_texture(data,
 				&(*data)->textures->east, line));
+	if (ft_strncmp(line, "DO ", 3) == 0)
+		return ((*i)++, init_texture(data,
+				&(*data)->textures->door, line));
 	return (do_texture_3(data, line, i));
 }
 
@@ -62,7 +65,7 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 {
 	static int	i = 0;
 
-	if (i == 5)
+	if (i == 6)
 		*ret = -1;
 	if (ft_strncmp(line, "NO ", 3) == 0)
 		return (i++, init_texture(data,
@@ -71,7 +74,7 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 		return (i++, init_texture(data,
 				&(*data)->textures->south, line));
 	*ret = do_texture_2(data, line, &i);
-	if (i == 6 && *ret != -2)
+	if (i == 7 && *ret != -2)
 		*ret = -1;
 	return (*ret);
 }

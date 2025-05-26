@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:40:46 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 16:55:53 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/26 15:29:27 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,19 @@ int	init_rgb(t_c3_data **data, char *line, int i)
 
 int	init_texture(t_c3_data **data, t_img **img, char *line)
 {
+	int			i;
 	static int	x;
 	static int	y;
 
 	if ((*img) != NULL)
 		return (-2);
+	i = 3;
+	while (line[i] != '\0' && line[i] == ' ')
+		i++;
+	if (line[i] == '\0')
+		return (-2);
 	line[ft_strlen(line) - 1] = '\0';
-	(*img) = mlx_xpm_file_to_image((*data)->mlx, line + 3, &x, &y);
+	(*img) = mlx_xpm_file_to_image((*data)->mlx, &line[i], &x, &y);
 	if ((*img) == NULL)
 		return (-2);
 	return (0);
