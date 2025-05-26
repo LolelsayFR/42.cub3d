@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 14:53:13 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:09:00 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # define TILE_SIZE		20
 # define PLAYER_SIZE	4
 # define FPS			60
-# define WALKSPEED		1
-# define RUNSPEED		6
-# define VIEWSPEED		2
+# define WALKSPEED		2
+# define RUNSPEED		5
+# define VIEWSPEED		6
 # define MOUSESPEED_X	0.05
 # define MOUSESPEED_Y	6
 # define N_PI			3.1415926535897931
