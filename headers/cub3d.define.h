@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 17:21:51 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/26 08:48:35 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define PLAYER_SIZE	4
 # define FPS			60
 # define WALKSPEED		1
-# define RUNSPEED		2
+# define RUNSPEED		4
 # define VIEWSPEED		2
 # define MOUSESPEED_X	0.05
 # define MOUSESPEED_Y	6
