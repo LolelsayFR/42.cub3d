@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 13:53:23 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:04:59 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static t_ray	ray_colider(t_c3_data *data, t_trigo m, t_ray ray, t_pos pos)
 		&& ft_strchr("\n 1\0",
 			data->map[(int)ray.pos.y][(int)ray.pos.x]) == NULL)
 	{
-		if ((ft_strchr("dD", data->map[(int)ray.old_pos.y][(int)ray.pos.x])
-			|| ft_strchr("dD", data->map[(int)ray.pos.y][(int)ray.old_pos.x]))
-				&& (int)ray.last_char.x != (int)ray.pos.x
-				&& (int)ray.last_char.y != (int)ray.pos.y)
+		if (ft_strchr("Dd", data->map[(int)ray.pos.y][(int)ray.pos.x])
+			&& (int)ray.save_pos.x != (int)ray.pos.x
+			&& (int)ray.save_pos.y != (int)ray.pos.y)
 		{
+			ray.save_pos = ray.pos;
 			ray.door_count++;
-			ray.last_char = ray.pos;
+
 		}
 		ray.old_pos = ray.pos;
 		ray.exec_dist += RAY_PRECISION + (ray.dist / 100);

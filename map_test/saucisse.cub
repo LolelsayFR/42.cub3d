@@ -1,7 +1,7 @@
-NO sprites/ceiling.xpm
-SO sprites/ceiling.xpm
-WE sprites/ceiling.xpm
-EA sprites/ceiling.xpm
+NO sprites/floor.xpm
+SO sprites/floor.xpm
+WE sprites/floor.xpm
+EA sprites/floor.xpm
 DO sprites/door.xpm
 
 F 0,100,100

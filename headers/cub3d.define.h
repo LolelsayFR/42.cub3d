@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 15:45:52 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:23:39 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ typedef struct s_ray
 	double			wally;
 	int				y_pix;	
 	int				door_count;
-	t_pos			last_char;
+	t_pos			save_pos;
 	double			shift_up;
 }	t_ray;
 
@@ -152,6 +152,7 @@ typedef struct s_anim
 typedef struct s_c3_data
 {
 	char		**map;
+	double		**door_anim;
 	bool		is_running;
 	bool		mouse;
 	t_player	*player;

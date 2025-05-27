@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 15:35:32 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:14:55 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,27 @@ static void	door_ray_assign(t_ray *ray, t_c3_data *data)
 
 static t_ray	ray_colider(t_c3_data *data, t_trigo m, t_ray ray, t_pos pos)
 {
+	int		count;
+
+	count = 0;
+	ray.save_pos = ray.pos;
 	while ((int)ray.pos.y >= 0 && (int)ray.pos.y < data->map_size[0]
 		&& (int)ray.pos.x >= 0 && (int)ray.pos.x < data->map_size[1]
-		&& ft_strchr("\n Dd1\0",
+		&& ft_strchr("\n 1\0",
 			data->map[(int)ray.pos.y][(int)ray.pos.x]) == NULL)
 	{
-
+		m = raytrigo(&ray, ray.exec_dist, pos);
+		if (ft_strchr("Dd", data->map[(int)ray.pos.y][(int)ray.pos.x])
+			&& (int)ray.save_pos.x != (int)ray.pos.x
+			&& (int)ray.save_pos.y != (int)ray.pos.y)
+		{
+			count++;
+			ray.save_pos = ray.pos;
+			if (count == ray.door_count)
+				break ;
+		}
 		ray.old_pos = ray.pos;
 		ray.exec_dist += RAY_PRECISION + (ray.dist / 100);
-		m = raytrigo(&ray, ray.exec_dist, pos);
-		if (ft_strchr("\n Dd1\0", data->map[(int)ray.old_pos.y][(int)ray.pos.x])
-			|| ft_strchr("\n Dd1\0",
-				data->map[(int)ray.pos.y][(int)ray.old_pos.x]))
-			break ;
 	}
 	door_ray_assign(&ray, data);
 	return (ray);
@@ -57,9 +65,12 @@ void	door_raycasting(t_c3_data *data, t_pos pos, double angle)
 	angle = angle * (N_PI / 180.0);
 	while (i < WIDTH)
 	{
-		if (i % RAY_DIVIDER == 0)
+		ray = data->ray[i];
+		while (ray.door_count > 0)
 		{
 			ft_bzero(&ray, sizeof(t_ray));
+			ray.save_pos = data->ray[i].save_pos;
+			ray.door_count = data->ray[i].door_count;
 			ray.angle = angle - (FOV / 2.0) * (N_PI / 180.0)
 				+ ((double)i / WIDTH) * FOV * (N_PI / 180.0);
 			math = raytrigo(&ray, ray.exec_dist, pos);
@@ -68,10 +79,9 @@ void	door_raycasting(t_c3_data *data, t_pos pos, double angle)
 			ray = ray_colider(data, math, ray, pos);
 			ray.dist = ray.exec_dist * cos(ray.angle - angle);
 			data->ray[i] = ray;
+			data->ray[i].door_count--;
+			frame_put_one_ray(data, &ray, i);
 		}
-		else if (i > 0)
-			data->ray[i] = data->ray[i - 1];
-		frame_put_one_ray(data, &ray, i);
 		i++;
 	}
 }
