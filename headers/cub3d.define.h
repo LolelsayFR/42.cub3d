@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 16:58:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 08:34:59 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,6 @@ typedef struct s_c3_data
 	int			exit_status;
 	t_ray		ray[WIDTH];
 	t_img		*frame;
-	t_anim		anim;
 }	t_c3_data;
 
 /* ************************************************************************** */
