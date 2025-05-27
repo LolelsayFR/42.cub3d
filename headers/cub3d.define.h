@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 09:06:47 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:43:43 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # define WIDTH			1280
 # define HEIGHT			720
 # define MINIMAP_SIZE	200
-# define TILE_SIZE		20
+# define TILE_SIZE		12
 # define PLAYER_SIZE	4
 # define FPS			60
+# define USE_RANGE		1
 # define WALKSPEED		2
 # define RUNSPEED		5
 # define VIEWSPEED		6
@@ -27,7 +28,7 @@
 # define N_PI			3.1415926535897931
 # define RAY_DIVIDER	2
 # define FOV			90
-# define DIST_FACTOR	42
+# define DIST_FACTOR	60
 # define RAY_PRECISION	0.005
 
 # define C_N_WALL		0x00FF00

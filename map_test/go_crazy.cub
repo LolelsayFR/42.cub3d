@@ -9,7 +9,7 @@ WE                     sprites/wall3.xpm
 
 
 
-DO sprites/floor.xpm
+DO sprites/door.xpm
 F 220,100,0
 EA sprites/wall4.xpm
 
