@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 14:33:05 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 08:33:52 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ void	game_close(t_c3_data *data)
 	data->is_running = false;
 	status = data->exit_status;
 	ft_alist_free();
-	mlx_destroy_image(data->mlx, data->frame);
-	mlx_destroy_image(data->mlx, data->textures->map_base);
-	mlx_destroy_image(data->mlx, data->textures->map_player);
-	mlx_destroy_image(data->mlx, data->textures->map_pangle);
 	mlx_do_key_autorepeaton(data->mlx);
 	free_data(data);
 	exit(status);

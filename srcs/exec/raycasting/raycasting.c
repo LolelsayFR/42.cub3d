@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 17:09:36 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 08:34:33 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static void	img_put_ray(t_c3_data *data, t_ray *ray)
 		if (ray[x].dist > 0)
 		{
 			ray[x].wally = (int)(TILE_SIZE / ray[x].dist * DIST_FACTOR);
-			if (data->map[(int)ray[x].pos.y][(int)ray[x].pos.x] == 'D' && data->anim.test != 0)
-				ray[x].wally = ((int)(TILE_SIZE / ray[x].dist * DIST_FACTOR) * data->anim.test);
 			y = HEIGHT / 2 - ray[x].wally / 2 + MOUSESPEED_Y * data->v_view;
 			ray[x].y_pixel = y;
 			y_end = HEIGHT / 2 + ray[x].wally / 2 + MOUSESPEED_Y * data->v_view;
@@ -126,9 +124,5 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 			data->ray[i] = data->ray[i - 1];
 		i++;
 	}
-	data->anim.test += 0.1;
-	if (data->anim.test > 1)
-		data->anim.test = 0;
-
 	update_frame(data);
 }
