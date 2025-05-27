@@ -1,8 +1,8 @@
-NO sprites/wall1.xpm
-SO sprites/wall2.xpm
-WE sprites/wall3.xpm
-EA sprites/wall4.xpm
-DO sprites/ceiling.xpm
+NO sprites/ceiling.xpm
+SO sprites/ceiling.xpm
+WE sprites/ceiling.xpm
+EA sprites/ceiling.xpm
+DO sprites/door.xpm
 
 F 0,100,100
 C 0,30,0
@@ -20,8 +20,8 @@ C 0,30,0
 100001
 101001
 1001001
-1000001
-1000001
+100D001
+1000D01
  1000011
   1000001
    111111

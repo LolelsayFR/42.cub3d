@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 10:43:43 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:45:52 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MOUSESPEED_X	0.15
 # define MOUSESPEED_Y	3
 # define N_PI			3.1415926535897931
-# define RAY_DIVIDER	2
+# define RAY_DIVIDER	4
 # define FOV			90
 # define DIST_FACTOR	60
 # define RAY_PRECISION	0.005
@@ -36,6 +36,7 @@
 # define C_E_WALL		0x000FF0
 # define C_W_WALL		0xF0F000
 # define C_DOORS		0x424242
+# define C_ODOORS		0xEEEEEE
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -133,10 +134,14 @@ typedef struct s_ray
 	t_pos			pos;
 	t_pos			old_pos;
 	double			dist;
+	double			exec_dist;
 	unsigned long	color;
 	t_img			*texture;
-	int				wally;
-	int				y_pixel;	
+	double			wally;
+	int				y_pix;	
+	int				door_count;
+	t_pos			last_char;
+	double			shift_up;
 }	t_ray;
 
 typedef struct s_anim

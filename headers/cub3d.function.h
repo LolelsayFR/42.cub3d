@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 14:51:27 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:23:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int				handle_mouse(t_c3_data *data);
 int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
+void			wall_raycasting(t_c3_data *data, t_pos pos, double angle);
+void			door_raycasting(t_c3_data *data, t_pos pos, double angle);
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
+void			frame_put_one_ray(t_c3_data *data, t_ray *ray, int x);
 void			texture_apply(t_img *img, int x, int y, t_ray ray);
 
 //Img

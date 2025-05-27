@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:39:15 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 10:08:52 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:39:43 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	texture_apply(t_img *img, int x, int y, t_ray ray)
 		imgx = (ray.pos.y - 1) * ray.texture->width;
 	if (ray.wally <= 0)
 		return ;
-	imgy = (ray.texture->height * (y - ray.y_pixel)) / ray.wally;
+	imgy = (ray.texture->height * (y - ray.y_pix)) / ray.wally;
 	deshift(&imgx, &imgy, ray.texture->width, ray.texture->height);
 	pixel = ray.texture->data + (imgy * ray.texture->size_line
 			+ (imgx % ray.texture->width) * (ray.texture->bpp / 8));
