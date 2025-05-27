@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 16:15:13 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:06:47 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,19 @@
 # define WALKSPEED		2
 # define RUNSPEED		5
 # define VIEWSPEED		6
-# define MOUSESPEED_X	0.05
-# define MOUSESPEED_Y	6
+# define MOUSESPEED_X	0.15
+# define MOUSESPEED_Y	3
 # define N_PI			3.1415926535897931
-# define RAY_DIVIDER	4
+# define RAY_DIVIDER	2
 # define FOV			90
-# define DIST_FACTOR	30
+# define DIST_FACTOR	42
 # define RAY_PRECISION	0.005
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
 # define C_E_WALL		0x000FF0
 # define C_W_WALL		0xF0F000
+# define C_DOORS		0x424242
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -136,6 +137,11 @@ typedef struct s_ray
 	int				wally;
 	int				y_pixel;	
 }	t_ray;
+
+typedef struct s_anim
+{
+	double	test;
+}	t_anim;
 
 typedef struct s_c3_data
 {

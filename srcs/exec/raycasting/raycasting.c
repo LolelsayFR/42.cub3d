@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 14:33:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 08:34:33 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ static void	update_frame(t_c3_data *data)
 
 static void	ray_assign(t_ray *ray, t_c3_data *data)
 {
-	if ((int)ray->old_pos.y > (int)ray->pos.y)
+	if (data->map[(int)ray->pos.y][(int)ray->pos.x] == 'D')
+	{
+		ray->texture = data->textures->door;
+		ray->color = darker_rgb(C_DOORS, ray->dist);
+	}
+	else if ((int)ray->old_pos.y > (int)ray->pos.y)
 	{
 		ray->texture = data->textures->north;
 		ray->color = darker_rgb(C_N_WALL, ray->dist);

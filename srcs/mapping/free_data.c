@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:47:29 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 19:14:17 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 08:40:11 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	destroy_all_image(t_c3_data *data)
 {
+	if (data->textures->map_base != NULL)
+		mlx_destroy_image(data->mlx, data->textures->map_base);
+	if (data->textures->map_player != NULL)
+		mlx_destroy_image(data->mlx, data->textures->map_player);
+	if (data->textures->map_pangle != NULL)
+		mlx_destroy_image(data->mlx, data->textures->map_pangle);
+	if (data->textures->door != NULL)
+		mlx_destroy_image(data->mlx, data->textures->door);
 	if (data->textures->north != NULL)
 		mlx_destroy_image(data->mlx, data->textures->north);
 	if (data->textures->south != NULL)
@@ -22,6 +30,8 @@ void	destroy_all_image(t_c3_data *data)
 		mlx_destroy_image(data->mlx, data->textures->west);
 	if (data->textures->east != NULL)
 		mlx_destroy_image(data->mlx, data->textures->east);
+	if (data->frame != NULL)
+		mlx_destroy_image(data->mlx, data->frame);
 }
 
 void	free_data(t_c3_data *data)
