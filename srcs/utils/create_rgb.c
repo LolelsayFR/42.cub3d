@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 16:11:24 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 09:06:27 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:26:13 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ unsigned long	darker_rgb(unsigned long hexrgb, double divider)
 	double	g;
 	double	b;
 
-	divider /= 3;
 	if ((int)divider == 0)
 		return (hexrgb);
 	r = (((hexrgb >> 16) & 0xFF) / divider);
