@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 16:23:39 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/28 23:18:04 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define FOV			90
 # define DIST_FACTOR	60
 # define RAY_PRECISION	0.005
+# define RENDER_DIST	10
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
@@ -162,7 +163,7 @@ typedef struct s_c3_data
 	int			v_view;
 	int			map_size[2];
 	int			exit_status;
-	t_ray		ray[WIDTH];
+	t_ray		ray[WIDTH][RENDER_DIST];
 	t_img		*frame;
 }	t_c3_data;
 

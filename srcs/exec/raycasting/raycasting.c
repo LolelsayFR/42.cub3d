@@ -6,13 +6,13 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 13:57:51 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 02:07:29 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-void	frame_put_one_ray(t_c3_data *data, t_ray *ray, int x)
+static void	frame_put_one_ray(t_c3_data *data, t_ray *ray, int x)
 {
 	int	y;
 	int	y_end;
@@ -35,6 +35,19 @@ void	frame_put_one_ray(t_c3_data *data, t_ray *ray, int x)
 	}
 }
 
+void	frame_put_layers_ray(int x, t_c3_data *data)
+{
+	int	l;
+
+	frame_put_one_ray(data, data->ray[x], x);
+	l = data->ray[x][0].door_count;
+	while (l > 0)
+	{
+		frame_put_one_ray(data, &data->ray[x][l], x);
+		l--;
+	}
+}
+
 void	raycasting(t_c3_data *data, t_pos pos, double angle)
 {
 	const unsigned long	ceiling = create_rgb(data->textures->ceiling);
@@ -42,5 +55,4 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 
 	img_put_dual_bg(data->frame, ceiling, floor, data);
 	wall_raycasting(data, pos, angle);
-	door_raycasting(data, pos, angle);
 }
