@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 13:36:50 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 14:12:59 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	ray_colider(t_c3_data *data, int x, t_pos pos)
 	{
 		if (ft_strchr("Dd",
 				data->map[(int)data->ray[x]->pos.y][(int)data->ray[x]->pos.x])
-			&& (int)data->ray[x]->save_pos.x != (int)data->ray[x]->pos.x
-			&& (int)data->ray[x]->save_pos.y != (int)data->ray[x]->pos.y)
+			&& !((int)data->ray[x]->save_pos.x == (int)data->ray[x]->pos.x
+			&& (int)data->ray[x]->save_pos.y == (int)data->ray[x]->pos.y))
 			door_ray_assign(x, data);
 		data->ray[x]->old_pos = data->ray[x]->pos;
 		data->ray[x]->exec_dist += RAY_PRECISION + (data->ray[x]->dist / 100);
