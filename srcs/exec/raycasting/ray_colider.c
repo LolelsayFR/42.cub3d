@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 14:12:59 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:37:16 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,24 @@ static void	wall_ray_assign(int x, t_c3_data *data)
 	}
 }
 
+static bool	render_distance(t_pos player, t_pos ray, int x, t_c3_data *data)
+{
+	if ((int)ray.x > (int)player.x - RENDER_DIST
+		&& (int)ray.x < (int)player.x + RENDER_DIST
+		&& (int)ray.y > (int)player.y - RENDER_DIST
+		&& (int)ray.y < (int)player.y + RENDER_DIST)
+	{
+		data->ray[x]->texture = NULL;
+		data->ray[x]->color = BLACK_PIXEL;
+		return (true);
+	}
+	return (false);
+}
+
 void	ray_colider(t_c3_data *data, int x, t_pos pos)
 {
-	while ((int)data->ray[x]->pos.y < data->map_size[0]
+	while (render_distance(pos, data->ray[x]->pos, x, data)
+		&& (int)data->ray[x]->pos.y < data->map_size[0]
 		&& (int)data->ray[x]->pos.x < data->map_size[1]
 		&& (int)data->ray[x]->pos.y >= 0 && (int)data->ray[x]->pos.x >= 0
 		&& !ft_strchr("\n 1\0",
@@ -85,6 +100,7 @@ void	ray_colider(t_c3_data *data, int x, t_pos pos)
 				[(int)data->ray[x]->old_pos.x]))
 			break ;
 	}
-	wall_ray_assign(x, data);
+	if (render_distance(pos, data->ray[x]->pos, x, data))
+		wall_ray_assign(x, data);
 }
 

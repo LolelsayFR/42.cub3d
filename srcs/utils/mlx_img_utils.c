@@ -6,17 +6,19 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:55:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/25 16:15:23 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:59:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.define.h"
 
 //Function base https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx
-void	img_pix_put(t_img *img, int x, int y, int color)
+void	img_pp(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 
+	if (!img || !img->data || img->bpp != 32)
+		return ;
 	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
 		return ;
 	pixel = img->data + (y * img->size_line + x * (img->bpp / 8));
@@ -34,7 +36,7 @@ void	img_put_bg(t_img *img, int color)
 		x = 0;
 		while (x < img->width)
 		{
-			img_pix_put(img, x, y, color);
+			img_pp(img, x, y, color);
 			x++;
 		}
 		y++;
@@ -53,9 +55,9 @@ void	img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *data)
 		while (x < img->width)
 		{
 			if (y > (HEIGHT / 2) + MOUSESPEED_Y * data->v_view)
-				img_pix_put(img, x, y, floor);
+				img_pp(img, x, y, floor);
 			else
-				img_pix_put(img, x, y, sky);
+				img_pp(img, x, y, sky);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 13:37:24 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:10:16 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			frame_put_layers_ray(int x, t_c3_data *data);
 //Img
 void			create_minimap_img(t_c3_data *data);
 t_img			*img_new(int size_x, int size_y, t_c3_data *data);
-void			img_pix_put(t_img *img, int x, int y, int color);
+void			img_pp(t_img *img, int x, int y, int color);
 void			img_put_bg(t_img *img, int color);
 void			draw_map(t_c3_data *data, int x, int y);
 
@@ -74,7 +74,7 @@ t_trigo			raytrigo(t_ray *ray, double dist, t_pos pos);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);
-unsigned long	create_rgb(t_rgb rgb);
+unsigned long	c_rgb(t_rgb rgb);
 t_pos			pos_to_map_pos(double x, double y);
 t_trigo			trigo(double *angle, double x, double y);
 int				ft_tablen(char **tab);
