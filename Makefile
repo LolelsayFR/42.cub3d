@@ -8,7 +8,7 @@ SRC			:= 	$(wildcard srcs/*.c)\
 OBJDIR		:=	.objs
 OBJS		:=	$(patsubst srcs/%.c,$(OBJDIR)/%.o,$(SRC))
 
-CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders
+CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders -O3
 LIBFT_PATH	:=	./submodules/42.libft
 LIBFT		:=	$(LIBFT_PATH)/libft.a
 

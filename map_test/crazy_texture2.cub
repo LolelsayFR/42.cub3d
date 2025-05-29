@@ -3,7 +3,7 @@ SO sprites/emaillet_so_long/potion.xpm
 WE sprites/emaillet_so_long/saturn.xpm
 EA sprites/emaillet_so_long/red_chest.xpm
 
-DO sprites/floor.xpm
+DO sprites/door.xpm
 F 220,100,0
 C 225,30,0
 

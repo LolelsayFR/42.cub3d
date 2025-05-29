@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 09:06:47 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/28 23:18:04 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,28 @@
 # define WIDTH			1280
 # define HEIGHT			720
 # define MINIMAP_SIZE	200
-# define TILE_SIZE		20
+# define TILE_SIZE		12
 # define PLAYER_SIZE	4
 # define FPS			60
+# define USE_RANGE		1
 # define WALKSPEED		2
 # define RUNSPEED		5
 # define VIEWSPEED		6
 # define MOUSESPEED_X	0.15
 # define MOUSESPEED_Y	3
 # define N_PI			3.1415926535897931
-# define RAY_DIVIDER	2
+# define RAY_DIVIDER	4
 # define FOV			90
-# define DIST_FACTOR	42
+# define DIST_FACTOR	60
 # define RAY_PRECISION	0.005
+# define RENDER_DIST	10
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
 # define C_E_WALL		0x000FF0
 # define C_W_WALL		0xF0F000
 # define C_DOORS		0x424242
+# define C_ODOORS		0xEEEEEE
 
 # define RED_PIXEL		0xFF0000
 # define DARKRED_PIXEL	0x660000
@@ -132,10 +135,14 @@ typedef struct s_ray
 	t_pos			pos;
 	t_pos			old_pos;
 	double			dist;
+	double			exec_dist;
 	unsigned long	color;
 	t_img			*texture;
-	int				wally;
-	int				y_pixel;	
+	double			wally;
+	int				y_pix;	
+	int				door_count;
+	t_pos			save_pos;
+	double			shift_up;
 }	t_ray;
 
 typedef struct s_anim
@@ -146,6 +153,7 @@ typedef struct s_anim
 typedef struct s_c3_data
 {
 	char		**map;
+	double		**door_anim;
 	bool		is_running;
 	bool		mouse;
 	t_player	*player;
@@ -155,7 +163,7 @@ typedef struct s_c3_data
 	int			v_view;
 	int			map_size[2];
 	int			exit_status;
-	t_ray		ray[WIDTH];
+	t_ray		ray[WIDTH][RENDER_DIST];
 	t_img		*frame;
 }	t_c3_data;
 
