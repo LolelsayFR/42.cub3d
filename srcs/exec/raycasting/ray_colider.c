@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_raycasting.c                                   :+:      :+:    :+:   */
+/*   ray_colider.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 13:31:57 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 13:36:50 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	wall_ray_assign(int x, t_c3_data *data)
 	}
 }
 
-static void	ray_colider(t_c3_data *data, int x, t_pos pos)
+void	ray_colider(t_c3_data *data, int x, t_pos pos)
 {
 	while ((int)data->ray[x]->pos.y < data->map_size[0]
 		&& (int)data->ray[x]->pos.x < data->map_size[1]
@@ -88,42 +88,3 @@ static void	ray_colider(t_c3_data *data, int x, t_pos pos)
 	wall_ray_assign(x, data);
 }
 
-static void	copy_all_layer(int x, t_c3_data *data)
-{
-	int	l;
-
-	data->ray[x][0] = data->ray[x - 1][0];
-	l = data->ray[x - 1][0].door_count;
-	while (l > 0)
-	{
-		data->ray[x][l] = data->ray[x - 1][l];
-		l--;
-	}
-}
-
-void	wall_raycasting(t_c3_data *data, t_pos pos, double angle)
-{
-	int		x;
-
-	x = 0;
-	angle = angle * (N_PI / 180.0);
-	while (x < WIDTH)
-	{
-		if (x % RAY_DIVIDER == 0)
-		{
-			ft_bzero(data->ray[x], sizeof(t_ray) * RENDER_DIST);
-			data->ray[x][0].angle = angle - (FOV / 2.0) * (N_PI / 180.0)
-				+ ((double)x / WIDTH) * FOV * (N_PI / 180.0);
-			raytrigo(data->ray[x], data->ray[x][0].exec_dist, pos);
-			data->ray[x][0].pos = pos;
-			data->ray[x][0].old_pos = data->ray[x][0].pos;
-			ray_colider(data, x, pos);
-			data->ray[x][0].dist = data->ray[x][0].exec_dist
-				* cos(data->ray[x][0].angle - angle);
-		}
-		else if (x > 0)
-			copy_all_layer(x, data);
-		frame_put_layers_ray(x, data);
-		x++;
-	}
-}
