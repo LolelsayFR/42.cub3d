@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:44:50 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/21 16:33:30 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 13:26:45 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 static void	player_setspawn(t_c3_data *data)
 {
-	int	x;
-	int	y;
+	int	p[2];
 
-	y = 0;
-	while (data->map[y] != NULL)
+	p[1] = 0;
+	p[0] = 0;
+	while (data->map[p[0]] != NULL)
 	{
-		x = 0;
-		while (data->map[y][x] != '\0' && data->map[y][x] != '\n')
+		p[1] = 0;
+		while (data->map[p[0]][p[1]] != '\0' && data->map[p[0]][p[1]] != '\n')
 		{
-			if (ft_strchr("NSEW", data->map[y][x]) != NULL)
+			if (ft_strchr("NSEW", data->map[p[0]][p[1]]) != NULL)
 				break ;
-			x++;
+			p[1]++;
 		}
-		if (ft_strchr("NSEW", data->map[y][x]) != NULL)
+		if (ft_strchr("NSEW", data->map[p[0]][p[1]]) != NULL)
 			break ;
-		y++;
+		p[0]++;
 	}
-	if (data->map[y][x] == 'N')
+	if (data->map[p[0]][p[1]] == 'N')
 		data->player->angle = 180;
-	else if (data->map[y][x] == 'E')
+	else if (data->map[p[0]][p[1]] == 'E')
 		data->player->angle = 90;
-	else if (data->map[y][x] == 'W')
+	else if (data->map[p[0]][p[1]] == 'W')
 		data->player->angle = -90;
-	data->player->pos.y = ((y + 1) * TILE_SIZE) - (TILE_SIZE / 2);
-	data->player->pos.x = ((x + 1) * TILE_SIZE) - (TILE_SIZE / 2);
+	data->player->pos.y = ((p[0] + 1) * TILE_SIZE) - (TILE_SIZE / 2);
+	data->player->pos.x = ((p[1] + 1) * TILE_SIZE) - (TILE_SIZE / 2);
 }
 
 bool	player_init(t_c3_data *data)
