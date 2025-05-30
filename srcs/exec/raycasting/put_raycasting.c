@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_colider.c                                      :+:      :+:    :+:   */
+/*   put_raycasting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 15:37:16 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 02:08:47 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,43 +44,28 @@ static void	wall_ray_assign(int x, t_c3_data *data)
 	if ((int)data->ray[x]->old_pos.y > (int)data->ray[x]->pos.y)
 	{
 		data->ray[x]->texture = data->textures->north;
-		data->ray[x]->color = darker_rgb(C_N_WALL, data->ray[x]->exec_dist);
+		data->ray[x]->color = darker_rgb(C_N_WALL, data->ray[x]->dist);
 	}
 	else if ((int)data->ray[x]->old_pos.x > (int)data->ray[x]->pos.x)
 	{
 		data->ray[x]->texture = data->textures->west;
-		data->ray[x]->color = darker_rgb(C_W_WALL, data->ray[x]->exec_dist);
+		data->ray[x]->color = darker_rgb(C_W_WALL, data->ray[x]->dist);
 	}
 	else if ((int)data->ray[x]->old_pos.y < (int)data->ray[x]->pos.y)
 	{
 		data->ray[x]->texture = data->textures->south;
-		data->ray[x]->color = darker_rgb(C_S_WALL, data->ray[x]->exec_dist);
+		data->ray[x]->color = darker_rgb(C_S_WALL, data->ray[x]->dist);
 	}
 	else if ((int)data->ray[x]->old_pos.x < (int)data->ray[x]->pos.x)
 	{
 		data->ray[x]->texture = data->textures->east;
-		data->ray[x]->color = darker_rgb(C_E_WALL, data->ray[x]->exec_dist);
+		data->ray[x]->color = darker_rgb(C_E_WALL, data->ray[x]->dist);
 	}
 }
 
-static bool	render_distance(t_pos player, t_pos ray, int x, t_c3_data *data)
+static void	ray_colider(t_c3_data *data, t_trigo m, int x, t_pos pos)
 {
-	if ((int)ray.x > (int)player.x - RENDER_DIST
-		&& (int)ray.x < (int)player.x + RENDER_DIST
-		&& (int)ray.y > (int)player.y - RENDER_DIST
-		&& (int)ray.y < (int)player.y + RENDER_DIST)
-	{
-		data->ray[x]->texture = NULL;
-		data->ray[x]->color = BLACK_PIXEL;
-		return (true);
-	}
-	return (false);
-}
-
-void	ray_colider(t_c3_data *data, int x, t_pos pos)
-{
-	while (render_distance(pos, data->ray[x]->pos, x, data)
-		&& (int)data->ray[x]->pos.y < data->map_size[0]
+	while ((int)data->ray[x]->pos.y < data->map_size[0]
 		&& (int)data->ray[x]->pos.x < data->map_size[1]
 		&& (int)data->ray[x]->pos.y >= 0 && (int)data->ray[x]->pos.x >= 0
 		&& !ft_strchr("\n 1\0",
@@ -88,19 +73,58 @@ void	ray_colider(t_c3_data *data, int x, t_pos pos)
 	{
 		if (ft_strchr("Dd",
 				data->map[(int)data->ray[x]->pos.y][(int)data->ray[x]->pos.x])
-			&& !((int)data->ray[x]->save_pos.x == (int)data->ray[x]->pos.x
-			&& (int)data->ray[x]->save_pos.y == (int)data->ray[x]->pos.y))
+			&& (int)data->ray[x]->save_pos.x != (int)data->ray[x]->pos.x
+			&& (int)data->ray[x]->save_pos.y != (int)data->ray[x]->pos.y)
 			door_ray_assign(x, data);
 		data->ray[x]->old_pos = data->ray[x]->pos;
 		data->ray[x]->exec_dist += RAY_PRECISION + (data->ray[x]->dist / 100);
-		raytrigo(data->ray[x], data->ray[x]->exec_dist, pos);
+		m = raytrigo(data->ray[x], data->ray[x]->exec_dist, pos);
 		if (ft_strchr("\n 1\0", data->map[(int)data->ray[x]->old_pos.y]
 				[(int)data->ray[x]->pos.x])
 			|| ft_strchr("\n 1\0", data->map[(int)data->ray[x]->pos.y]
 				[(int)data->ray[x]->old_pos.x]))
 			break ;
 	}
-	if (render_distance(pos, data->ray[x]->pos, x, data))
-		wall_ray_assign(x, data);
+	wall_ray_assign(x, data);
 }
 
+static void	copy_all_layer(int x, t_c3_data *data)
+{
+	int	l;
+
+	data->ray[x][0] = data->ray[x - 1][0];
+	l = data->ray[x - 1][0].door_count;
+	while (l > 0)
+	{
+		data->ray[x][l] = data->ray[x - 1][l];
+		l--;
+	}
+}
+
+void	wall_raycasting(t_c3_data *data, t_pos pos, double angle)
+{
+	t_trigo	math;
+	int		x;
+
+	x = 0;
+	angle = angle * (N_PI / 180.0);
+	while (x < WIDTH)
+	{
+		if (x % RAY_DIVIDER == 0)
+		{
+			ft_bzero(data->ray[x], sizeof(t_ray) * RENDER_DIST);
+			data->ray[x][0].angle = angle - (FOV / 2.0) * (N_PI / 180.0)
+				+ ((double)x / WIDTH) * FOV * (N_PI / 180.0);
+			math = raytrigo(data->ray[x], data->ray[x][0].exec_dist, pos);
+			data->ray[x][0].pos = pos;
+			data->ray[x][0].old_pos = data->ray[x][0].pos;
+			ray_colider(data, math, x, pos);
+			data->ray[x][0].dist = data->ray[x][0].exec_dist
+				* cos(data->ray[x][0].angle - angle);
+		}
+		else if (x > 0)
+			copy_all_layer(x, data);
+		frame_put_layers_ray(x, data);
+		x++;
+	}
+}

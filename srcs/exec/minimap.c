@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 15:10:16 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/25 16:36:09 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	map_put_tiles(int x, int y, t_c3_data *data, long long color)
 	{
 		ii = 0;
 		while (ii++ < TILE_SIZE)
-			img_pp(data->textures->map_base,
+			img_pix_put(data->textures->map_base,
 				x * TILE_SIZE - i + TILE_SIZE,
 				y * TILE_SIZE - ii + TILE_SIZE, color);
 	}
