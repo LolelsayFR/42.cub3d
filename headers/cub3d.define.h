@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/28 23:18:04 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:36:38 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define FOV			90
 # define DIST_FACTOR	60
 # define RAY_PRECISION	0.005
-# define RENDER_DIST	10
+# define RENDER_DIST	20
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
