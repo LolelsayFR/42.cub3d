@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:02:32 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/26 13:44:57 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:17:34 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_trigo	trigo(double *angle, double x, double y)
 	return (math);
 }
 
-t_trigo	raytrigo(t_ray *ray, double dist, t_pos pos)
+void	raytrigo(t_ray *ray, double dist, t_pos pos)
 {
 	t_trigo	math;
 
@@ -37,9 +37,6 @@ t_trigo	raytrigo(t_ray *ray, double dist, t_pos pos)
 		ray->angle -= 2 * N_PI;
 	math.angle_rad = ray->angle;
 	math.hypo = hypot(dist, 0);
-	math.opo = math.hypo * sin(math.angle_rad);
-	math.adj = math.hypo * cos(math.angle_rad);
-	ray->pos.x = pos.x + math.opo;
-	ray->pos.y = pos.y + math.adj;
-	return (math);
+	ray->pos.x = pos.x + math.hypo * sin(ray->angle);
+	ray->pos.y = pos.y + math.hypo * cos(ray->angle);
 }
