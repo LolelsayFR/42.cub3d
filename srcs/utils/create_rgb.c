@@ -23,7 +23,7 @@ unsigned long	darker_rgb(unsigned long hexrgb, double divider)
 	double	g;
 	double	b;
 
-	divider *= 0.7;
+	divider *= 0.25;
 	if ((int)divider == 0)
 		return (hexrgb);
 	r = (((hexrgb >> 16) & 0xFF) / divider);

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 15:10:16 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:18:08 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ int				handle_mouse(t_c3_data *data);
 int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
-void	        ray_colider(t_c3_data *data, int x, t_pos pos);
+void			ray_colider(t_c3_data *data, t_pos pos);
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
 void			texture_apply(t_img *img, int x, int y, t_ray ray);
-void			frame_put_layers_ray(int x, t_c3_data *data);
+void			reverse_ray_colider(t_c3_data *d, t_pos p, double angle, int x);
+void			frame_put_one_ray(t_c3_data *data, t_ray *ray, int x);
 
 //Img
 void			create_minimap_img(t_c3_data *data);
@@ -70,13 +71,13 @@ void			map_size(t_c3_data *data);
 //Utils
 unsigned long	darker_rgb(unsigned long rgb, double divider);
 void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);
-t_trigo			raytrigo(t_ray *ray, double dist, t_pos pos);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_show(t_xvar *xvar, t_win_list *win, t_c3_data *data);
 int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);
 unsigned long	c_rgb(t_rgb rgb);
 t_pos			pos_to_map_pos(double x, double y);
 t_trigo			trigo(double *angle, double x, double y);
+void			raytrigo(t_ray *ray, double dist, t_pos pos);
 int				ft_tablen(char **tab);
 void			print_tab(char **tab);
 char			**lst_to_tab(t_list *lst);
