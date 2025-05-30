@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 16:39:15 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 12:39:43 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:10:16 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	texture_apply(t_img *img, int x, int y, t_ray ray)
 	pixel = ray.texture->data + (imgy * ray.texture->size_line
 			+ (imgx % ray.texture->width) * (ray.texture->bpp / 8));
 	color = darker_rgb(*(unsigned long *)pixel, ray.dist);
-	img_pix_put(img, x, y, color);
+	img_pp(img, x, y, color);
 }
