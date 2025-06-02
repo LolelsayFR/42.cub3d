@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 15:25:19 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:39:03 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	frame_put_one_ray(t_c3_data *data, t_ray *ray, int x)
 	while (y >= 0 && y > y_end)
 		img_pp(data->frame, WIDTH - x, y--, c_rgb(data->textures->floor));
 	y = 0;
-	while (y <= HEIGHT && y <= y_start)
+	while (y <= HEIGHT && y < y_start)
 		img_pp(data->frame, WIDTH - x, y++, c_rgb(data->textures->ceiling));
 	while (y <= HEIGHT && y <= y_end - ray->wally * ray->shift_up)
 		if (data->player->control->map % 4 == 3 || ray->texture == NULL)
