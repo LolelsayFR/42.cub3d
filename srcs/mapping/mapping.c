@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:36:53 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/20 12:59:54 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:21:41 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_c3_data	*mapping(char **argv)
 		return (free_data(data), NULL);
 	if (is_not_walled(data) == -1)
 		return (free_data(data), NULL);
+	doors_stocking(&data);
 	print_tab(data->map);
 	return (data);
 }
