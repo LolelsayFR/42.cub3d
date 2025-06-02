@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 18:29:02 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:38:28 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define RAY_PRECISION	0.01
 # define RENDER_DIST	30
 # define RAY_CORRECTION	0.2
+# define HITBOX			0.15
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000

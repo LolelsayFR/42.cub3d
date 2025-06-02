@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/22 13:12:02 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:32:18 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 static bool	player_canmove(t_c3_data *data, double x, double y)
 {
-	t_pos	pos;
+	t_pos	go;
+	t_pos	player;
 
-	pos = pos_to_map_pos(x, y);
-	if (ft_strchr("1D \n\0", data->map[(int)pos.y][(int)pos.x]) != NULL)
+	go = pos_to_map_pos(x, y);
+	player = pos_to_map_pos(data->player->pos.x, data->player->pos.y);
+	if (ft_strchr("1D \n\0", data->map[(int)(go.y + HITBOX)][(int)go.x]) != NULL)
+		return (false);
+	if (ft_strchr("1D \n\0", data->map[(int)(go.y - HITBOX)][(int)go.x]) != NULL)
+		return (false);
+	if (ft_strchr("1D \n\0", data->map[(int)go.y][(int)(go.x + HITBOX)]) != NULL)
+		return (false);
+	if (ft_strchr("1D \n\0", data->map[(int)go.y][(int)(go.x - HITBOX)]) != NULL)
 		return (false);
 	return (true);
 }
