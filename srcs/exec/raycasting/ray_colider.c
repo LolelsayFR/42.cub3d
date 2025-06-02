@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 15:07:33 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:36:05 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,9 @@ void	reverse_ray_colider(t_c3_data *data, t_pos pos, double angle, int x)
 {
 	int		i;
 
-	while ((int)data->ray.pos.y < data->map_size[0]
+	while ((int)data->ray.pos.y < data->map_size[0] && data->ray.exec_dist > 0
 		&& (int)data->ray.pos.x < data->map_size[1]
-		&& (int)data->ray.pos.y >= 0 && (int)data->ray.pos.x >= 0
-		&& data->ray.exec_dist > 0)
+		&& (int)data->ray.pos.y >= 0 && (int)data->ray.pos.x >= 0)
 	{
 		data->ray.old_pos = data->ray.pos;
 		data->ray.exec_dist -= RAY_PRECISION;
@@ -94,7 +93,8 @@ void	reverse_ray_colider(t_c3_data *data, t_pos pos, double angle, int x)
 		{
 			data->ray.texture = data->textures->door;
 			data->ray.color = darker_rgb(C_ODOORS, data->ray.dist);
-			data->ray.dist = data->ray.exec_dist * cos(data->ray.angle - angle);
+			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
+				* cos(data->ray.angle - angle);
 			data->ray.shift_up = 0.95 - data->d_test;
 			i = 0;
 			while (i <= RAY_DIVIDER)
