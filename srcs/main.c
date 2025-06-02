@@ -6,18 +6,26 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/27 08:33:52 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:12:37 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static void	error_args(int argc)
+{
+	if (argc == 1)
+		ft_printfd(2, "Missing Map in Second Argument\n");
+	else
+		ft_printfd(2, "Too Many Arguments Sent\n");
+}
 
 int	main(int argc, char **argv)
 {
 	t_c3_data	*data;
 
 	if (argc != 2)
-		return (1);
+		return (error_args(argc), 1);
 	data = mapping(argv);
 	if (data == NULL)
 		return (1);
