@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 11:19:34 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:35:55 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	frame_put_one_ray(t_c3_data *data, t_ray *ray, int x)
 	int	y_end;
 	int	y;
 
-	ray->wally = (int)(TILE_SIZE / (ray->dist * DIST_FACTOR));
+	ray->wally = (int)(TILE_SIZE / ray->dist * DIST_FACTOR);
 	if (ray->dist <= 0 || ray->exec_dist <= 0 || ray->wally <= 0)
 		return ;
 	y_start = HEIGHT / 2 - ray->wally / 2 + MOUSESPEED_Y * data->v_view;
