@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 11:35:55 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:25:19 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 	int		x;
 
 	x = 0;
-	angle = angle * (N_PI / 180.0);
+	angle *= N_PI / 180.0;
 	while (x < WIDTH)
 	{
 		if (x % RAY_DIVIDER == 0)
 		{
 			reverse_ray_colider(data, pos, angle, x);
 			ft_bzero(&data->ray, sizeof(t_ray));
-			data->ray.angle = angle - (FOV / 2.0) * (N_PI / 180.0)
-				+ ((double)x / WIDTH) * FOV * (N_PI / 180.0);
+			data->ray.angle = (angle - ((FOV / 2.0) * (N_PI / 180.0))
+					+ ((double)x / WIDTH) * FOV * ((N_PI / 180.0)));
 			raytrigo(&data->ray, data->ray.exec_dist, pos);
 			data->ray.pos = pos;
 			data->ray.old_pos = data->ray.pos;
 			ray_colider(data, pos);
-			data->ray.dist = data->ray.exec_dist
+			data->ray.dist = data->d_test + RAY_CORRECTION + data->ray.exec_dist
 				* cos(data->ray.angle - angle);
 		}
 		frame_put_one_ray(data, &data->ray, x);

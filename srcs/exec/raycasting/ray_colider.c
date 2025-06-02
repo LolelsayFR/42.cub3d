@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 11:09:24 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:07:33 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	reverse_ray_colider(t_c3_data *data, t_pos pos, double angle, int x)
 			data->ray.texture = data->textures->door;
 			data->ray.color = darker_rgb(C_ODOORS, data->ray.dist);
 			data->ray.dist = data->ray.exec_dist * cos(data->ray.angle - angle);
-			data->ray.shift_up = 0.95;
+			data->ray.shift_up = 0.95 - data->d_test;
 			i = 0;
 			while (i <= RAY_DIVIDER)
 				frame_put_one_ray(data, &data->ray, x - i++);

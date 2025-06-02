@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 10:15:28 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:31:07 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 # define VIEWSPEED		6
 # define MOUSESPEED_X	0.15
 # define MOUSESPEED_Y	3
-# define N_PI			3.1415926535897931
-# define RAY_DIVIDER	6
-# define FOV			90
+# define N_PI			3.14159265358979323846
+# define RAY_DIVIDER	2
+# define FOV			80
 # define DIST_FACTOR	60
 # define RAY_PRECISION	0.01
 # define RENDER_DIST	30
+# define RAY_CORRECTION	0.2
 
 # define C_N_WALL		0x00FF00
 # define C_S_WALL		0xFF0000
@@ -164,6 +165,7 @@ typedef struct s_c3_data
 	int			exit_status;
 	t_ray		ray;
 	t_img		*frame;
+	double		d_test;
 }	t_c3_data;
 
 /* ************************************************************************** */
