@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/30 17:33:08 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 09:11:22 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # define MOUSESPEED_X	0.15
 # define MOUSESPEED_Y	3
 # define N_PI			3.1415926535897931
-# define RAY_DIVIDER	4
+# define RAY_DIVIDER	6
 # define FOV			90
 # define DIST_FACTOR	60
-# define RAY_PRECISION	0.005
+# define RAY_PRECISION	0.01
 # define RENDER_DIST	15
 
 # define C_N_WALL		0x00FF00
