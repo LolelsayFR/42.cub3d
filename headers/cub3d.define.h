@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 15:31:07 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:29:02 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,12 @@ typedef struct s_anim
 	double	test;
 }	t_anim;
 
+typedef struct s_door
+{
+	t_pos	pos;
+	double	anim;
+}	t_door;
+
 typedef struct s_c3_data
 {
 	char		**map;
@@ -160,6 +166,7 @@ typedef struct s_c3_data
 	t_textures	*textures;
 	t_xvar		*mlx;
 	t_win_list	*win;
+	t_door		*doors;
 	int			v_view;
 	int			map_size[2];
 	int			exit_status;

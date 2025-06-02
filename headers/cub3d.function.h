@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/30 17:18:08 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:36:11 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int				finds_next_value(t_c3_data *data, int x, int y, int max);
 int				finds_other_space(char *line);
 void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
+void			doors_stocking(t_c3_data **data);
 
 //Utils
 unsigned long	darker_rgb(unsigned long rgb, double divider);
