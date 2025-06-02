@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:47:29 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/29 15:37:56 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 18:38:48 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	free_data(t_c3_data *data)
 	ft_free_strtab(data->map);
 	free(data->player->control);
 	free(data->player);
+	free(data->doors);
 	free(data->textures);
 	free(data->mlx);
 	free(data);
