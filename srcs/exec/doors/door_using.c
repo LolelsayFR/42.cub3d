@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/03 14:10:59 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:29:39 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,18 @@ static void	door_toggle(t_c3_data *data, t_ray ray)
 	t_door	*door;
 
 	door = get_door_data(data, ray.pos);
-	if (data->map[(int)ray.pos.y][(int)ray.pos.x] == 'D')
+	if (door == NULL)
+		return ;
+	if (door->open == true)
+	{
+		door->is_anim = true;
+		door->open = false;
+	}
+	else if (door->open == false)
 	{
 		data->map[(int)ray.pos.y][(int)ray.pos.x] = 'd';
 		door->is_anim = true;
 		door->open = true;
-	}
-	else if (data->map[(int)ray.pos.y][(int)ray.pos.x] == 'd')
-	{
-		door->is_anim = true;
-		door->open = false;
 	}
 }
 

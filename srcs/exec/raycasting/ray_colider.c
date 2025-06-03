@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 13:49:24 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:32:03 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 static void	door_anim_assign(t_c3_data *data)
 {
 	data->ray.texture = data->textures->door;
-	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd')
+	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd'
+		&& get_door_data(data, data->ray.old_pos) != NULL)
 		data->ray.shift_up = get_door_data(data, data->ray.old_pos)->anim;
-	else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd')
+	else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd'
+		&& get_door_data(data, data->ray.pos) != NULL)
 		data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
 }
 

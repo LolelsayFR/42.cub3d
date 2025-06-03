@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 11:41:38 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:19:51 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,15 @@ static bool	player_canmove(t_c3_data *data, double x, double y)
 	t_pos	go;
 
 	go = pos_to_map_pos(x, y);
-	if (ft_strchr("1D \n\0",
-			data->map[(int)(go.y + HITBOX)][(int)go.x]) != NULL)
-		return (false);
-	if (ft_strchr("1D \n\0",
+	if ((ft_strchr("1D \n\0",
+				data->map[(int)(go.y + HITBOX)][(int)go.x]) != NULL)
+	|| (ft_strchr("1D \n\0",
 			data->map[(int)(go.y - HITBOX)][(int)go.x]) != NULL)
-		return (false);
-	if (ft_strchr("1D \n\0",
+	|| (ft_strchr("1D \n\0",
 			data->map[(int)go.y][(int)(go.x + HITBOX)]) != NULL)
-		return (false);
-	if (ft_strchr("1D \n\0",
+	|| (ft_strchr("1D \n\0",
 			data->map[(int)go.y][(int)(go.x - HITBOX)]) != NULL)
+	|| (get_door_data(data, go) != NULL && get_door_data(data, go)->anim < 0.5))
 		return (false);
 	return (true);
 }
