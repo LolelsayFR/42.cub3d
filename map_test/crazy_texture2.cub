@@ -2,16 +2,26 @@ NO sprites/emaillet_so_long/heart.xpm
 SO sprites/emaillet_so_long/potion.xpm
 WE sprites/emaillet_so_long/saturn.xpm
 EA sprites/emaillet_so_long/red_chest.xpm
+DO sprites/emaillet_so_long/finish.xpm
 
-DO sprites/door.xpm
 F 220,100,0
 C 225,30,0
 
-1111111111111111111
-1000W00000000000001
-1000101000011000001
-1000111111111111111
-100001 1
-10010111
+    11111111
+  1100000001
+  1001010001
+ 1001111111
+100000001
+10001011
+1000001
+10E001
 100001
-111111
+100001
+100001
+101001
+1001001
+100D001
+1000D01
+ 1000011
+  1000001
+   111111

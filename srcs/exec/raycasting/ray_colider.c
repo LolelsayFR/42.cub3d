@@ -6,11 +6,22 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 18:36:05 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:32:03 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static void	door_anim_assign(t_c3_data *data)
+{
+	data->ray.texture = data->textures->door;
+	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd'
+		&& get_door_data(data, data->ray.old_pos) != NULL)
+		data->ray.shift_up = get_door_data(data, data->ray.old_pos)->anim;
+	else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd'
+		&& get_door_data(data, data->ray.pos) != NULL)
+		data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
+}
 
 static void	ray_assign(t_c3_data *data)
 {
@@ -91,11 +102,10 @@ void	reverse_ray_colider(t_c3_data *data, t_pos pos, double angle, int x)
 		&& ((int)data->ray.old_pos.x != (int)data->ray.pos.x
 		|| (int)data->ray.old_pos.y != (int)data->ray.pos.y))
 		{
-			data->ray.texture = data->textures->door;
 			data->ray.color = darker_rgb(C_ODOORS, data->ray.dist);
 			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
 				* cos(data->ray.angle - angle);
-			data->ray.shift_up = 0.95 - data->d_test;
+			door_anim_assign(data);
 			i = 0;
 			while (i <= RAY_DIVIDER)
 				frame_put_one_ray(data, &data->ray, x - i++);

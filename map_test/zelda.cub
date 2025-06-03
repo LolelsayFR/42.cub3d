@@ -1,11 +1,11 @@
 
-NO sprites/sasha_patate.xpm
-SO sprites/illuminati.xpm
-WE sprites/bob_leponge.xpm
-EA sprites/saucisse.xpm
-DO sprites/sad_guy.xpm
-F 42,42,42
-C 142,142,142
+NO sprites/zelda_wall.xpm
+SO sprites/zelda_wall.xpm
+WE sprites/zelda_wall.xpm
+EA sprites/zelda_wall.xpm
+DO sprites/zelda_door.xpm
+F 0,80,130
+C 0,40,70
 
      1111111
     100010001

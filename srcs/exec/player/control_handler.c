@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 15:17:59 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 11:57:31 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,6 @@ int	handle_input(int key, t_c3_data *data)
 		mouse_hide(data->mlx, data->win, data);
 	else if (key == XK_e || key == XK_E || key == XK_F || key == XK_f)
 		door_using(data);
-	//temp
-	else if (key == XK_equal)
-		data->d_test += 0.01;
-	else if (key == XK_minus)
-		data->d_test -= 0.01;
-	else if (key == XK_BackSpace)
-		data->d_test = 0;
-	printf("%f\n", data->d_test);
 	return (0);
 }
 
@@ -94,8 +86,17 @@ int	handle_mouse(t_c3_data *data)
 
 int	handle_mouse_click(int button, int x, int y, t_c3_data *data)
 {
-	if (0)
-		ft_printf("Mouse button press : %d, x  = %d  = y %d",
-			button, x, y, data);
+	if (button == 9)
+		data->d_test += 0.01;
+	if (button == 8)
+		data->d_test -= 0.01;
+	if (button == 2)
+		data->d_test = 0;
+	if (button == 2)
+		data->v_view = 0;
+	if (button == 1 || button == 3)
+		door_using(data);
+	ft_printf("Mouse button press : %d, x  = %d  = y %d\n",
+		button, x, y, data);
 	return (0);
 }

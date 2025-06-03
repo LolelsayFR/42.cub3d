@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 10:00:52 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:09:03 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	render(t_c3_data *data)
 	t_pos	pos;
 
 	pos = pos_to_map_pos(data->player->pos.x, data->player->pos.y);
+	door_clock(data, pos);
 	raycasting(data, pos, data->player->angle);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame, 0, 0);
 	draw_map(data, 10, 10);
