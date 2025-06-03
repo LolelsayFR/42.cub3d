@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/03 14:29:39 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:37:37 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	door_clock(t_c3_data *data, t_pos pos)
 	while (++i < data->n_doors)
 	{
 		if ((int)pos.y == (int)data->doors[i].pos.y
-			&& (int)pos.x == (int)data->doors[i].pos.x)
+			&& (int)pos.x == (int)data->doors[i].pos.x
+			&& data->doors[i].anim <= 0.60)
 			continue ;
 		if (data->doors[i].open == true
 			&& data->doors[i].is_anim == true && data->doors[i].anim < 0.95)
