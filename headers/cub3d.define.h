@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 18:38:28 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:20:04 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct s_c3_data
 	t_xvar		*mlx;
 	t_win_list	*win;
 	t_door		*doors;
+	int			n_doors;
 	int			v_view;
 	int			map_size[2];
 	int			exit_status;

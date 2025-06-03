@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/02 18:36:11 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:45:20 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void			map_size(t_c3_data *data);
 void			doors_stocking(t_c3_data **data);
 
 //Utils
+t_door			*get_door_data(t_c3_data *data, t_pos pos);
 unsigned long	darker_rgb(unsigned long rgb, double divider);
 void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);
 int				mouse_hide(t_xvar *xvar, t_win_list *win, t_c3_data *data);
