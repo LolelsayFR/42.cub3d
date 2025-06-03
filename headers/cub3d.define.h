@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 14:02:59 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:40:10 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define N_PI			3.14159265358979323846
 # define RAY_DIVIDER	2
 # define FOV			80
-# define DIST_FACTOR	60
+# define DIST_FACTOR	80
 # define RAY_PRECISION	0.01
 # define RENDER_DIST	30
 # define RAY_CORRECTION	0.2
