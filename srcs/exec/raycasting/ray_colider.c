@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 13:36:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:49:24 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static void	door_anim_assign(t_c3_data *data)
 	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd')
 		data->ray.shift_up = get_door_data(data, data->ray.old_pos)->anim;
 	else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd')
-		data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
-	else
 		data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
 }
 
@@ -47,8 +45,8 @@ static void	ray_assign(t_c3_data *data)
 	}
 	if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'D')
 	{
+		data->ray.texture = data->textures->door;
 		data->ray.color = darker_rgb(C_DOORS, data->ray.dist);
-		door_anim_assign(data);
 	}
 }
 

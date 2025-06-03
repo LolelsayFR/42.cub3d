@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 12:20:04 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:02:59 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,9 @@ typedef struct s_door
 {
 	t_pos	pos;
 	double	anim;
+	bool	open;
+	bool	is_anim;
+	bool	colide;
 }	t_door;
 
 typedef struct s_c3_data

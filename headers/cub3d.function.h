@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 12:45:20 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:07:31 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			raycasting(t_c3_data *data, t_pos pos, double angle);
 void			texture_apply(t_img *img, int x, int y, t_ray ray);
 void			reverse_ray_colider(t_c3_data *d, t_pos p, double angle, int x);
 void			frame_put_one_ray(t_c3_data *data, t_ray *ray, int x);
+void			door_clock(t_c3_data *data, t_pos pos);
 
 //Img
 void			create_minimap_img(t_c3_data *data);
