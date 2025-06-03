@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/03 14:37:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 01:16:56 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	door_clock(t_c3_data *data, t_pos pos)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	while (++i < data->n_doors)
 	{
 		if ((int)pos.y == (int)data->doors[i].pos.y
