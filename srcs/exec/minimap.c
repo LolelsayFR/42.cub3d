@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/29 15:10:16 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 04:17:58 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ void	create_minimap_img(t_c3_data *data)
 	int	x;
 	int	y;
 
-	data->textures->map_base = img_new(data->map_size[1] * TILE_SIZE,
-			data->map_size[0] * TILE_SIZE, data);
 	y = 0;
 	while (data->map[y] != NULL)
 	{
@@ -104,9 +102,9 @@ void	create_minimap_img(t_c3_data *data)
 			else if (ft_strchr("NSEW", data->map[y][x]) != NULL)
 				map_put_tiles(x, y, data, GREEN_PIXEL);
 			else if (ft_strchr("D", data->map[y][x]) != NULL)
-				map_put_tiles(x, y, data, RED_PIXEL);
+				map_put_tiles(x, y, data, YELLOW_PIXEL);
 			else if (ft_strchr("d", data->map[y][x]) != NULL)
-				map_put_tiles(x, y, data, DARKRED_PIXEL);
+				map_put_tiles(x, y, data, darker_rgb(YELLOW_PIXEL, 10));
 			x++;
 		}
 		y++;

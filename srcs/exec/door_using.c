@@ -6,37 +6,38 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/04 03:11:01 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 04:13:27 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-void	door_clock(t_c3_data *data, t_pos pos)
+void	door_clock(t_c3_data *d, t_pos pos)
 {
 	int		i;
 
 	i = -1;
-	while (++i < data->n_doors)
+	while (++i < d->n_doors)
 	{
-		if ((int)pos.y == (int)data->doors[i].pos.y
-			&& (int)pos.x == (int)data->doors[i].pos.x
-			&& data->doors[i].anim <= 0.60)
+		if ((int)pos.y == (int)d->doors[i].pos.y && d->doors[i].anim <= 0.6
+			&& (int)pos.x == (int)d->doors[i].pos.x)
 			continue ;
-		if (data->doors[i].open == true
-			&& data->doors[i].is_anim == true && data->doors[i].anim < 0.95)
-			data->doors[i].anim += 0.05;
-		else if (data->doors[i].open == false
-			&& data->doors[i].is_anim == true && data->doors[i].anim > 0)
-			data->doors[i].anim -= 0.05;
-		if (data->doors[i].anim < 0)
-			data->doors[i].anim = 0;
-		if (data->doors[i].anim > 0.95)
-			data->doors[i].anim = 0.95;
-		if (data->doors[i].anim == 0
-			&& data->doors[i].open == false && data->doors[i].anim == false)
-			data->map[(int)data->doors[i].pos.y]
-			[(int)data->doors[i].pos.x] = 'D';
+		if (d->doors[i].open == true
+			&& d->doors[i].is_anim == true && d->doors[i].anim < 0.95)
+			d->doors[i].anim += 0.05;
+		else if (d->doors[i].open == false
+			&& d->doors[i].is_anim == true && d->doors[i].anim > 0)
+			d->doors[i].anim -= 0.05;
+		if (d->doors[i].anim < 0)
+			d->doors[i].anim = 0;
+		if (d->doors[i].anim > 0.95)
+			d->doors[i].anim = 0.95;
+		if (d->doors[i].anim == 0
+			&& d->doors[i].open == false && d->doors[i].anim == false)
+		{
+			d->map[(int)d->doors[i].pos.y][(int)d->doors[i].pos.x] = 'D';
+			create_minimap_img(d);
+		}
 	}
 }
 
@@ -58,6 +59,7 @@ static void	door_toggle(t_c3_data *data, t_ray ray)
 		door->is_anim = true;
 		door->open = true;
 	}
+	create_minimap_img(data);
 }
 
 void	door_using(t_c3_data *data)

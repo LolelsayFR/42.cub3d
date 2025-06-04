@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 14:09:03 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 04:09:35 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void	game_init(t_c3_data *data)
 {
 	data->is_running = true;
 	map_size(data);
+	data->textures->map_base = img_new(data->map_size[1] * TILE_SIZE,
+			data->map_size[0] * TILE_SIZE, data);
 	create_minimap_img(data);
 	player_init(data);
 	data->frame = img_new(WIDTH, HEIGHT, data);
