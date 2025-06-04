@@ -6,38 +6,30 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/04 04:13:27 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 06:15:28 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-void	door_clock(t_c3_data *d, t_pos pos)
+void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 {
-	int		i;
 
-	i = -1;
-	while (++i < d->n_doors)
+	if (door->open == true
+		&& door->is_anim == true && door->anim < 0.95)
+		door->anim += 0.05;
+	else if (door->open == false
+		&& door->is_anim == true && door->anim > 0)
+		door->anim -= 0.05;
+	if (door->anim < 0)
+		door->anim = 0;
+	if (door->anim > 0.95)
+		door->anim = 0.95;
+	if (door->anim == 0
+		&& door->open == false && door->anim == false)
 	{
-		if ((int)pos.y == (int)d->doors[i].pos.y && d->doors[i].anim <= 0.6
-			&& (int)pos.x == (int)d->doors[i].pos.x)
-			continue ;
-		if (d->doors[i].open == true
-			&& d->doors[i].is_anim == true && d->doors[i].anim < 0.95)
-			d->doors[i].anim += 0.05;
-		else if (d->doors[i].open == false
-			&& d->doors[i].is_anim == true && d->doors[i].anim > 0)
-			d->doors[i].anim -= 0.05;
-		if (d->doors[i].anim < 0)
-			d->doors[i].anim = 0;
-		if (d->doors[i].anim > 0.95)
-			d->doors[i].anim = 0.95;
-		if (d->doors[i].anim == 0
-			&& d->doors[i].open == false && d->doors[i].anim == false)
-		{
-			d->map[(int)d->doors[i].pos.y][(int)d->doors[i].pos.x] = 'D';
-			create_minimap_img(d);
-		}
+		d->map[(int)pos.y][(int)pos.x] = 'D';
+		create_minimap_img(d);
 	}
 }
 
