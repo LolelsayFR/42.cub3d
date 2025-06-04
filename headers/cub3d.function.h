@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 14:07:31 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 02:55:35 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ int				handle_mouse(t_c3_data *data);
 int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
-void			ray_colider(t_c3_data *data, t_pos pos);
+void			ray_colider(t_c3_data *data, t_pos pos, int x, double angle);
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
-void			texture_apply(t_img *img, int x, int y, t_ray ray);
-void			reverse_ray_colider(t_c3_data *d, t_pos p, double angle, int x);
-void			frame_put_one_ray(t_c3_data *data, t_ray *ray, int x);
+unsigned long	texture_get_pix(int y, t_ray ray);
+void			put_buffer(t_c3_data *data, t_ray *ray, int x);
 void			door_clock(t_c3_data *data, t_pos pos);
 
 //Img

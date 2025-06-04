@@ -6,7 +6,11 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
+<<<<<<< HEAD:srcs/exec/doors/door_using.c
 /*   Updated: 2025/06/04 01:16:56 by artgirar         ###   ########.fr       */
+=======
+/*   Updated: 2025/06/04 00:48:26 by emaillet         ###   ########.fr       */
+>>>>>>> 110c910 (Full re rework of raycasting for one ray and buffer):srcs/exec/door_using.c
 /*                                                                            */
 /* ************************************************************************** */
 

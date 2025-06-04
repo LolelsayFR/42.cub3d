@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 14:40:10 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 01:07:24 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define MINIMAP_SIZE	200
 # define TILE_SIZE		12
 # define PLAYER_SIZE	4
-# define FPS			60
+# define FPS			120
 # define USE_RANGE		1
 # define WALKSPEED		2
 # define RUNSPEED		5
@@ -128,6 +128,7 @@ typedef struct s_trigo
 	double	adj;
 	double	hypo;
 	double	angle_rad;
+	int		id;
 }	t_trigo;
 
 typedef struct s_ray
@@ -144,6 +145,7 @@ typedef struct s_ray
 	int				y_pix;	
 	t_pos			save_pos;
 	double			shift_up;
+	unsigned long	buffer[HEIGHT];
 }	t_ray;
 
 typedef struct s_anim
