@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:16:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 15:25:06 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:37:29 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ bool	ray_bicheck(t_c3_data *data, char *set)
 		return (true);
 	return (false);
 }
-
 
 void	*raytrigo(t_ray *ray, double dist, t_pos pos, t_c3_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 15:34:13 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:37:14 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	ray_assign(t_c3_data *data)
 		data->ray.texture = data->textures->east;
 		data->ray.color = darker_rgb(C_E_WALL, data->ray.exec_dist);
 	}
-	else 
+	else
 		printf(GRN"POS[%c] x = %f y = %f\n\n OLD[%c] x = %f y = %f"RES, data->map[(int)data->ray.pos.y][(int)data->ray.pos.x], data->ray.pos.x, data->ray.pos.y, data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x], data->ray.old_pos.x, data->ray.old_pos.y);
 }
 
@@ -93,7 +93,6 @@ static bool	render_distance(t_c3_data *data)
 	return (false);
 }
 
-
 void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 {
 	while (render_distance(data)
@@ -103,7 +102,6 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 		&& (!ray_strchr("\n D1\0", data, data->ray)))
 	{
 		data->ray.old_pos = data->ray.pos;
-
 		data->ray.exec_dist += RAY_PRECISION;
 		raytrigo(&data->ray, data->ray.exec_dist, pos, data);
 		if (((int)data->ray.save_pos.x == (int)data->ray.pos.x
@@ -117,8 +115,7 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 			if (data->ray.texture != NULL)
 				put_buffer(data, &data->ray, x);
 		}
-		data->ray.save_pos.x = (int)data->ray.pos.x;
-		data->ray.save_pos.y = (int)data->ray.pos.y;
+		data->ray.save_pos = data->ray.pos;
 	}
 	if (render_distance(data))
 		ray_assign(data);
