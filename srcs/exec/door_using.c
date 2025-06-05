@@ -6,11 +6,25 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 11:48:25 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:30:40 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static void	doortrigo(t_ray *ray, double dist, t_pos pos)
+{
+	t_trigo	math;
+
+	while (ray->angle < 0)
+		ray->angle += 2 * N_PI;
+	while (ray->angle >= 2 * N_PI)
+		ray->angle -= 2 * N_PI;
+	math.angle_rad = ray->angle;
+	math.hypo = hypot(dist, 0);
+	ray->pos.x = pos.x + math.hypo * sin(ray->angle);
+	ray->pos.y = pos.y + math.hypo * cos(ray->angle);
+}
 
 static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 {
@@ -97,11 +111,11 @@ void	door_using(t_c3_data *data)
 	while (ft_strchr("Dd", map[(int)ray.pos.y][(int)ray.pos.x]) == NULL
 			&& ray.dist <= USE_RANGE)
 	{
-		raytrigo(&ray, ray.dist, pos);
+		doortrigo(&ray, ray.dist, pos);
 		ray.dist += RAY_PRECISION;
 		while ((int)pos.y == (int)ray.pos.y && (int)pos.x == (int)ray.pos.x)
 		{
-			raytrigo(&ray, ray.dist, pos);
+			doortrigo(&ray, ray.dist, pos);
 			ray.dist += RAY_PRECISION;
 		}
 	}
