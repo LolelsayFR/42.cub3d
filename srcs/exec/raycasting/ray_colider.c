@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 15:37:14 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 18:38:31 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ static void	set_anim(t_c3_data *data)
 		data->ray.shift_up = get_door_data(data, temp)->anim;
 }
 
-static bool	ray_assign_door(t_c3_data *data, bool skip_open_door)
+static bool	ray_assign_door(t_c3_data *data)
 {
-	if (!skip_open_door && ray_strchr("d", data, data->ray))
-		set_anim(data);
-	else if (ray_strchr("D", data, data->ray))
+	if (ray_strchr("D", data, data->ray))
 	{
 		data->ray.texture = data->textures->door;
 		data->ray.color = darker_rgb(C_DOORS, data->ray.dist);
@@ -56,7 +54,7 @@ static bool	ray_assign_door(t_c3_data *data, bool skip_open_door)
 
 static void	ray_assign(t_c3_data *data)
 {
-	if (ray_assign_door(data, true))
+	if (ray_assign_door(data))
 		return ;
 	else if ((int)data->ray.old_pos.y > (int)data->ray.pos.y)
 	{
@@ -111,7 +109,7 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 		{
 			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
 				* cos(data->ray.angle - angle);
-			ray_assign_door(data, false);
+			set_anim(data);
 			if (data->ray.texture != NULL)
 				put_buffer(data, &data->ray, x);
 		}
