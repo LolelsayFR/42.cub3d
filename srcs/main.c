@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 05:56:32 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:12:37 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	game_close(t_c3_data *data)
 	data->is_running = false;
 	status = data->exit_status;
 	ft_alist_free();
-	free(data->map_door_matrix);
 	mlx_do_key_autorepeaton(data->mlx);
 	free_data(data);
 	exit(status);

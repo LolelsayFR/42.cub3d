@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:35:10 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 06:34:35 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:47:54 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,15 @@
 t_door	*get_door_data(t_c3_data *data, t_pos pos)
 {
 	t_door	*result;
-	int		x;
-	int		y;
+	int		i;
 
-	if (data->map_door_link[(int)pos.y][(int)pos.x] == 0)
-		return (NULL);
-	i = data->map_door_link[(int)pos.y][(int)pos.x];
+	i = 0;
+	while (i <= data->n_doors
+		&& !((int)data->doors[i].pos.x == (int)pos.x
+			&& (int)data->doors[i].pos.y == (int)pos.y))
+		i++;
 	if (i > data->n_doors)
 		return (NULL);
-	if (y < 0 || x < 0 || !data->map_door_matrix[y] || !data->map[y])
-		return (NULL);
-	result = &data->map_door_matrix[y][x];
-	if (result->c == 0)
-		return (NULL);
-	door_update(data, pos, result);
+	result = &data->doors[i];
 	return (result);
 }

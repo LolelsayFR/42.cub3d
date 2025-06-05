@@ -8,7 +8,7 @@ SRC			:= 	$(wildcard srcs/*.c)\
 OBJDIR		:=	.objs
 OBJS		:=	$(patsubst srcs/%.c,$(OBJDIR)/%.o,$(SRC))
 
-CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders
+CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders -O3
 LIBFT_PATH	:=	./submodules/42.libft
 LIBFT		:=	$(LIBFT_PATH)/libft.a
 
@@ -19,6 +19,7 @@ MLX			:=	$(MLX_PATH)/libmlx.a
 .PHONY: all clean fclean re
 all: hello $(NAME)
 
+
 hello:
 	@echo "\e[48;2;100;0;100;1m Welcome to $(NAME) Makefile !\e[0m\n"
 	@echo "\e[48;2;100;0;0;1m Welcome to THE BIG WILDCARD !\e[0m\n"
@@ -27,12 +28,6 @@ $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@echo "\e[48;2;0;155;0;1m Compile $(NAME) \e[0m\n"
 	cc $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 	@echo "\e[48;2;0;0;155;1m Done \e[0m\n"
-
-potato:
-	+make clean
-	+make fclean
-	+make $(LIBFT) $(MLX)
-	+make $(NAME) CFLAGS+=" -D POTATO=1 -Wall -Werror -Wextra -g -Iheaders -Ofast"
 
 $(LIBFT):
 	git submodule update --init --recursive
