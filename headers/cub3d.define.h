@@ -21,7 +21,7 @@
 #  define RAY_DIVIDER	6
 #  define RAY_PRECISION	0.2
 #  define RENDER_DIST	5
-#  define DOOR_DIST		1
+#  define DOOR_DIST		2
 #  define MINIMAP_SIZE	0
 # else
 #  define WIDTH			1280
