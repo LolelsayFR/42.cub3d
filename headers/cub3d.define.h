@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 00:26:53 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 06:24:38 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,11 +168,11 @@ typedef struct s_anim
 
 typedef struct s_door
 {
-	t_pos	pos;
 	double	anim;
 	bool	open;
 	bool	is_anim;
 	bool	colide;
+	char	c;
 }	t_door;
 
 typedef struct s_c3_data
@@ -192,6 +192,7 @@ typedef struct s_c3_data
 	int			exit_status;
 	t_ray		ray;
 	t_img		*frame;
+	t_door		**map_door_matrix;
 	double		d_test;
 }	t_c3_data;
 
