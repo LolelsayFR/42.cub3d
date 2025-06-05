@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 11:10:28 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:18:01 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int				handle_mouse(t_c3_data *data);
 int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
+bool			ray_strchr(char *set, t_c3_data *data, t_ray ray);
 void			ray_colider(t_c3_data *data, t_pos pos, int x, double angle);
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
 unsigned long	texture_get_pix(int y, t_ray ray);
