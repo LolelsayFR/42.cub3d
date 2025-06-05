@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 04:56:47 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 09:29:33 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct s_door
 typedef struct s_c3_data
 {
 	char		**map;
+	char		**map_door_link;
 	double		**door_anim;
 	bool		is_running;
 	bool		mouse;
