@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 22:01:07 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:44:31 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ static bool	inmap(t_c3_data *data, t_pos pos)
 	if ((int)pos.x > (int)ft_strlen(data->map[(int)pos.y]))
 		return (false);
 	return (true);
-}
-
-static void	doortrigo(t_ray *ray, double dist, t_pos pos)
-{
-	t_trigo	math;
-
-	while (ray->angle < 0)
-		ray->angle += 2 * N_PI;
-	while (ray->angle >= 2 * N_PI)
-		ray->angle -= 2 * N_PI;
-	math.angle_rad = ray->angle;
-	math.hypo = hypot(dist, 0);
-	ray->pos.x = pos.x + math.hypo * sin(ray->angle);
-	ray->pos.y = pos.y + math.hypo * cos(ray->angle);
 }
 
 static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
@@ -76,7 +62,7 @@ void	door_clock(t_c3_data *d, t_pos pos)
 		{
 			temp.y = (int)(pos.y + y);
 			temp.x = (int)(pos.x + x);
-			if (inmap(d, temp) 
+			if (inmap(d, temp)
 				&& d->map[(int)temp.y]
 				[(int)temp.x] == 'd')
 			{

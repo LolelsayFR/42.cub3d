@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/06 01:03:14 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:47:29 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			raycasting(t_c3_data *data, t_pos pos, double angle);
 unsigned long	texture_get_pix(int y, t_ray ray);
 void			put_buffer(t_c3_data *data, t_ray *ray, int x);
 void			door_clock(t_c3_data *data, t_pos pos);
+void			doortrigo(t_ray *ray, double dist, t_pos pos);
+bool			render_distance(t_c3_data *data);
 
 //Img
 void			create_minimap_img(t_c3_data *data);
