@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 15:27:41 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:34:13 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,7 @@ static void	ray_assign(t_c3_data *data)
 		data->ray.color = darker_rgb(C_E_WALL, data->ray.exec_dist);
 	}
 	else 
-	{
-		data->ray.texture = NULL;
-		data->ray.color = MAGENTA_PIXEL;
-		printf(GRN"POS[%c] x = %f y = %f"RES, data->map[(int)data->ray.pos.y][(int)data->ray.pos.x], data->ray.pos.x, data->ray.pos.y);
-		printf(RED"OLD[%c] x = %f y = %f"RES, data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x], data->ray.old_pos.x, data->ray.old_pos.y);
-		usleep(1000);
-	}
+		printf(GRN"POS[%c] x = %f y = %f\n\n OLD[%c] x = %f y = %f"RES, data->map[(int)data->ray.pos.y][(int)data->ray.pos.x], data->ray.pos.x, data->ray.pos.y, data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x], data->ray.old_pos.x, data->ray.old_pos.y);
 }
 
 static bool	render_distance(t_c3_data *data)
