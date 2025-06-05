@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 18:04:43 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:03:14 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int				finds_other_space(char *line);
 void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
 void			doors_stocking(t_c3_data **data);
+void			assign_error(int ret_val);
 
 //Utils
 t_door			*get_door_data(t_c3_data *data, t_pos pos);
@@ -87,6 +88,7 @@ void			print_tab(char **tab);
 char			**lst_to_tab(t_list *lst);
 char			**lst_to_map(t_list *lst);
 int				init_rgb(t_c3_data **data, char *line, int i);
+int				intlen(int numb);
 
 /* ************************************************************************** */
 /*  End of file                                                               */

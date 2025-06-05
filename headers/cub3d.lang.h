@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/20 14:44:32 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 00:56:34 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define UNWALLED_MAP	"Map is not Finished by Wall\n"
 # define EXTENTION	"Wrong Extention of Map File\n"
 # define WRONG_ID	"Missing/Repetition of Texture ID\n"
+# define BAD_ASSIGN	"Bad Assignement on Color Textures (F/C)\n"
 # define NOT_EXIST	"Map File Does not Exist\n"
 # define DOUBLE_MAP	"Map is Seperated By a Space/New Line\n"
 # define NO_MAP		"Map is not in File : You Should Add a Map After Textures\n"
