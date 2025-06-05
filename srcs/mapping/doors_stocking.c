@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 18:21:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 09:32:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:34:19 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	doors_stocking(t_c3_data **data)
 	int	y;
 	int	nb_doors;
 
+	(*data)->map_door_link = ft_strtabdup_lst((*data)->map);
 	y = 0;
 	nb_doors = 0;
 	while ((*data)->map[y] != NULL)
@@ -50,7 +51,9 @@ void	doors_stocking(t_c3_data **data)
 		x = 0;
 		while ((*data)->map[y][x] != '\0')
 			if ((*data)->map[y][x++] == 'D')
-				nb_doors++;
+				(*data)->map_door_link[y][x] = nb_doors++ + 1;
+		else
+			(*data)->map_door_link[y][x] = 0;
 		y++;
 	}
 	(*data)->n_doors = nb_doors;
