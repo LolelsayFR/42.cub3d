@@ -18,9 +18,10 @@ t_door	*get_door_data(t_c3_data *data, t_pos pos)
 	int		x;
 	int		y;
 
-	y = (int)pos.y;
-	x = (int)pos.x;
-	if (!data || !data->map_door_matrix || !data->map)
+	if (data->map_door_link[(int)pos.y][(int)pos.x] == 0)
+		return (NULL);
+	i = data->map_door_link[(int)pos.y][(int)pos.x];
+	if (i > data->n_doors)
 		return (NULL);
 	if (y < 0 || x < 0 || !data->map_door_matrix[y] || !data->map[y])
 		return (NULL);

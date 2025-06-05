@@ -19,6 +19,7 @@ static void	render(t_c3_data *data)
 	pos = pos_to_map_pos(data->player->pos.x, data->player->pos.y);
 	raycasting(data, pos, data->player->angle);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame, 0, 0);
+	door_clock(data, pos);
 	draw_map(data, 10, 10);
 }
 
