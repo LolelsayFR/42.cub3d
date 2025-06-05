@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 13:31:27 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:34:36 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static void	ray_assign(t_c3_data *data)
 		data->ray.texture = data->textures->west;
 		data->ray.color = darker_rgb(C_W_WALL, data->ray.exec_dist);
 	}
-	else if ((int)data->ray.old_pos.y <= (int)data->ray.pos.y)
+	else if ((int)data->ray.old_pos.y < (int)data->ray.pos.y)
 	{
 		data->ray.texture = data->textures->south;
 		data->ray.color = darker_rgb(C_S_WALL, data->ray.exec_dist);
 	}
-	else if ((int)data->ray.old_pos.x <= (int)data->ray.pos.x)
+	else if ((int)data->ray.old_pos.x < (int)data->ray.pos.x)
 	{
 		data->ray.texture = data->textures->east;
 		data->ray.color = darker_rgb(C_E_WALL, data->ray.exec_dist);
