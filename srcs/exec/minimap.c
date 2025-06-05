@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 00:25:33 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 11:36:03 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:42:57 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	create_minimap_img(t_c3_data *data)
 			else if (data->map[y][x] == '0')
 				map_put_tiles(x, y, data, GREY_PIXEL);
 			else if (ft_strchr("NSEW", data->map[y][x]) != NULL)
-				map_put_tiles(x, y, data, GREEN_PIXEL);
+				map_put_tiles(x, y, data, BLACK_PIXEL);
 			else if (ft_strchr("D", data->map[y][x]) != NULL)
 				map_put_tiles(x, y, data, RED_PIXEL);
 			else if (ft_strchr("d", data->map[y][x]) != NULL)
