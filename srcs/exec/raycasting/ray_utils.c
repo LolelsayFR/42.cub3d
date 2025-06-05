@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:16:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 15:37:29 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:49:44 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ bool	ray_bicheck(t_c3_data *data, char *set)
 	return (false);
 }
 
+static bool	inmap(t_c3_data *data, t_pos pos)
+{
+	if ((int)pos.x >= 0 && pos.y >= 0
+		&& (int)pos.x < data->map_size[1] && pos.y < data->map_size[0])
+		return (true);
+	return (false);
+}
+
 void	*raytrigo(t_ray *ray, double dist, t_pos pos, t_c3_data *data)
 {
 	t_trigo	math;
@@ -51,11 +59,13 @@ void	*raytrigo(t_ray *ray, double dist, t_pos pos, t_c3_data *data)
 	ray->pos.y = pos.y + math.hypo * cos(ray->angle);
 	temp.x = ray->pos.x;
 	temp.y = ray->old_pos.y;
-	if (ft_strchr("\n D1\0", data->map[(int)temp.y][(int)temp.x]))
+	if (inmap(data, temp)
+		&& ft_strchr("\n D1\0", data->map[(int)temp.y][(int)temp.x]))
 		return (ray->pos = temp, NULL);
 	temp.x = ray->old_pos.x;
 	temp.y = ray->pos.y;
-	if (ft_strchr("\n D1\0", data->map[(int)temp.y][(int)temp.x]))
+	if (inmap(data, temp)
+		&& ft_strchr("\n D1\0", data->map[(int)temp.y][(int)temp.x]))
 		return (ray->pos = temp, NULL);
 	return (NULL);
 }
