@@ -8,7 +8,7 @@ SRC			:= 	$(wildcard srcs/*.c)\
 OBJDIR		:=	.objs
 OBJS		:=	$(patsubst srcs/%.c,$(OBJDIR)/%.o,$(SRC))
 
-CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders
+CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders -O3
 LIBFT_PATH	:=	./submodules/42.libft
 LIBFT		:=	$(LIBFT_PATH)/libft.a
 
@@ -32,7 +32,7 @@ potato:
 	+make clean
 	+make fclean
 	+make $(LIBFT) $(MLX)
-	+make $(NAME) CFLAGS+=" -D POTATO=1 -Wall -Werror -Wextra -g -Iheaders -Ofast"
+	+make $(NAME) CFLAGS+=" -D POTATO=1 -Wall -Werror -Wextra -g -Iheaders -O3"
 
 $(LIBFT):
 	git submodule update --init --recursive
