@@ -6,11 +6,21 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 21:55:59 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:57:21 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static bool	inmap(t_c3_data *data, t_pos pos)
+{
+	if ((int)pos.x < 0 || pos.y < 0
+		|| (int)pos.x >= data->map_size[1] || pos.y >= data->map_size[0])
+		return (false);
+	if ((int)pos.x > (int)ft_strlen(data->map[(int)pos.y]))
+		return (false);
+	return (true);
+}
 
 static void	doortrigo(t_ray *ray, double dist, t_pos pos)
 {
@@ -49,16 +59,6 @@ static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 		d->map[(int)door->pos.y][(int)door->pos.x] = 'D';
 		create_minimap_img(d);
 	}
-}
-
-static bool	inmap(t_c3_data *data, t_pos pos)
-{
-	if ((int)pos.x < 0 || pos.y < 0
-		|| (int)pos.x >= data->map_size[1] || pos.y >= data->map_size[0])
-		return (false);
-	if ((int)pos.x > (int)ft_strlen(data->map[(int)pos.y]))
-		return (false);
-	return (true);
 }
 
 void	door_clock(t_c3_data *d, t_pos pos)
