@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 21:47:10 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:55:59 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static bool	inmap(t_c3_data *data, t_pos pos)
 	if ((int)pos.x < 0 || pos.y < 0
 		|| (int)pos.x >= data->map_size[1] || pos.y >= data->map_size[0])
 		return (false);
+	if ((int)pos.x > (int)ft_strlen(data->map[(int)pos.y]))
+		return (false);
 	return (true);
 }
 
@@ -74,7 +76,9 @@ void	door_clock(t_c3_data *d, t_pos pos)
 		{
 			temp.y = (int)(pos.y + y);
 			temp.x = (int)(pos.x + x);
-			if (inmap(d, temp) && d->map[(int)temp.y][(int)temp.x] == 'd')
+			if (inmap(d, temp) 
+				&& d->map[(int)temp.y]
+				[(int)temp.x] == 'd')
 			{
 				door = get_door_data(d, temp);
 				if (door != NULL)

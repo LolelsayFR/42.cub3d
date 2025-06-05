@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:16:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 21:49:44 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:56:05 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ bool	ray_bicheck(t_c3_data *data, char *set)
 
 static bool	inmap(t_c3_data *data, t_pos pos)
 {
-	if ((int)pos.x >= 0 && pos.y >= 0
-		&& (int)pos.x < data->map_size[1] && pos.y < data->map_size[0])
-		return (true);
-	return (false);
+	if ((int)pos.x < 0 || pos.y < 0
+		|| (int)pos.x >= data->map_size[1] || pos.y >= data->map_size[0])
+		return (false);
+	if ((int)pos.x > (int)ft_strlen(data->map[(int)pos.y]))
+		return (false);
+	return (true);
 }
 
 void	*raytrigo(t_ray *ray, double dist, t_pos pos, t_c3_data *data)
