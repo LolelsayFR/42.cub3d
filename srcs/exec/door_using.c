@@ -6,11 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/06/05 10:56:15 by artgirar         ###   ########.fr       */
-=======
-/*   Updated: 2025/06/05 11:40:18 by emaillet         ###   ########.fr       */
->>>>>>> 09df6e1 (Fix some visual and start to work in door_clock optimisation)
+/*   Updated: 2025/06/05 11:48:25 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
