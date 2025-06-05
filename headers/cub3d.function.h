@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 13:18:01 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:20:51 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int				handle_mouse(t_c3_data *data);
 int				handle_mouse_click(int button, int x, int y, t_c3_data *data);
 
 //Raycasting
+void			*raytrigo(t_ray *ray, double dist, t_pos pos, t_c3_data *data);
+bool			ray_bicheck(t_c3_data *data, char *set);
 bool			ray_strchr(char *set, t_c3_data *data, t_ray ray);
 void			ray_colider(t_c3_data *data, t_pos pos, int x, double angle);
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
@@ -80,7 +82,6 @@ int				mouse_move(t_xvar *xvar, t_win_list *win, int x, int y);
 unsigned long	c_rgb(t_rgb rgb);
 t_pos			pos_to_map_pos(double x, double y);
 t_trigo			trigo(double *angle, double x, double y);
-void			raytrigo(t_ray *ray, double dist, t_pos pos);
 int				ft_tablen(char **tab);
 void			print_tab(char **tab);
 char			**lst_to_tab(t_list *lst);
