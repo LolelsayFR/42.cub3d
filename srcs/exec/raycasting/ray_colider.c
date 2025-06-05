@@ -6,34 +6,26 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 18:38:31 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 20:29:06 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-static void	set_anim(t_c3_data *data)
+static void	set_anim(t_c3_data *data, t_pos target_pos)
 {
-	t_pos	temp;
+	t_door	*door;
 
 	data->ray.color = darker_rgb(C_ODOORS, data->ray.exec_dist);
 	data->ray.texture = data->textures->door;
-	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd'
-		&& get_door_data(data, data->ray.old_pos) != NULL)
-		data->ray.shift_up = get_door_data(data, data->ray.old_pos)->anim;
-	else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd'
-		&& get_door_data(data, data->ray.pos) != NULL)
-		data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
-	temp.x = data->ray.pos.x;
-	temp.y = data->ray.old_pos.y;
-	if (data->map[(int)temp.y][(int)temp.x] == 'd'
-		&& get_door_data(data, temp) != NULL)
-		data->ray.shift_up = get_door_data(data, temp)->anim;
-	temp.x = data->ray.old_pos.x;
-	temp.y = data->ray.pos.y;
-	if (data->map[(int)temp.y][(int)temp.x] == 'd'
-		&& get_door_data(data, temp) != NULL)
-		data->ray.shift_up = get_door_data(data, temp)->anim;
+	data->ray.shift_up = 0;
+
+	if (data->map[(int)target_pos.y][(int)target_pos.x] == 'd')
+	{
+		door = get_door_data(data, target_pos);
+		if (door != NULL)
+			data->ray.shift_up = door->anim;
+	}
 }
 
 static bool	ray_assign_door(t_c3_data *data)
@@ -91,6 +83,26 @@ static bool	render_distance(t_c3_data *data)
 	return (false);
 }
 
+void	open_door_colider(t_c3_data *data, int x, double angle)
+{
+	data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
+		* cos(data->ray.angle - angle);
+	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd')
+	{
+		set_anim(data, data->ray.old_pos);
+		if (data->ray.texture != NULL)
+			put_buffer(data, &data->ray, x);
+	}
+	if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd' &&
+		((int)data->ray.pos.x != (int)data->ray.old_pos.x 
+		|| (int)data->ray.pos.y != (int)data->ray.old_pos.y))
+	{
+		set_anim(data, data->ray.pos);
+		if (data->ray.texture != NULL)
+			put_buffer(data, &data->ray, x);
+	}
+}
+
 void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 {
 	while (render_distance(data)
@@ -106,13 +118,7 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 				&& (int)data->ray.save_pos.y == (int)data->ray.pos.y))
 			continue ;
 		if (ray_strchr("d", data, data->ray) && render_distance(data))
-		{
-			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
-				* cos(data->ray.angle - angle);
-			set_anim(data);
-			if (data->ray.texture != NULL)
-				put_buffer(data, &data->ray, x);
-		}
+			open_door_colider(data, x, angle);
 		data->ray.save_pos = data->ray.pos;
 	}
 	if (render_distance(data))

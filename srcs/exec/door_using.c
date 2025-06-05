@@ -6,11 +6,21 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 15:30:40 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 22:01:07 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+static bool	inmap(t_c3_data *data, t_pos pos)
+{
+	if ((int)pos.x < 0 || pos.y < 0
+		|| (int)pos.x >= data->map_size[1] || pos.y >= data->map_size[0])
+		return (false);
+	if ((int)pos.x > (int)ft_strlen(data->map[(int)pos.y]))
+		return (false);
+	return (true);
+}
 
 static void	doortrigo(t_ray *ray, double dist, t_pos pos)
 {
@@ -31,7 +41,7 @@ static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 	if (door == NULL)
 		return ;
 	if ((int)pos.y == (int)door->pos.y && door->anim <= 0.6
-		&& (int)pos.x == (int)door->pos.x)
+		&& (int)pos.x == (int)door->pos.x && !door->open)
 		return ;
 	if (door->open == true
 		&& door->is_anim == true && door->anim < 0.95)
@@ -59,21 +69,24 @@ void	door_clock(t_c3_data *d, t_pos pos)
 	int		y;
 
 	y = -DOOR_DIST;
-	while (y++ <= DOOR_DIST)
+	while (y <= DOOR_DIST)
 	{
-		temp.y = (int)(pos.y + y);
 		x = -DOOR_DIST;
-		while (x++ <= DOOR_DIST)
+		while (x <= DOOR_DIST)
 		{
+			temp.y = (int)(pos.y + y);
 			temp.x = (int)(pos.x + x);
-			if (temp.x >= 0 && temp.y >= 0
-				&& temp.x < d->map_size[1] && temp.y < d->map_size[0]
-				&& ft_strchr("dD", d->map[(int)temp.y][(int)temp.x]))
+			if (inmap(d, temp) 
+				&& d->map[(int)temp.y]
+				[(int)temp.x] == 'd')
 			{
 				door = get_door_data(d, temp);
-				door_update(d, pos, door);
+				if (door != NULL)
+					door_update(d, pos, door);
 			}
+			x++;
 		}
+		y++;
 	}
 }
 
