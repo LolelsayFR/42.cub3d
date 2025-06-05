@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 09:29:33 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 09:47:32 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #  define RAY_DIVIDER	6
 #  define RAY_PRECISION	0.2
 #  define RENDER_DIST	5
+#  define DOOR_DIST		1
 #  define MINIMAP_SIZE	0
 # else
 #  define WIDTH			1280
@@ -30,6 +31,7 @@
 #  define RAY_DIVIDER	4
 #  define RAY_PRECISION	0.015
 #  define RENDER_DIST	30
+#  define DOOR_DIST		4
 #  define MINIMAP_SIZE	200
 # endif
 # define TILE_SIZE		12
