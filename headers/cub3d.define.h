@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 12:56:03 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:59:17 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define C_ODOORS		0xEEEEEE
 
 # define RED_PIXEL		0xFF0000
+# define MAGENTA_PIXEL	0xFF00FF
 # define DARKRED_PIXEL	0x660000
 # define GREEN_PIXEL	0x00FF00
 # define WHITE_PIXEL	0xFFFFFF

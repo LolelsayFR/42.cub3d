@@ -6,29 +6,44 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 11:23:21 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:31:27 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
+static void	set_anim(t_c3_data *data)
+{
+	t_pos	temp;
+
+	data->ray.color = darker_rgb(C_ODOORS, data->ray.exec_dist);
+	data->ray.texture = data->textures->door;
+	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd'
+		&& get_door_data(data, data->ray.old_pos) != NULL)
+		data->ray.shift_up = get_door_data(data, data->ray.old_pos)->anim;
+	else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd'
+		&& get_door_data(data, data->ray.pos) != NULL)
+		data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
+	temp.x = data->ray.pos.x;
+	temp.y = data->ray.old_pos.y;
+	if (data->map[(int)temp.y][(int)temp.x] == 'd'
+		&& get_door_data(data, temp) != NULL)
+		data->ray.shift_up = get_door_data(data, temp)->anim;
+	temp.x = data->ray.old_pos.x;
+	temp.y = data->ray.pos.y;
+	if (data->map[(int)temp.y][(int)temp.x] == 'd'
+		&& get_door_data(data, temp) != NULL)
+		data->ray.shift_up = get_door_data(data, temp)->anim;
+}
+
 static void	door_assign_anim(t_c3_data *data)
 {
-	if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'D')
-	{
-		data->ray.texture = data->textures->door;
-		data->ray.color = darker_rgb(C_DOORS, data->ray.dist);
-	}
+	if (ray_strchr("d", data, data->ray))
+		set_anim(data);
 	else
 	{
-		data->ray.color = darker_rgb(C_ODOORS, data->ray.exec_dist);
-		data->ray.texture = data->textures->door;
-		if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd'
-			&& get_door_data(data, data->ray.old_pos) != NULL)
-			data->ray.shift_up = get_door_data(data, data->ray.old_pos)->anim;
-		else if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd'
-			&& get_door_data(data, data->ray.pos) != NULL)
-			data->ray.shift_up = get_door_data(data, data->ray.pos)->anim;
+		data->ray.texture = NULL;
+		data->ray.color = MAGENTA_PIXEL;
 	}
 }
 
@@ -44,15 +59,20 @@ static void	ray_assign(t_c3_data *data)
 		data->ray.texture = data->textures->west;
 		data->ray.color = darker_rgb(C_W_WALL, data->ray.exec_dist);
 	}
-	else if ((int)data->ray.old_pos.y < (int)data->ray.pos.y)
+	else if ((int)data->ray.old_pos.y <= (int)data->ray.pos.y)
 	{
 		data->ray.texture = data->textures->south;
 		data->ray.color = darker_rgb(C_S_WALL, data->ray.exec_dist);
 	}
-	else if ((int)data->ray.old_pos.x < (int)data->ray.pos.x)
+	else if ((int)data->ray.old_pos.x <= (int)data->ray.pos.x)
 	{
 		data->ray.texture = data->textures->east;
 		data->ray.color = darker_rgb(C_E_WALL, data->ray.exec_dist);
+	}
+	if (ray_strchr("D", data, data->ray))
+	{
+		data->ray.texture = data->textures->door;
+		data->ray.color = darker_rgb(C_DOORS, data->ray.dist);
 	}
 }
 
@@ -67,14 +87,6 @@ static bool	render_distance(t_c3_data *data)
 	return (false);
 }
 
-static bool	ray_strchr(char *set, t_c3_data *data, t_ray ray)
-{
-	if ((!ft_strchr(set, data->map[(int)ray.pos.y][(int)ray.old_pos.x])
-		&& !ft_strchr(set, data->map[(int)ray.old_pos.y][(int)ray.pos.x])
-	&& !ft_strchr(set, data->map[(int)ray.pos.y][(int)ray.pos.x])))
-		return (false);
-	return (true);
-}
 
 void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 {
@@ -82,7 +94,7 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 		&& (int)data->ray.pos.y < data->map_size[0]
 		&& (int)data->ray.pos.x < data->map_size[1]
 		&& (int)data->ray.pos.y >= 0 && (int)data->ray.pos.x >= 0
-		&& (!ray_strchr("\n 1\0", data, data->ray)))
+		&& (!ray_strchr("\n D1\0", data, data->ray)))
 	{
 		data->ray.old_pos = data->ray.pos;
 		data->ray.exec_dist += RAY_PRECISION;
@@ -90,12 +102,13 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 		if (((int)data->ray.old_pos.x == (int)data->ray.pos.x
 				&& (int)data->ray.old_pos.y == (int)data->ray.pos.y))
 			continue ;
-		if (ray_strchr("Dd", data, data->ray) && render_distance(data))
+		if (ray_strchr("d", data, data->ray) && render_distance(data))
 		{
 			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
 				* cos(data->ray.angle - angle);
 			door_assign_anim(data);
-			put_buffer(data, &data->ray, x);
+			if (data->ray.texture != NULL)
+				put_buffer(data, &data->ray, x);
 		}
 	}
 	if (render_distance(data))
