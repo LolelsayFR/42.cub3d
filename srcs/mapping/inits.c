@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 23:58:48 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/06 01:39:21 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:41:28 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	add_rgb(t_rgb *rgb, char *temp)
 		rgb->g = ft_atoi(temp);
 	else if (i == 2)
 		rgb->b = ft_atoi(temp);
+	free(temp);
 	i++;
 	if (i == 3)
 		i = 0;
@@ -64,7 +65,6 @@ int	do_rgb(t_rgb *rgb, char *line)
 			|| intlen(ft_atoi(temp)) > 3)
 			return (free(temp), -1);
 		add_rgb(rgb, temp);
-		free(temp);
 		i += j;
 	}
 	return (0);
