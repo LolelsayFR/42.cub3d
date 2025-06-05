@@ -6,11 +6,25 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 11:24:02 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 18:04:40 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+void	game_close(t_c3_data *data)
+{
+	int	status;
+
+	if (data->exit_status == 2)
+		ft_printfd(2, LANG_E, LANG_E_MALLOC);
+	data->is_running = false;
+	status = data->exit_status;
+	ft_alist_free();
+	mlx_do_key_autorepeaton(data->mlx);
+	free_data(data);
+	exit(status);
+}
 
 static void	render(t_c3_data *data)
 {
