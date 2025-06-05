@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:28:05 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 11:57:31 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 10:55:16 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,5 @@ int	handle_mouse_click(int button, int x, int y, t_c3_data *data)
 		data->v_view = 0;
 	if (button == 1 || button == 3)
 		door_using(data);
-	ft_printf("Mouse button press : %d, x  = %d  = y %d\n",
-		button, x, y, data);
-	return (0);
+	return ((void)x, (void)y, 0);
 }

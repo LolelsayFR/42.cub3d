@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:41:42 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 14:19:51 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 10:55:32 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	player_setpress(t_c3_data *data, double speed)
 		data->player->to_move = 0;
 	if (data->player->control->turn_left)
 		data->player->angle += VIEWSPEED;
-	else if (data->player->control->turn_right)
+	if (data->player->control->turn_right)
 		data->player->angle -= VIEWSPEED;
 }
 

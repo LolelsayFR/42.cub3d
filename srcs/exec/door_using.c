@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 10:00:37 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 10:56:15 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 {
-		if (door == NULL)
-			return ;
-		if ((int)pos.y == (int)door->pos.y && door->anim <= 0.6
-			&& (int)pos.x == (int)door->pos.x)
-			return ;
-		if (door->open == true
-			&& door->is_anim == true && door->anim < 0.95)
-			door->anim += 0.05;
-		else if (door->open == false
-			&& door->is_anim == true && door->anim > 0)
-			door->anim -= 0.05;
-		if (door->anim < 0)
-			door->anim = 0;
-		if (door->anim > 0.95)
-			door->anim = 0.95;
-		if (door->anim == 0
-			&& door->open == false && door->anim == false)
-		{
-			d->map[(int)door->pos.y][(int)door->pos.x] = 'D';
-			create_minimap_img(d);
-		}
+	if (door == NULL)
+		return ;
+	if ((int)pos.y == (int)door->pos.y && door->anim <= 0.6
+		&& (int)pos.x == (int)door->pos.x)
+		return ;
+	if (door->open == true
+		&& door->is_anim == true && door->anim < 0.95)
+		door->anim += 0.05;
+	else if (door->open == false
+		&& door->is_anim == true && door->anim > 0)
+		door->anim -= 0.05;
+	if (door->anim < 0)
+		door->anim = 0;
+	if (door->anim > 0.95)
+		door->anim = 0.95;
+	if (door->anim == 0
+		&& door->open == false && door->anim == false)
+	{
+		d->map[(int)door->pos.y][(int)door->pos.x] = 'D';
+		create_minimap_img(d);
+	}
 }
 
 void	door_clock(t_c3_data *d, t_pos pos)
