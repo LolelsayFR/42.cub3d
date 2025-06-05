@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:12:44 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/03 14:09:03 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 06:07:27 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	render(t_c3_data *data)
 	t_pos	pos;
 
 	pos = pos_to_map_pos(data->player->pos.x, data->player->pos.y);
-	door_clock(data, pos);
 	raycasting(data, pos, data->player->angle);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame, 0, 0);
+	door_clock(data, pos);
 	draw_map(data, 10, 10);
 }
 
@@ -37,6 +37,8 @@ static void	game_init(t_c3_data *data)
 {
 	data->is_running = true;
 	map_size(data);
+	data->textures->map_base = img_new(data->map_size[1] * TILE_SIZE,
+			data->map_size[0] * TILE_SIZE, data);
 	create_minimap_img(data);
 	player_init(data);
 	data->frame = img_new(WIDTH, HEIGHT, data);

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 03:02:21 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 05:21:56 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	put_buffer_pix(t_c3_data *data, int y_end, int y)
 		if (data->player->control->map % 4 == 3 || data->ray.texture == NULL)
 		{
 			if (data->ray.buffer[y] == 0)
-				data->ray.buffer[y] = data->ray.color;
+				data->ray.buffer[y] = data->ray.color + 1;
 		}
 		else if (data->ray.buffer[y] == 0)
-			data->ray.buffer[y] = texture_get_pix(y, data->ray);
+			data->ray.buffer[y] = texture_get_pix(y, data->ray) + 1;
 		y++;
 	}
 }
@@ -35,20 +35,20 @@ static void	frame_put_column(t_c3_data *data, int x)
 	while (y < HEIGHT && y < HEIGHT / 2 + MOUSESPEED_Y * data->v_view)
 	{
 		if (data->ray.buffer[y] == 0)
-			data->ray.buffer[y] = c_rgb(data->textures->ceiling);
+			data->ray.buffer[y] = c_rgb(data->textures->ceiling) + 1;
 		y++;
 	}
 	y = HEIGHT - 1;
 	while (y > 0 && y > HEIGHT / 2 + MOUSESPEED_Y * data->v_view)
 	{
 		if (data->ray.buffer[y] == 0)
-			data->ray.buffer[y] = c_rgb(data->textures->floor);
+			data->ray.buffer[y] = c_rgb(data->textures->floor) + 1;
 		y--;
 	}
 	y = 0;
 	while (y < HEIGHT)
 	{
-		img_pp(data->frame, WIDTH - x, y, data->ray.buffer[y]);
+		img_pp(data->frame, WIDTH - x, y, data->ray.buffer[y] - 1);
 		y++;
 	}
 }
@@ -88,9 +88,12 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 			ft_bzero(&data->ray, sizeof(t_ray));
 			data->ray.angle = (angle - ((FOV / 2.0) * (N_PI / 180.0))
 					+ ((double)x / WIDTH) * FOV * ((N_PI / 180.0)));
+			while (data->ray.angle < 0)
+				data->ray.angle += 2 * N_PI;
+			while (data->ray.angle >= 2 * N_PI)
+				data->ray.angle -= 2 * N_PI;
 			raytrigo(&data->ray, data->ray.exec_dist, pos);
 			data->ray.pos = pos;
-			data->ray.old_pos = data->ray.pos;
 			ray_colider(data, pos, x, angle);
 			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
 				* cos(data->ray.angle - angle);

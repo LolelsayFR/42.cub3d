@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 02:55:35 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 06:14:53 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			ray_colider(t_c3_data *data, t_pos pos, int x, double angle);
 void			raycasting(t_c3_data *data, t_pos pos, double angle);
 unsigned long	texture_get_pix(int y, t_ray ray);
 void			put_buffer(t_c3_data *data, t_ray *ray, int x);
-void			door_clock(t_c3_data *data, t_pos pos);
+void			door_update(t_c3_data *data, t_pos pos, t_door *door);
 
 //Img
 void			create_minimap_img(t_c3_data *data);
@@ -70,6 +70,7 @@ void			map_size(t_c3_data *data);
 void			doors_stocking(t_c3_data **data);
 
 //Utils
+void			*ft_memset_ulong(void *s, unsigned long c, size_t n);
 t_door			*get_door_data(t_c3_data *data, t_pos pos);
 unsigned long	darker_rgb(unsigned long rgb, double divider);
 void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);

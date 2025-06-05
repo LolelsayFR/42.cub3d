@@ -6,16 +6,34 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 01:07:24 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 06:24:38 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINE_H
 # define CUB3D_DEFINE_H
 
-# define WIDTH			1280
-# define HEIGHT			720
-# define MINIMAP_SIZE	200
+# if POTATO
+#  define WIDTH			213
+#  define HEIGHT		120
+#  define FOV			40
+#  define DIST_FACTOR	20
+#  define RAY_DIVIDER	6
+#  define RAY_PRECISION	0.2
+#  define RENDER_DIST	5
+#  define DOOR_DIST		1
+#  define MINIMAP_SIZE	0
+# else
+#  define WIDTH			1280
+#  define HEIGHT		720
+#  define FOV			90
+#  define DIST_FACTOR	80
+#  define RAY_DIVIDER	4
+#  define RAY_PRECISION	0.015
+#  define RENDER_DIST	30
+#  define DOOR_DIST		5
+#  define MINIMAP_SIZE	200
+# endif
 # define TILE_SIZE		12
 # define PLAYER_SIZE	4
 # define FPS			120
@@ -25,12 +43,7 @@
 # define VIEWSPEED		6
 # define MOUSESPEED_X	0.15
 # define MOUSESPEED_Y	3
-# define N_PI			3.14159265358979323846
-# define RAY_DIVIDER	2
-# define FOV			80
-# define DIST_FACTOR	80
-# define RAY_PRECISION	0.01
-# define RENDER_DIST	30
+# define N_PI			3.1415
 # define RAY_CORRECTION	0.2
 # define HITBOX			0.15
 
@@ -155,17 +168,17 @@ typedef struct s_anim
 
 typedef struct s_door
 {
-	t_pos	pos;
 	double	anim;
 	bool	open;
 	bool	is_anim;
 	bool	colide;
+	char	c;
 }	t_door;
 
 typedef struct s_c3_data
 {
 	char		**map;
-	double		**door_anim;
+	char		**map_door_link;
 	bool		is_running;
 	bool		mouse;
 	t_player	*player;
@@ -179,6 +192,7 @@ typedef struct s_c3_data
 	int			exit_status;
 	t_ray		ray;
 	t_img		*frame;
+	t_door		**map_door_matrix;
 	double		d_test;
 }	t_c3_data;
 

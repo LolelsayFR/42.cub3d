@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:02:32 by emaillet          #+#    #+#             */
-/*   Updated: 2025/05/30 17:17:34 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/04 05:21:52 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ void	raytrigo(t_ray *ray, double dist, t_pos pos)
 {
 	t_trigo	math;
 
-	while (ray->angle < 0)
-		ray->angle += 2 * N_PI;
-	while (ray->angle >= 2 * N_PI)
-		ray->angle -= 2 * N_PI;
 	math.angle_rad = ray->angle;
 	math.hypo = hypot(dist, 0);
+	ray->old_pos = ray->pos;
 	ray->pos.x = pos.x + math.hypo * sin(ray->angle);
 	ray->pos.y = pos.y + math.hypo * cos(ray->angle);
 }
