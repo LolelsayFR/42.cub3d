@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 03:19:08 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:10:28 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void			map_size(t_c3_data *data);
 void			doors_stocking(t_c3_data **data);
 
 //Utils
-void			*ft_memset_ulong(void *s, unsigned long c, size_t n);
 t_door			*get_door_data(t_c3_data *data, t_pos pos);
 unsigned long	darker_rgb(unsigned long rgb, double divider);
 void			img_put_dual_bg(t_img *img, int sky, int floor, t_c3_data *d);

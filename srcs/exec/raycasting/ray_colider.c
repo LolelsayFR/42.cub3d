@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/04 03:01:41 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:23:21 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,30 @@ static bool	render_distance(t_c3_data *data)
 	return (false);
 }
 
+static bool	ray_strchr(char *set, t_c3_data *data, t_ray ray)
+{
+	if ((!ft_strchr(set, data->map[(int)ray.pos.y][(int)ray.old_pos.x])
+		&& !ft_strchr(set, data->map[(int)ray.old_pos.y][(int)ray.pos.x])
+	&& !ft_strchr(set, data->map[(int)ray.pos.y][(int)ray.pos.x])))
+		return (false);
+	return (true);
+}
+
 void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 {
 	while (render_distance(data)
 		&& (int)data->ray.pos.y < data->map_size[0]
 		&& (int)data->ray.pos.x < data->map_size[1]
 		&& (int)data->ray.pos.y >= 0 && (int)data->ray.pos.x >= 0
-		&& !ft_strchr("\n 1\0",
-			data->map[(int)data->ray.pos.y][(int)data->ray.pos.x]))
+		&& (!ray_strchr("\n 1\0", data, data->ray)))
 	{
 		data->ray.old_pos = data->ray.pos;
 		data->ray.exec_dist += RAY_PRECISION;
 		raytrigo(&data->ray, data->ray.exec_dist, pos);
-		if ((data->map
-				[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd'
-			|| data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd'
-			|| data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'D')
-		&& ((int)data->ray.old_pos.x != (int)data->ray.pos.x
-		|| (int)data->ray.old_pos.y != (int)data->ray.pos.y))
+		if (((int)data->ray.old_pos.x == (int)data->ray.pos.x
+				&& (int)data->ray.old_pos.y == (int)data->ray.pos.y))
+			continue ;
+		if (ray_strchr("Dd", data, data->ray) && render_distance(data))
 		{
 			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
 				* cos(data->ray.angle - angle);

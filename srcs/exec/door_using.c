@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/05 10:56:15 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:48:25 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,26 @@ static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 void	door_clock(t_c3_data *d, t_pos pos)
 {
 	t_pos	temp;
+	t_door	*door;
 	int		x;
 	int		y;
 
 	y = -DOOR_DIST;
-	while (y <= DOOR_DIST)
+	while (y++ <= DOOR_DIST)
 	{
 		temp.y = (int)(pos.y + y);
 		x = -DOOR_DIST;
-		while (x <= DOOR_DIST)
+		while (x++ <= DOOR_DIST)
 		{
 			temp.x = (int)(pos.x + x);
 			if (temp.x >= 0 && temp.y >= 0
 				&& temp.x < d->map_size[1] && temp.y < d->map_size[0]
 				&& ft_strchr("dD", d->map[(int)temp.y][(int)temp.x]))
-				door_update(d, pos, get_door_data(d, temp));
-			x++;
+			{
+				door = get_door_data(d, temp);
+				door_update(d, pos, door);
+			}
 		}
-		y++;
 	}
 }
 
