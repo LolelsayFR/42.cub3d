@@ -6,13 +6,13 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 23:58:48 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/06 01:41:28 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:38:26 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
 
-void	add_rgb(t_rgb *rgb, char *temp)
+static void	add_rgb(t_rgb *rgb, char *temp)
 {
 	static int	i = 0;
 
@@ -28,7 +28,7 @@ void	add_rgb(t_rgb *rgb, char *temp)
 		i = 0;
 }
 
-int	normital(char *line, int *i, int j)
+static int	go_next_col(char *line, int *i, int j)
 {
 	if (j != 0)
 	{
@@ -51,7 +51,7 @@ int	do_rgb(t_rgb *rgb, char *line)
 	j = 0;
 	while (line[i] != '\0' && line[i] != '\n')
 	{
-		if (normital(line, &i, j) == -1)
+		if (go_next_col(line, &i, j) == -1)
 			return (-1);
 		while (line[i] == ' ')
 			i++;
