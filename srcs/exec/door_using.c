@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/06 10:02:26 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:38:48 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	inmap(t_c3_data *data, t_pos pos)
 
 static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 {
-	if (door == NULL)
+	if (door == NULL || d->n_doors == 0)
 		return ;
 	if ((int)pos.y == (int)door->pos.y && door->anim <= 0.65
 		&& (int)pos.x == (int)door->pos.x && !door->open)
