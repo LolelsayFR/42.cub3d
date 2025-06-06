@@ -6,11 +6,22 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 13:16:21 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 21:56:05 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 08:36:08 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.function.h"
+
+bool	render_distance(t_c3_data *data)
+{
+	if (data->ray.exec_dist < RENDER_DIST)
+	{
+		data->ray.texture = NULL;
+		data->ray.color = BLACK_PIXEL;
+		return (true);
+	}
+	return (false);
+}
 
 bool	ray_strchr(char *set, t_c3_data *data, t_ray ray)
 {
