@@ -6,20 +6,21 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 21:31:06 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 09:00:08 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINE_H
 # define CUB3D_DEFINE_H
 
+//WARING Change settings at your own risk.
 # if POTATO
 #  define WIDTH			213
 #  define HEIGHT		120
 #  define FOV			40
 #  define DIST_FACTOR	20
-#  define RAY_DIVIDER	6
-#  define RAY_PRECISION	0.2
+#  define RAY_DIVIDER	8
+#  define RAY_PRECISION	0.01
 #  define RENDER_DIST	5
 #  define DOOR_DIST		2
 #  define MINIMAP_SIZE	0
@@ -28,10 +29,10 @@
 #  define HEIGHT		720
 #  define FOV			90
 #  define DIST_FACTOR	80
-#  define RAY_DIVIDER	4
-#  define RAY_PRECISION	0.015
-#  define RENDER_DIST	30
-#  define DOOR_DIST		10
+#  define RAY_DIVIDER	5
+#  define RAY_PRECISION	0.02
+#  define RENDER_DIST	20
+#  define DOOR_DIST		6
 #  define MINIMAP_SIZE	200
 # endif
 # define TILE_SIZE		12

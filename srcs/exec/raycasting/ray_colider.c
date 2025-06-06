@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/06 01:46:36 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 08:55:00 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,12 @@ void	ray_colider(t_c3_data *data, t_pos pos, int x, double angle)
 		&& (!ray_strchr("\n D1\0", data, data->ray)))
 	{
 		data->ray.old_pos = data->ray.pos;
-		data->ray.exec_dist += RAY_PRECISION;
+		if (data->ray.exec_dist < RENDER_DIST / 3)
+			data->ray.exec_dist += RAY_PRECISION;
+		else if (data->ray.exec_dist < RENDER_DIST / 2)
+			data->ray.exec_dist += 5 * RAY_PRECISION;
+		else
+			data->ray.exec_dist += 10 * RAY_PRECISION;
 		raytrigo(&data->ray, data->ray.exec_dist, pos, data);
 		if (((int)data->ray.save_pos.x == (int)data->ray.pos.x
 				&& (int)data->ray.save_pos.y == (int)data->ray.pos.y))
