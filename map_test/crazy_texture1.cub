@@ -4,8 +4,8 @@ WE sprites/emaillet_so_long/menu.xpm
 EA sprites/emaillet_so_long/enemy.xpm
 
 DO sprites/door.xpm
-F 220,100,0
-C 225,30,0
+F 20,100,0
+C 20,30,0
 
 1111111111111111111
 1000W00000000000001

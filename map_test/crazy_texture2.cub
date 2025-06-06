@@ -4,8 +4,8 @@ WE sprites/emaillet_so_long/saturn.xpm
 EA sprites/emaillet_so_long/red_chest.xpm
 DO sprites/emaillet_so_long/finish.xpm
 
-F 220,100,0
-C 225,30,0
+F 0,100,0
+C 0,30,0
 
     11111111
   1100000001
