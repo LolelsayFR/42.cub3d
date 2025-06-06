@@ -1,18 +1,11 @@
-
-C +142,140022,-142
-F 10,abc,42
-
-WE sprites/bob_leponge.xpm
-
-NO sprites/sasha_patate.xpm
-EA sprites/saucisse.xpm
-
-
-
+NO sprites/bob_leponge.xpm
+SO sprites/saucisse.xpm
+WE sprites/illuminati.xpm
+EA sprites/sasha_patate.xpm
 DO sprites/sad_guy.xpm
 
-
-SO sprites/illuminati.xpm
+F 0,0,0
+C 255,0,0
 
      1111111
     100010001
