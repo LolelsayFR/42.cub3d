@@ -33,6 +33,7 @@ SRC			:= 	srcs/main.c\
 				srcs/utils/math_trigo.c\
 				srcs/utils/pos_to_map_pos.c
 
+OBJ		= 	${SRC:.c=.o}
 
 CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders -O3
 LIBFT_PATH	:=	./submodules/42.libft
@@ -47,11 +48,10 @@ all: hello $(NAME)
 
 hello:
 	@echo "\e[48;2;100;0;100;1m Welcome to $(NAME) Makefile !\e[0m\n"
-	@echo "\e[48;2;100;0;0;1m Welcome to THE BIG WILDCARD !\e[0m\n"
 
-$(NAME): $(MLX) $(LIBFT) $(SRC)
+$(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@echo "\e[48;2;0;155;0;1m Compile $(NAME) \e[0m\n"
-	cc $(CFLAGS) $(SRC) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+	cc $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 	@echo "\e[48;2;0;0;155;1m Done \e[0m\n"
 
 potato:
@@ -83,6 +83,9 @@ fclean: clean
 	@echo "\e[48;2;155;100;0;1m Uninstall $(NAME) \e[0m\n"
 	$(RM) $(NAME)
 	@echo "\e[48;2;0;0;155;1m Done \e[0m\n"
+
+%.o: %.c
+	cc ${CFLAGS} -c $< -o $@
 
 re:
 	+make fclean
