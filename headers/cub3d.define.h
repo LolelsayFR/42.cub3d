@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/06 09:46:35 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:00:02 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 #  define MINIMAP_SIZE	200
 # endif
 # define TILE_SIZE		12
-# define PLAYER_SIZE	4
+# define PLAYER_SIZE	6
 # define FPS			120
 # define USE_RANGE		1
 # define WALKSPEED		2
