@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/06 09:13:04 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 09:53:54 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	raycasting(t_c3_data *data, t_pos pos, double angle)
 			data->ray.pos = pos;
 			data->ray.old_pos = data->ray.pos;
 			ray_colider(data, pos, x, angle);
-			data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
+			data->ray.dist = data->ray.exec_dist
 				* cos(data->ray.angle - angle);
 		}
 		put_buffer(data, &data->ray, x);

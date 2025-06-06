@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/06 09:13:11 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 09:45:24 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	ray_assign(t_c3_data *data)
 
 void	open_door_colider(t_c3_data *data, int x, double angle)
 {
-	data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
+	data->ray.dist = data->ray.exec_dist
 		* cos(data->ray.angle - angle);
 	if (data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x] == 'd')
 	{
