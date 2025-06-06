@@ -55,7 +55,6 @@ $(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@echo "\e[48;2;0;0;155;1m Done \e[0m\n"
 
 potato:
-	+make clean
 	+make fclean
 	+make $(LIBFT) $(MLX)
 	+make $(NAME) CFLAGS+=" -D POTATO=1 -Wall -Werror -Wextra -g -Iheaders -O3"
@@ -76,7 +75,7 @@ clean:
 	@echo "\e[48;2;155;100;0;1m Clean $(NAME) dependencies \e[0m\n"
 	@$(MAKE) --no-print-directory clean -C $(LIBFT_PATH)
 	@$(MAKE) --no-print-directory clean -C $(MLX_PATH)
-	$(RM) -r $(OBJDIR)
+	$(RM) -r $(OBJ)
 	@echo "\n\e[48;2;0;0;155;1m Done \e[0m\n"
 
 fclean: clean
