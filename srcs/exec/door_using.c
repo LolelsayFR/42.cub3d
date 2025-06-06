@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:05:52 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/06 01:44:31 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 10:01:32 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	door_update(t_c3_data *d, t_pos pos, t_door *door)
 {
 	if (door == NULL)
 		return ;
-	if ((int)pos.y == (int)door->pos.y && door->anim <= 0.6
+	if ((int)pos.y == (int)door->pos.y && door->anim <= 0.7
 		&& (int)pos.x == (int)door->pos.x && !door->open)
 		return ;
 	if (door->open == true
