@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/06 09:45:24 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 11:29:55 by emaillet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ static void	ray_assign(t_c3_data *data)
 		data->ray.texture = data->textures->east;
 		data->ray.color = darker_rgb(C_E_WALL, data->ray.exec_dist);
 	}
-	else
-		printf(GRN"POS[%c] x = %f y = %f\n\n OLD[%c] x = %f y = %f"RES, data->map[(int)data->ray.pos.y][(int)data->ray.pos.x], data->ray.pos.x, data->ray.pos.y, data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x], data->ray.old_pos.x, data->ray.old_pos.y);
 }
 
 void	open_door_colider(t_c3_data *data, int x, double angle)
