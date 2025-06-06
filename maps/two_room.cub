@@ -4,8 +4,8 @@ WE sprites/wall3.xpm
 EA sprites/wall4.xpm
 DO sprites/door.xpm
 
-C 20,10,150
-F 130,130,130
+C 140,140,250
+F 10,130,10
 
 11111111111111111111111
 10000000000000000000001
