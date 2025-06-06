@@ -1,12 +1,38 @@
 NAME		:= 	cub3D
 
-SRC			:= 	$(wildcard srcs/*.c)\
-				$(wildcard srcs/**/*.c)\
-				$(wildcard srcs/**/**/*.c)\
+SRC			:= 	srcs/main.c\
+				srcs/exec/door_using.c\
+				srcs/exec/game.c\
+				srcs/exec/minimap.c\
+				srcs/exec/player/control_handler.c\
+				srcs/exec/player/player_control.c\
+				srcs/exec/player/player_init.c\
+				srcs/exec/raycasting/raycasting.c\
+				srcs/exec/raycasting/ray_colider.c\
+				srcs/exec/raycasting/ray_utils.c\
+				srcs/exec/raycasting/texture_apply.c\
+				srcs/mapping/convert_map.c\
+				srcs/mapping/errors.c\
+				srcs/mapping/free_data.c\
+				srcs/mapping/inits.c\
+				srcs/mapping/map_verif.c\
+				srcs/mapping/doors_stocking.c\
+				srcs/mapping/finds.c\
+				srcs/mapping/init_data.c\
+				srcs/mapping/mapping.c\
+				srcs/mapping/separ_value.c\
+				srcs/utils/create_rgb.c\
+				srcs/utils/ft_tablen.c\
+				srcs/utils/intlen.c\
+				srcs/utils/map_size.c\
+				srcs/utils/mlx_img_utils.c\
+				srcs/utils/print_tab.c\
+				srcs/utils/fixed_mouse_mlx.c\
+				srcs/utils/get_door_data.c\
+				srcs/utils/lst_to_tab.c\
+				srcs/utils/math_trigo.c\
+				srcs/utils/pos_to_map_pos.c
 
-
-OBJDIR		:=	.objs
-OBJS		:=	$(patsubst srcs/%.c,$(OBJDIR)/%.o,$(SRC))
 
 CFLAGS		:=	-Wall -Werror -Wextra -g -Iheaders -O3
 LIBFT_PATH	:=	./submodules/42.libft
@@ -23,9 +49,9 @@ hello:
 	@echo "\e[48;2;100;0;100;1m Welcome to $(NAME) Makefile !\e[0m\n"
 	@echo "\e[48;2;100;0;0;1m Welcome to THE BIG WILDCARD !\e[0m\n"
 
-$(NAME): $(MLX) $(LIBFT) $(OBJS)
+$(NAME): $(MLX) $(LIBFT) $(SRC)
 	@echo "\e[48;2;0;155;0;1m Compile $(NAME) \e[0m\n"
-	cc $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+	cc $(CFLAGS) $(SRC) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
 	@echo "\e[48;2;0;0;155;1m Done \e[0m\n"
 
 potato:
@@ -45,13 +71,6 @@ $(MLX):
 	@echo "\e[48;2;0;155;0;1m Make $(MLX) \e[0m\n"
 	@$(MAKE) --no-print-directory -C $(MLX_PATH)
 	@echo "\e[48;2;0;0;155;1m Done for $(MLX) \e[0m\n"
-
-$(OBJDIR)/%.o: srcs/%.c | $(OBJDIR)
-	@mkdir -p $(dir $@)
-	cc $(CFLAGS) -c $< -o $@
-
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
 
 clean:
 	@echo "\e[48;2;155;100;0;1m Clean $(NAME) dependencies \e[0m\n"
