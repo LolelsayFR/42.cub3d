@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/06/06 00:53:22 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 16:32:08 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 	if (i == 6)
 		*ret = -1;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		return (i++, init_texture(data,
-				&(*data)->textures->north, line));
+		return (i++, *ret = init_texture(data,
+				&(*data)->textures->north, line), *ret);
 	if (ft_strncmp(line, "SO ", 3) == 0)
-		return (i++, init_texture(data,
-				&(*data)->textures->south, line));
+		return (i++, *ret = init_texture(data,
+				&(*data)->textures->south, line), *ret);
 	*ret = do_texture_2(data, line, &i);
 	if (i == 7 && *ret != -2 && *ret != -3)
 		*ret = -1;
