@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:02:32 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 15:22:14 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:43:58 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,18 @@ t_trigo	trigo(double *angle, double x, double y)
 	math.opo = math.hypo * sin(math.angle_rad);
 	math.adj = math.hypo * cos(math.angle_rad);
 	return (math);
+}
+
+void	doortrigo(t_ray *ray, double dist, t_pos pos)
+{
+	t_trigo	math;
+
+	while (ray->angle < 0)
+		ray->angle += 2 * N_PI;
+	while (ray->angle >= 2 * N_PI)
+		ray->angle -= 2 * N_PI;
+	math.angle_rad = ray->angle;
+	math.hypo = hypot(dist, 0);
+	ray->pos.x = pos.x + math.hypo * sin(ray->angle);
+	ray->pos.y = pos.y + math.hypo * cos(ray->angle);
 }

@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 09:31:49 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 18:04:43 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:47:29 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			raycasting(t_c3_data *data, t_pos pos, double angle);
 unsigned long	texture_get_pix(int y, t_ray ray);
 void			put_buffer(t_c3_data *data, t_ray *ray, int x);
 void			door_clock(t_c3_data *data, t_pos pos);
+void			doortrigo(t_ray *ray, double dist, t_pos pos);
+bool			render_distance(t_c3_data *data);
 
 //Img
 void			create_minimap_img(t_c3_data *data);
@@ -71,6 +73,7 @@ int				finds_other_space(char *line);
 void			find_max(char **map, int *x, int *y);
 void			map_size(t_c3_data *data);
 void			doors_stocking(t_c3_data **data);
+void			assign_error(int ret_val);
 
 //Utils
 t_door			*get_door_data(t_c3_data *data, t_pos pos);
@@ -87,6 +90,7 @@ void			print_tab(char **tab);
 char			**lst_to_tab(t_list *lst);
 char			**lst_to_map(t_list *lst);
 int				init_rgb(t_c3_data **data, char *line, int i);
+int				intlen(int numb);
 
 /* ************************************************************************** */
 /*  End of file                                                               */

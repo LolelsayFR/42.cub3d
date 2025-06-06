@@ -6,7 +6,7 @@
 /*   By: emaillet <emaillet@student.42lehavre.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:40:14 by emaillet          #+#    #+#             */
-/*   Updated: 2025/06/05 20:29:06 by emaillet         ###   ########.fr       */
+/*   Updated: 2025/06/06 01:46:36 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	set_anim(t_c3_data *data, t_pos target_pos)
 	data->ray.color = darker_rgb(C_ODOORS, data->ray.exec_dist);
 	data->ray.texture = data->textures->door;
 	data->ray.shift_up = 0;
-
 	if (data->map[(int)target_pos.y][(int)target_pos.x] == 'd')
 	{
 		door = get_door_data(data, target_pos);
@@ -72,17 +71,6 @@ static void	ray_assign(t_c3_data *data)
 		printf(GRN"POS[%c] x = %f y = %f\n\n OLD[%c] x = %f y = %f"RES, data->map[(int)data->ray.pos.y][(int)data->ray.pos.x], data->ray.pos.x, data->ray.pos.y, data->map[(int)data->ray.old_pos.y][(int)data->ray.old_pos.x], data->ray.old_pos.x, data->ray.old_pos.y);
 }
 
-static bool	render_distance(t_c3_data *data)
-{
-	if (data->ray.exec_dist < RENDER_DIST)
-	{
-		data->ray.texture = NULL;
-		data->ray.color = BLACK_PIXEL;
-		return (true);
-	}
-	return (false);
-}
-
 void	open_door_colider(t_c3_data *data, int x, double angle)
 {
 	data->ray.dist = RAY_CORRECTION + data->ray.exec_dist
@@ -94,7 +82,7 @@ void	open_door_colider(t_c3_data *data, int x, double angle)
 			put_buffer(data, &data->ray, x);
 	}
 	if (data->map[(int)data->ray.pos.y][(int)data->ray.pos.x] == 'd' &&
-		((int)data->ray.pos.x != (int)data->ray.old_pos.x 
+		((int)data->ray.pos.x != (int)data->ray.old_pos.x
 		|| (int)data->ray.pos.y != (int)data->ray.old_pos.y))
 	{
 		set_anim(data, data->ray.pos);

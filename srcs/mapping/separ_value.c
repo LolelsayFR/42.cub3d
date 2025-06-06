@@ -6,7 +6,7 @@
 /*   By: artgirar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:43:59 by artgirar          #+#    #+#             */
-/*   Updated: 2025/05/26 15:24:20 by artgirar         ###   ########.fr       */
+/*   Updated: 2025/06/06 00:53:22 by artgirar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	do_texture(t_c3_data **data, char *line, int *ret)
 		return (i++, init_texture(data,
 				&(*data)->textures->south, line));
 	*ret = do_texture_2(data, line, &i);
-	if (i == 7 && *ret != -2)
+	if (i == 7 && *ret != -2 && *ret != -3)
 		*ret = -1;
 	return (*ret);
 }
@@ -91,8 +91,8 @@ int	separ_value(t_c3_data **data)
 	while (info[i] != NULL)
 	{
 		if (finds_other_space(info[i]) != 0)
-			if (do_texture(data, info[i], &ret) == -2)
-				return (ft_printfd(2, ERROR WRONG_ID), -1);
+			if (do_texture(data, info[i], &ret) <= -2)
+				return (assign_error(ret), -1);
 		if (i++ > 0 && ret == -1)
 			break ;
 	}
