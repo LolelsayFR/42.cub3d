@@ -9,6 +9,8 @@ The project uses a custom raycasting algorithm developed entirely from scratch. 
 
 The engine features a multi-layering system allowing the display and animation of several layers, including vertically animated doors (top to bottom).
 
+[Watch the preview video](https://youtu.be/EaiauUu7J_s)
+
 ### Main Features
 
 - **Custom Raycasting**: The raycasting algorithm is coded without external libraries. It can be improved and is not free from flaws.
@@ -101,6 +103,8 @@ Cub3d est une implémentation d’un moteur de rendu 3D inspiré de Wolfenstein 
 Le projet utilise un algorithme de raycasting développé entièrement à la main, bien que ce dernier soit loin d’être parfait et puisse présenter quelques imprécisions ou limitations.
 
 Le moteur intègre un système de multi-layering permettant l’affichage et l’animation de plusieurs couches de portes, notamment des animations verticales (de haut en bas).
+
+[Watch the preview video](https://youtu.be/EaiauUu7J_s)
 
 ### Fonctionnalités principales
 
